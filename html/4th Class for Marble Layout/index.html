@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Marble Layout</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+
+		    *{
+		    	margin: 0;
+		    	font-family: "Trebuchet MS";
+		    }
+		    body{
+		    	background-color: #f7f7f7;
+		    	/*padding-bottom: 400px;*/
+		    }
+		    .clearfix{
+		    	content: "";
+		    	display: table;
+		    	clear: both;
+		    }
+		    .container{
+		    	max-width: 80%;
+		    	margin:0 auto;
+		    }
+			#header{
+				width: 100%;
+				height: 90px;
+				padding-left: 120px;
+				box-sizing: border-box;
+				background-color: #e5e5e5;
+			}
+			#logo{
+				width: 20%;
+				margin-top: 30px;
+				float: left;
+			}
+			#navigation{
+				width: 50%;
+				float: right;
+				margin-top: 38px;
+			}
+			#navigation ul li{
+				list-style: none;
+				float: left;
+				margin-right: 15px;
+				color: #4e4e4e;
+				font-weight: 600;
+			}
+			#navigation ul li:hover{
+				cursor: pointer;
+				color: #1abb9c;
+				transition-duration: 1s;
+			}
+			#image-container img{
+				width: 100%;
+			}
+			#skils-container{
+				margin-top: 35px;
+			}
+			#skils-container .skills-item{
+				width: 23%;
+				float: left;
+				margin-right: 2%;
+				text-align: center;
+			}
+			#skils-container .skills-item:nth-child(4){
+				margin-right: 0px;
+			}
+			#skils-container .skills-item img{
+				margin-bottom: 20px;
+			}
+			#skils-container .skills-item h3{
+				margin-bottom: 10px;
+				color: #4e4e4e;
+			}
+			#skils-container .skills-item p{
+				color: #4e4e4e;
+			}
+			#skils-container .container{
+				border-bottom: 2px solid #dcdcdc;
+				padding-bottom: 50px;
+			}
+			#latest-work-heading{
+				margin-top: 40px;
+				color: #4e4e4e;
+				margin-bottom: 20px;
+			}
+			#latest-work-container .work-items{
+				width: 30%;
+				float: left;
+				margin-right: 3.3%;
+			}
+			#latest-work-container .work-items:nth-child(3){
+				margin-right: 0px;
+			}
+			#latest-work-container .work-items img{
+				width: 330px;
+				margin-bottom: 20px;
+			}
+			#latest-work-container .work-items h3{
+				margin-bottom: 10px;
+				color: #4e4e4e;
+			}
+			#latest-work-container .work-items p{
+				color: #6a6a6a;
+			}
+			#latest-work-container .work-items .small-heading{
+				margin-bottom: 10px;
+				color: #d0d0d0;
+			}
+
+			.testimonial-container{
+				width: 100%;
+				height: 200px;
+				background-color: #efefef;
+				text-align: center;
+				margin-top: 50px;
+				padding-top: 50px;
+				box-sizing: border-box;
+			}
+			.testimonial-container p{
+				color: #b6b6b6;
+				margin-top: 10px;
+				line-height: 30px;
+				font-size: 12px;
+			}
+			#footer{
+				background-color: #1f1f1f;
+				width: 100%;
+			}
+			.footer-item{
+				padding-top: 20px;
+				border-bottom: 3px solid #353535;
+			}
+			.footer-item div{
+				width: 25%;
+				float: left;
+				padding: 0px 20px;
+				box-sizing: border-box;
+			}
+			.footer-item h2{
+				color: #6c6c6c;
+				margin-bottom: 20px;
+			}
+			.footer-item p{
+				color: #cacaca;
+				margin-bottom: 20px;
+				position: relative;
+				font-size: 12px;
+			}
+			.footer-item-tweet p:before{
+				content: '';
+				background-image: url('./assets/images/tweet.png');
+				background-repeat: no-repeat;
+				position: absolute;
+				width: 12px;
+				height: 12px;
+				left: -21px;
+				top: 0px;
+			}
+			#copyright-text{
+				color: #cacaca;
+				margin-top: 40px;
+				font-size: 12px;
+			}
+			@media(max-width: 768px){
+				#header{
+					text-align: center;
+					padding-left: 0px;
+				}
+				#logo{
+					float: none;
+					width: 100%;
+				}
+				#navigation{
+					float: none;
+					width: 100%;
+				}
+				#navigation ul li{
+					float: none;
+					margin-bottom: 20px;
+				}
+				#latest-work-container .work-items{
+					float: none;
+					width: 100%;
+					margin-bottom: 20px;
+					    text-align: center;
+				}
+				#latest-work-heading{
+					text-align: center;
+				}
+			}
+
+			@media(max-width: 580px){
+				#skils-container .skills-item{
+					float: none;
+					width: 100%;
+					margin-bottom: 30px;
+				}
+				.footer-item div{
+					float: none;
+					width: 100%;
+					margin-bottom: 20px;
+					text-align: center;
+				}
+				#copyright-text{
+					text-align: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header" class="clearfix">
+			<div id="logo">
+				<img src="./assets/images/logo.png" alt="Logo">
+			</div>
+			<div id="navigation">
+				<ul>
+					<li>HOME</li>
+					<li>ABOUT</li>
+					<li>JOURNAL</li>
+					<li>SERVICES</li>
+					<li>FEATURES</li>
+					<li>CONTACT US</li>
+				</ul>
+			</div>
+		</div>
+		<div id="image-container">
+			<img src="./assets/images/background-image.png" alt="Background Image">
+		</div>
+		<div id="skils-container">
+			<div class="container clearfix">
+				<div class="skills-item">
+					<img src="./assets/images/icon-1.png" alt="Icon 1">
+					<h3>Pellentesque</h3>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, distinctio! Hic doloribus, odio mollitia accusamus cupiditate.</p>
+				</div>
+				<div class="skills-item">
+					<img src="./assets/images/icon-2.png" alt="Icon 2">
+					<h3>Pellentesque</h3>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, distinctio! Hic doloribus, odio mollitia accusamus cupiditate.</p>
+				</div>
+				<div class="skills-item">
+					<img src="./assets/images/icon-3.png" alt="Icon 3">
+					<h3>Pellentesque</h3>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, distinctio! Hic doloribus, odio mollitia accusamus cupiditate.</p>
+				</div>
+				<div class="skills-item">
+					<img src="./assets/images/icon-4.png" alt="Icon 4">
+					<h3>Pellentesque</h3>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, distinctio! Hic doloribus, odio mollitia accusamus cupiditate.</p>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<h2 id="latest-work-heading">OUR LATEST WORK</h2>
+		</div>
+		<div id="latest-work-container">
+			<div class="container clearfix">
+				<div class="work-items">
+					<img src="./assets/images/snap-1.png" alt="Snap 1">
+					<h3>Nobis Business Card</h3>
+					<p class="small-heading">Business Card , Graphic</p>
+					<p>Sed posuere consectetur est at lobortis.Porta sagittis lacus vel augue laoreet rutrum</p>
+				</div>
+				<div class="work-items">
+					<img src="./assets/images/snap-2.png" alt="Snap 2">
+					<h3>New Fun Project</h3>
+					<p class="small-heading">Web Design, Application</p>
+					<p>Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.</p>
+				</div>
+				<div class="work-items">
+					<img src="./assets/images/snap-3.png" alt="Snap 3">
+					<h3>Passionaries Branding Cover</h3>
+					<p class="small-heading">Branding, Graphic Design</p>
+					<p>Curabitur blandit tempus porttitor. Donec id elit non mi porta</p>
+				</div>
+			</div>
+		</div>
+		<div class="testimonial-container">
+			<div class="container">
+				<img src="./assets/images/quote.png" alt="">
+				<p>Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at <br> eget metus. Duis mollis, est non commodo luctus erat porttitor.</p>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="container">
+				<div class="footer-item clearfix">
+					<div class="footer-sub-item">
+						<h2>Get In Touch</h2>
+						<p>Fusce dapibus, tellus commodo, tortor mauris <br >condimentum utellus fermentum, porta sem malesuada magna.</p>
+						<p>Moonshine Street No: 14/05
+						Light City, Jupiter
+						0247 541 65 87
+						support@longwave.com</p>
+					</div>
+					<div class="footer-sub-item footer-item-tweet">
+						<h2>Twitter</h2>
+						<p>Aenean lacinia bibendum nulla sed leo posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+						<p>Donec ullamcorper metus auctor fringilla. Nullam quis risus eget.</p>
+						<p>Vestibulum id ligula porta euismod semper. Maecenas faucibus mollis.</p>
+					</div>
+					<div class="footer-sub-item">
+						<h2>Popular Posts</h2>
+						<p>Vivamus sagittis lacus vel augue laoreet rutrum dolor auctor.
+						14 Nov, 2012</p>
+						<p>Scelerisque nisl consectetur et.
+						22 May, 2012</p>
+						<p>Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce
+						15 July, 2012</p>
+					</div>
+					<div class="footer-sub-item">
+						<h2>About Us</h2>
+						<p>Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus curabitur blandit tempus.</p>
+					</div>
+				</div>
+				<p id="copyright-text">© 2013 Marble. All rights reserved. Theme by elemis.</p>
+			</div>
+		</div>
+	</body>
+</html>

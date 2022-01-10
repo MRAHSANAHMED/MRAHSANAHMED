@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flexbox First Class</title>
+	<style>
+		*{
+			margin: 0;
+		}
+		.container{
+			background-color: dodgerblue;
+			height: 500px;
+			width: 100%;
+			display: flex;
+			/*flex-direction: row;*/
+			/*flex-direction: row-reverse;*/
+			/*flex-direction: column;*/
+			/*flex-direction: column-reverse;*/
+			/*flex-wrap: nowrap;*/
+			flex-wrap: wrap;
+			/*flex-wrap: wrap-reverse;*/
+			 /*flex-flow: column wrap;*/
+			 /*justify-content: flex-start;*/
+			 /*justify-content: flex-end;*/
+			 /*justify-content: space-between;*/
+			 /*justify-content: space-around;*/
+			 /*justify-content: space-evenly;*/
+			 /*align-items: center;*/
+			 align-items: flex-start;
+			 align-content: flex-start;
+			     gap: 40px 35px;
+		}
+		.container div{
+			background-color: #f1f1f1;
+			padding: 20px;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<!-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
+	<div class="container">
+		<div>1</div>
+		<div>2</div>
+		<div>2</div>
+		<div>2</div>
+		<div>2</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+		<div>3</div>
+	</div>
+</body>
+</html>

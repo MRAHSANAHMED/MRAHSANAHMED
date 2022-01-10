@@ -1,0 +1,8 @@
+https://www.w3schools.com/css/css_rwd_intro.asp
+
+steps for creating responsive layout
+
+1-insert viewport meta tag
+https://www.w3schools.com/css/css_rwd_viewport.asp
+2-media queries
+https://www.w3schools.com/css/tryit.asp?filename=tryresponsive_mediaquery
