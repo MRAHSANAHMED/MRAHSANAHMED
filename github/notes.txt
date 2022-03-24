@@ -1,0 +1,55 @@
+first create your github accounts form https://github.com
+
+Downnload git and install in your computer
+https://git-scm.com/downloads
+
+
+https://www.w3schools.com/git/git_security_ssh.asp?remote=github
+
+search powershell in windows
+then run that command
+ssh-keygen -t rsa -b 4096 -C "yourgmail@gmail.com"
+
+
+
+https://www.w3schools.com/git/git_remote_add_ssh.asp?remote=github
+
+https://www.w3schools.com/git/git_security_ssh.asp?remote=github
+
+
+Configure Git
+
+git config --global user.name "w3schools-test"
+git config --global user.email "test@w3schools.com"
+
+git --version
+	git version 2.30.2.windows.1
+
+
+create your new repository
+
+then run that command in your folder
+git init
+git add .
+git commit -m "first commit"
+add remote command
+git push -u origin main
+
+
+
+Branch
+
+--create branch
+git branch waleed
+
+
+--check lists of branchs
+git branch
+
+
+--change branch
+git checkout waleed
+
+
+
+

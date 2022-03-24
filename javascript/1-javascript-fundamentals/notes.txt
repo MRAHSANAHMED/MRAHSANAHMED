@@ -1,0 +1,22 @@
+Javascript is a top programming language
+
+there are two types of programming languages
+    --server side language (like php needs server like xamp/wamp)
+    --client side language (run in browser)
+
+javascript is client side language 
+
+
+why we are learning Javascript
+    --we have one client side languages whic is Javascript
+    --mobile applications cross platform (android/ios)
+    --desktop applications cross platform (window,linux,macos,etc);
+
+
+install vs code from website
+then you will have to install two extension in vscode 
+
+vs code extensions
+
+1-Javascript (es6 code snippets)
+2-live server
