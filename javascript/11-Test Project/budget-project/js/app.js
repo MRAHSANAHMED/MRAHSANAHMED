@@ -65,6 +65,7 @@ class UI {
 
             this.expenseFeedback.innerHTML = `<p>value cannot be empty or negetive </p>`
             const self = this;
+            
             setTimeout(function(){
                 
             self.expenseFeedback.classList.remove("showItem");
@@ -75,11 +76,13 @@ class UI {
             let amount = parseInt(amountValue);
             this.expenseInput.value = "";
             this.amountInput.value = "";
-
+            
+                
             let expense = {
                 id:this.itemID,
                 title:expenseValue,
                 amount:amount,
+                
             }
             this.itemID++;
             this.itemList.push(expense);
@@ -122,13 +125,50 @@ class UI {
         this.expenseAmount.textContent = total;
         return total;
     }
+
+    editExpense(element){
+        let id = parseInt(element.dataset.id);
+        let parent = element.parentElement.parentElement.parentElement;
+        this.expenseList.removeChild(parent);
+        let expense = this.itemList.filter(function(item){
+            return item.id === id;
+        })
+
+        this.expenseInput.value = expense[0].title;
+        this.amountInput.value = expense[0].amount;
+        
+
+        let templist = this.itemList.filter(function(item){
+           
+            return item.id !== id;
+
+        })
+        this.itemList = templist;
+        this.showBalance();
+
+    }
+
+    deleteExpense(element){
+        let id = parseInt(element.dataset.id);
+        let parent = element.parentElement.parentElement.parentElement;
+
+        this.expenseList.removeChild(parent);
+
+        let templist = this.itemList.filter(function(item){
+            return item.id !== id;
+        })
+        this.itemList = templist;
+        this.showBalance();
+    }
     
 }
 function eventListenters() {
     const budgetForm = document.getElementById('budget-form');
     const expenseForm = document.getElementById('expense-form');
     const expenseList = document.getElementById('expense-list');
-
+    const edit = document.getElementById("expense-submit").innerHTML;
+    
+// })
 //new instance if UI CLASS
     const ui = new UI()
 
@@ -143,7 +183,6 @@ function eventListenters() {
     expenseForm.addEventListener('submit',function(event){
         event.preventDefault();
 
-        // console.log("heloo");
         ui.submitExpenseForm();
         
     })
@@ -151,11 +190,24 @@ function eventListenters() {
 
     //expense click
     expenseList.addEventListener('click',function(event){
-        event.preventDefault();
+        if(event.target.parentElement.classList.contains('edit-icon')){
+            ui.editExpense(event.target.parentElement)
+            
+            
+        //     let btnName = edit.replace('add',"update");
+        //     document.getElementById("expense-submit").innerHTML = btnName;
+        }
 
-    })
+        
+        else if(event.target.parentElement.classList.contains('delete-icon')){
+        ui.deleteExpense(event.target.parentElement)
+    }
+    });
 }
 
 document.addEventListener('DOMContentLoaded',function(){
     eventListenters();
 })
+
+
+
