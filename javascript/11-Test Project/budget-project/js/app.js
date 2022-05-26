@@ -1,4 +1,3 @@
-
 class UI {
     constructor() {
         this.budgetFeedback =document.querySelector('.budget-feedback');
@@ -96,12 +95,9 @@ class UI {
         const div = document.createElement("div");
         div.classList.add("expense");
         div.innerHTML =`<div class="expense-item d-flex justify-content-between align-items-baseline">
-
         <h6 class="expense-title mb-0 text-uppercase list-item">- ${expense.title}</h6>
         <h5 class="expense-amount mb-0 list-item">${expense.amount}</h5>
-
         <div class="expense-icons list-item">
-
          <a href="#" class="edit-icon mx-2" data-id="${expense.id}">
           <i class="fas fa-edit"></i>
          </a>
@@ -196,6 +192,20 @@ function eventListenters() {
             
         //     let btnName = edit.replace('add',"update");
         //     document.getElementById("expense-submit").innerHTML = btnName;
+
+
+        // switch ($color) {
+        //     case "red":
+        //       echo "Hello";
+        //       break;
+        //     case "green":
+        //       echo "Welcome";
+        //       break;
+            
+        //   default:
+          
+        //       echo "Neither";
+        //   }
         }
 
         
@@ -208,6 +218,3 @@ function eventListenters() {
 document.addEventListener('DOMContentLoaded',function(){
     eventListenters();
 })
-
-
-
