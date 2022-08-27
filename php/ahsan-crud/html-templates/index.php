@@ -8,60 +8,61 @@
         <div class="row">
 
             <!-- Blog Entries Column -->
-            <div class="col-md-8">PPP
+            <div class="col-md-8">
+                <?php 
+                $post_query = "SELECT * FROM posts";
+                $result = connection_query($post_query);
+                ?>
+               
+                <?php if ($result ->num_rows > 0):?>
+                    <?php while($row = mysqli_fetch_assoc($result)){?>
 
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
+
+
 
                 <!-- First Blog Post -->
                 <h2>
-                    <a href="#">Blog Post Title</a>
+                    <a href="#"><?php echo $row['post_title'];?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php">Start Bootstrap</a>
+                    by <a href="#"><?php echo $row['post_author'];?></a>
                 </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on 
+
+                    <?php  
+
+                    $strttime_converted = strtotime($row['post_date']);
+                    echo $row['post_date'] ? date('M d, Y', $strttime_converted) : '';
+
+
+
+                    ?>
+
+
+
+
+                </p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+
+                <?php if ($row['post_image']):?>
+                <img class="img-responsive" src="/my-work/html-templates/uploads/posts/<?php echo $row['post_image']?>" alt="<?php echo $row['post_title'];?>" style="width: 180px;">
+            <?php else :?>
+                <h2>image not found</h2>
+            <?php endif ?>
+
                 <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+                <p><?php echo $row['post_content'];?></p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
+            <?php }?>
 
+
+        <?php endif ?>
                 <!-- Second Blog Post -->
-                <h2>
-                    <a href="#">Blog Post Title</a>
-                </h2>
-                <p class="lead">
-                    by <a href="index.php">Start Bootstrap</a>
-                </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-                <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, quasi, fugiat, asperiores harum voluptatum tenetur a possimus nesciunt quod accusamus saepe tempora ipsam distinctio minima dolorum perferendis labore impedit voluptates!</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                <hr>
-
-                <!-- Third Blog Post -->
-                <h2>
-                    <a href="#">Blog Post Title</a>
-                </h2>
-                <p class="lead">
-                    by <a href="index.php">Start Bootstrap</a>
-                </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-                <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, voluptates, voluptas dolore ipsam cumque quam veniam accusantium laudantium adipisci architecto itaque dicta aperiam maiores provident id incidunt autem. Magni, ratione.</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                <hr>
+                
+                
 
                 <!-- Pager -->
                 <ul class="pager">
