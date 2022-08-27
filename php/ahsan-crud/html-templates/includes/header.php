@@ -1,5 +1,11 @@
 
+<?php 
+session_start();
+ob_start();
+include "helper-functions.php";
+include "database/blog-db.php";
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 

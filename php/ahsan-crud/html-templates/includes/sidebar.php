@@ -18,29 +18,23 @@
 <div class="well">
     <h4>Blog Categories</h4>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <ul class="list-unstyled">
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.col-lg-6 -->
-        <div class="col-lg-6">
-            <ul class="list-unstyled">
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
+
+                <?php 
+                $cat_query = "SELECT * FROM categories limit 10";
+                $result = connection_query($cat_query);
+
+                ?>
+
+                <?php if ($result->num_rows > 0) : ?>
+                    <?php while($row = mysqli_fetch_assoc($result)){
+                        ?>
+
+                        <li><a href="<?php echo $row['links']; ?>"><?php echo $row['cat_title'];?></a></li>
+                        <?php } ?>
+                        <?php endif ?>
+          
             </ul>
         </div>
         <!-- /.col-lg-6 -->
