@@ -119,14 +119,17 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.php"><i class="fa fa-fw fa-area-chart"></i> Dashboard</a>
+                        <a href="index.php"><i class="fa fa-fw fa-desktop"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="categories.php"><i class="fa fa-fw fa-archive"></i> Categories</a>
+                        <a href="categories.php"><i class="fa fa-fw fa-database"></i> Categories</a>
                     </li>
                     <li>
-                <a href="posts.php"><i class="fa fa-fw fa-book"></i> Posts</a>
-            </li> 
+                    <a href="posts.php"><i class="fa fa-fw fa-comments-o"></i> Posts</a>
+                    </li> 
+                    <li>
+                    <a href="users.php"><i class="fa fa-fw fa-users"></i> Users</a>
+                    </li> 
             <!-- <li>
                 <a href="posts1.php"><i class="fa fa-fw fa-book"></i> Posts-Ahsan-without-join</a>
             </li> -->

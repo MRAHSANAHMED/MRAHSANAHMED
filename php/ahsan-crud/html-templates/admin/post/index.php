@@ -6,7 +6,7 @@ if (isset($_GET['delete'])) {
         $post_delete_query = "DELETE from posts where posts.post_id = '$post_id'";
 
         $result = connection_query($post_delete_query);
-   redirect('post.php');
+   redirect('posts.php');
 
 }
 
@@ -40,7 +40,7 @@ if (isset($_GET['delete'])) {
          </thead>
          <tbody>
             <?php 
-            $post_query = "SELECT * FROM Posts left join categories on posts.post_category_id = categories.cat_id ";
+            $post_query = "SELECT * FROM Posts left join categories on posts.post_category_id = categories.cat_id order by posts.post_id DESC";
             $result = connection_query($post_query);
 
             ?>
@@ -62,7 +62,7 @@ if (isset($_GET['delete'])) {
                          <?php endif ?>
                         </td>
                         <td><?php echo $row['post_date']; ?></td>
-                        <td><a href="?source=edit&edit=<?php echo $row['post_id']?>" class="btn btn-primary">Edit</a></td>
+                        <td><a href="?source=edit&edit=<?php echo $row['post_id']?>" class="btn btn-primary" onclick="return confirm(<?php echo $row['post_id'];?>)">Edit</a></td>
                         <td><a href="?delete=<?php echo $row['post_id'];?>" class="btn btn-danger" onclick="return confirm(<?php echo $row['post_id'];?>)">Delete</a></td>
                     </tr>
                 <?php }?>

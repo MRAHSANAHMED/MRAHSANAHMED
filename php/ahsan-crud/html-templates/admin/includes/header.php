@@ -1,6 +1,7 @@
 
 
 <?php 
+session_start();
 ob_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/my-work/html-templates/includes/database/blog-db.php"; ?>
 

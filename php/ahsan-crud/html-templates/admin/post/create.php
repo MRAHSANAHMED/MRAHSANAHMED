@@ -23,9 +23,9 @@
     }
     $post_insert_query = 
     "INSERT INTO posts (post_title,post_category_id,post_author,post_date,post_content,post_tags,post_status,post_comment_count,post_image) 
-    VALUES ('$post_title','$post_category_id','$post_author','$post_date','$post_content','$post_tags','$post_status','0','$post_image')";
+    VALUES ('$post_title','$post_category_id','$post_author','$post_date','$post_content','$post_tags','$post_status','0','$post_image')" order by posts.post_id DESC;
     $result = connection_query($post_insert_query);
-    redirect('/posts.php');
+    redirect('posts.php');
 
  }
 
