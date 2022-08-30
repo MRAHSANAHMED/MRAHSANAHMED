@@ -2,42 +2,46 @@
 $post_id = isset($_GET['edit']) ? $_GET['edit']: null;
 
 
-$get_post_row_query = "SELECT * FROM posts where posts.post_id = $post_id";
-$result = connection_query($get_post_row_query);
-$post_row = mysqli_fetch_array($result);
-
-
+// $get_post_row_query = "SELECT * FROM posts where posts.post_id = $post_id";
+// $result = connection_query($get_post_row_query);
+// $post_row = mysqli_fetch_array($result);
+ 
+$post_row = get_single_row('posts','posts.post_id',$post_id);
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $post_title = $_POST['post_title'];
-    $post_category_id = $_POST['post_category_id'];
-    $post_author = $_POST['post_author'];
-    $post_date = $_POST['post_date'];
-    $post_content = $_POST['post_content'];
-    $post_tags = $_POST['post_tags'];
-    $post_status = $_POST['post_status'];
+    $post_title = $_POST['post_title'] ?? null;
+    $post_category_id = $_POST['post_category_id'] ?? null;
+    $post_author = $_POST['post_author'] ?? null;
+    $post_date = $_POST['post_date'] ?? null;
+    $post_content = $_POST['post_content'] ?? null;
+    $post_tags = $_POST['post_tags'] ?? null;
+    $post_status = $_POST['post_status'] ?? null;
 
     $post_image = null;
     $post_image_db_name = $post_row['post_image'];
-    if(isset($_FILES['post_image'])) {
-        unlink('/html-templates/' . $post_row['post_image']);
+    if(!empty($_FILES['post_image'])) {
+        unlink($_SERVER['DOCUMENT_ROOT'] . '/my-work/html-templates/uploads/posts/' . $post_row['post_image']);
 
-        $post_image = $_FILES['post_image']['name'];
-        $post_image_temp = $_FILES['post_image']['tmp_name'];
-        move_uploaded_file($post_image_temp,"../uploads/post/$post_image");
+// dump_check($_SERVER['DOCUMENT_ROOT']);
+// die();
+         $post_image = $_FILES['post_image']['name'];
+         $post_image_temp = $_FILES['post_image']['tmp_name'];
+         move_uploaded_file($post_image_temp, "../uploads/posts/$post_image" );
     }
 if($post_image){
-    $post_image_db_name = "/uploads/posts/$post_image";
+    $post_image_db_name = "$post_image";
 }
 
 
- $update_query = "UPDATE posts SET  post_title='$post_title',post_author='$post_author',post_date='$post_date',post_content='$post_content',post_tags='$post_tags',post_status='$post_tags',post_image = '$post_image' where post_id = '$post_id'";
+ $update_query = "UPDATE posts SET  post_title='$post_title',post_category_id ='$post_category_id',post_author='$post_author',post_date='$post_date',post_content='$post_content',post_tags='$post_tags',post_status='$post_status',post_image = '$post_image_db_name' where post_id = '$post_id'";
     $result = connection_query($update_query);
-    redirect('posts.php?source=edit&edit='.$post_id);
+    redirect('posts.php');
+
    
     }
 
     
 
+   
    
 
 
@@ -103,7 +107,7 @@ if($post_image){
                         <div class="form-group">
                             <label for="">Post Image</label>
                             <input type="file" name="post_image">
-                             <img src="/my-work/html-templates/uploads/posts/<?php echo $post_row['post_image']; ?>" alt="" width="80" style="margin-top: 20px;">
+                             <img src="/my-work/html-templates<?php echo $post_row['post_image']; ?>" alt="" width="80" style="margin-top:20px;">
 
                         </div>
                 </div>
