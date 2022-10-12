@@ -29,25 +29,20 @@
                 </tr>
             </thead>
             <tbody>
-                @if (count($categories) > 0)
-                    @foreach ($categories as $key => $singleCategories)
-                        <tr>
+               @if(count($categories))
+                @foreach ($categories as $key => $singleCategories)
+                    <tr>
                             <td>{{ $singleCategories->cat_id }}</td>
                             <td>{{ $singleCategories->cat_title }}</td>
-                            <td><a class="btn btn-primary"
-                                    href="{{ route('category_edit', ['category_id' => $singleCategories->cat_id]) }}">Edit</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-danger"
-                                    href="{{ route('category_delete', ['category_id' => $singleCategories->cat_id]) }}"
-                                    onclick="return confirm('Are You Sure ?')">
-                                    Delete</a>
-                            </td>
+                            <td><a class="btn btn-warning" href="">Edit</a></td>
+                            <td><a class="btn btn-danger" href="" onclick="return confirm('Are You Sure ?')">Delete</a></td>
                         </tr>
-                    @endforeach
-                @else
-                    <h2>Record Not Found!</h2>
-                @endif
+                @endforeach
+
+                        @else
+                        <h2>nothing found</h2>
+                        @endif
+
             </tbody>
         </table>
     </div>

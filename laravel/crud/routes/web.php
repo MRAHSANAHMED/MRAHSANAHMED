@@ -12,6 +12,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\Http\Controllers\CategoryController;
 
-Route::get('/categories',[CategoryController::class,'index']);
+Route::get('/',[CategoryController::class,'index']);
+Route::get('/category/create', [CategoryController::class, 'create'])->name('create_category');
+
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category_store');

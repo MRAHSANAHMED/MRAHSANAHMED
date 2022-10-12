@@ -10,6 +10,4 @@ class Category extends Model
     use HasFactory;
     protected $table = 'categories';
     protected $guarded = [''];
-    public $timestamps = false;
-    public $primaryKey = 'cat_id';
 }

@@ -18,14 +18,14 @@
 
     <div class="container">
         <h2 class="text-primary">Create Categories</h2>
-
-        @if ($errors->any())
+        @if($errors->any())
             @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">
-                    {{ $error }}
-                </div>
+            <div class="alert alert-danger">
+                {{ $error }}
+            </div>
+
             @endforeach
-        @endif
+            @endif
 
 
         <form action="{{ route('category_store') }}" method="POST" role="form">
