@@ -22,9 +22,14 @@
                         <div class="col-lg-7 col-12">
                             <div class="hero-text text-uppercase">
                                 <div class="hero-title-wrap d-flex align-items-center mb-4">
-                                    <img src="includes/images/happy-bearded-young-man.jpg" class="avatar-image avatar-image-large img-fluid" alt="">
+                                <?php// if ($row['profile_image']): ?>
 
-                                    <h1 class="hero-title ms-3 mb-0"><?php echo $row['profile_name']; ?></h1>
+                                    <!-- <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" style=" width:100px!important;" class="hero-image mb-5 img-fluid rounded-circle" alt="<?php $row['profile_id'];?>" > -->
+                                    <?php// else: ?>
+                                    <h3><?php// echo $row['profile_id'];?></h3>
+                                    <?php// endif; ?>
+
+                                    <h1 class="hero-title mt-5 mb-0"><?php echo $row['profile_name']; ?></h1>
                                 </div>
 
                                 <h2 class="mb-4"><?php echo $row['profile_category']; ?></h2>
@@ -33,12 +38,12 @@
                         </div>
 
                         <div class="col-lg-5 col-12 position-relative">
-                            <div class="col-lg-5 col-12 position-relative">
-                        </div>
-                            <div class="hero-image-wrap"></div>
+                            <!-- <div class="col-lg-5 col-12 position-relative">
+                        </div> -->
+                            <div class="hero-image-wrap">
                                 <?php if ($row['profile_image']): ?>
 
-                                <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" width="200px" class="hero-image img-fluid rounded-circle" alt="<?php $row['profile_id'];?>" >
+                                <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" width="150px" class="hero-image img-fluid rounded-circle" alt="<?php $row['profile_id'];?>" >
                              <?php else: ?>
                                 <h3><?php echo $row['profile_id'];?></h3>
                             <?php endif; ?>

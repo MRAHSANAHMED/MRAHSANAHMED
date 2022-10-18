@@ -26,7 +26,7 @@ if(isset($_GET['delete']))
 
 <!-- Page Heading -->
 <div class="row d-flex justify-content-end">
-   <div class="col-lg-10 col-md-10 col-sm-10">
+   <div class="col-lg-9 col-md-9 col-sm-9">
       <h1 class="page-header mt-5 mr-5">
          profiles
       </h1>
@@ -42,8 +42,8 @@ if(isset($_GET['delete']))
                <th>E-mail</th>
                <th>Skills</th>
                <th>Expertise Content</th>
-               <th>Image</th>
-               <th style="width:80px;">Edit</th>
+               <th >Image</th>
+               <th >Edit</th>
                <th>Delete</th>
             </tr>
          </thead>
@@ -80,8 +80,8 @@ if(isset($_GET['delete']))
                <td style="color:#dc6806;"><b><?php echo $row['skill_title'] ; ?> , <?php echo $row['skill2_title']; ?></b></td>
                <td class="text-uppercase"><?php echo $row['profile_content'];?></td>
 
-               <td><?php if (isset($row['profile_image'])):?>
-                  <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" width="180px" alt="<?php echo $row['profile_id'];?>">
+               <td ><?php if (isset($row['profile_image'])):?>
+                  <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" style="width:80px;" alt="<?php echo $row['profile_id'];?>">
                <?php else : ?>
                    <p>NO IMAGE</p>
                 <?php endif; ?>

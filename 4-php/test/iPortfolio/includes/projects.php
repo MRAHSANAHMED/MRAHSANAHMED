@@ -24,7 +24,7 @@ $result = run_query($skill_query);
                                 </div>
 
                                 <a href="images/projects/nikhil-KO4io-eCAXA-unsplash.jpg" class="popup-image">
-                                    <img src="includes/images/projects/nikhil-KO4io-eCAXA-unsplash.jpg" class="projects-image img-fluid" alt="">
+                                    <!-- <img src="includes/images/projects/nikhil-KO4io-eCAXA-unsplash.jpg" class="projects-image img-fluid" alt=""> -->
                                 </a>
                             </div>
                         </div>
