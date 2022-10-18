@@ -10,11 +10,11 @@
             <?php
                             // $service_id = ($_GET['service_id']);
 
-                            $service_query="SELECT * FROM profiles limit 1";
-                            $result_service_query=run_query($service_query);
+                            $profil_query="SELECT * FROM profiles limit 1";
+                            $result_profil_query=run_query($profil_query);
                             
-                            if($result_service_query->num_rows >0){
-                                while($row = mysqli_fetch_array($result_service_query)){
+                            if($result_profil_query->num_rows >0){
+                                while($row = mysqli_fetch_array($result_profil_query)){
 
 
 
@@ -24,13 +24,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a href="index.php" class="navbar-brand mx-auto mx-lg-0"><?php echo $row['profile_name'];?></a>
+                <a href="index.php" class="navbar-brand mx-auto mx-lg-0"><?php echo ucwords($row['profile_name']);?></a>
 
        
                 <div class="d-flex align-items-center d-lg-none">
                     <a class="custom-btn btn" href="#section_5">
-                    <?php echo $row['profile_contact'];?>
-
                     </a>
                 </div>
                 <?php }}?>
@@ -58,13 +56,13 @@
                     </ul>
                     <?php }}?>
                     <?php
-                            
+                            // $service_id = ($_GET['service_id']);
 
-                            $service_query="SELECT * FROM profiles limit 1";
-                            $result_service_query=run_query($service_query);
+                            $profil_query="SELECT * FROM profiles limit 1";
+                            $result_profil_query=run_query($profil_query);
                             
-                            if($result_service_query->num_rows >0){
-                                while($row = mysqli_fetch_array($result_service_query)){
+                            if($result_profil_query->num_rows >0){
+                                while($row = mysqli_fetch_array($result_profil_query)){
 
 
 
@@ -77,7 +75,7 @@
 
                         </a>
                     </div>
-                <?php }}?>
+                    <?php }}?>
 
                 </div>
 

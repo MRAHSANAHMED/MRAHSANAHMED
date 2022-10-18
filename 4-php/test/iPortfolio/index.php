@@ -1,5 +1,5 @@
 <?php include "includes/header.php"?>
-<?php //include "includes/navigation.php"?>
+<?php include "includes/navigation.php"?>
 <?php include "includes/profile.php"?>
  <?php include "includes/information.php"?>   
  <?php include "includes/pastwork.php"?>

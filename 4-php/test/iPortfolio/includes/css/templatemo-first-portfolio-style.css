@@ -522,7 +522,7 @@ strong {
   position: absolute;
   z-index: 22;
   top: 0;
-  width: 100%;
+  /* width: 100%; */
   /* min-width: 550px; */
 }
 

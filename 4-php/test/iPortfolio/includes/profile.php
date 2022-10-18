@@ -22,28 +22,23 @@
                         <div class="col-lg-7 col-12">
                             <div class="hero-text text-uppercase">
                                 <div class="hero-title-wrap d-flex align-items-center mb-4">
-                                <?php// if ($row['profile_image']): ?>
-
-                                    <!-- <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" style=" width:100px!important;" class="hero-image mb-5 img-fluid rounded-circle" alt="<?php $row['profile_id'];?>" > -->
-                                    <?php// else: ?>
-                                    <h3><?php// echo $row['profile_id'];?></h3>
-                                    <?php// endif; ?>
-
+                              
                                     <h1 class="hero-title mt-5 mb-0"><?php echo $row['profile_name']; ?></h1>
                                 </div>
 
                                 <h2 class="mb-4"><?php echo $row['profile_category']; ?></h2>
-                                <p class="mb-4"><a class="custom-btn btn custom-link" href="#section_2"><?php echo $row['skill_title'].' , '.$row['skill2_title']; ?></a></p>
+                                <p class="mb-4">
+                                    <a class="custom-btn btn custom-link" href="#section_2"><?php echo $row['skill_title'].' , '.$row['skill2_title']; ?></a></p>
                             </div>
                         </div>
 
                         <div class="col-lg-5 col-12 position-relative">
                             <!-- <div class="col-lg-5 col-12 position-relative">
                         </div> -->
-                            <div class="hero-image-wrap">
+                            <div class="">
                                 <?php if ($row['profile_image']): ?>
 
-                                <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" width="150px" class="hero-image img-fluid rounded-circle" alt="<?php $row['profile_id'];?>" >
+                                <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" width="300px"  class="hero-image img-fluid rounded" alt="<?php $row['profile_id'];?>" >
                              <?php else: ?>
                                 <h3><?php echo $row['profile_id'];?></h3>
                             <?php endif; ?>
@@ -56,10 +51,10 @@
             </section>
               <section class="about section-padding" id="section_2">
                 <div class="container">
-                    <div class="row">
+                    <div class="row d-flex justify-content-around">
 
                         <div class="col-lg-6 col-12">
-                            <img src="includes/images/couple-working-from-home-together-sofa.jpg" class="about-image img-fluid" alt="">
+                            <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" class="about-image img-fluid" width="300px" alt="<?php echo $row['profile_id'];?>">
                         </div>
 
                         <div class="col-lg-6 col-12 mt-5 mt-lg-0">
@@ -68,7 +63,7 @@
                                 <div class="section-title-wrap d-flex justify-content-end align-items-center mb-4">
                                     <h2 class="text-white me-4 mb-0 text-capitalize"><?php echo $row['profile_name'];?> Story</h2>
 
-                                    <img src="includes/images/happy-bearded-young-man.jpg" class="avatar-image img-fluid" alt="">
+                                    <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" class="avatar-image img-fluid" alt="">
                                 </div>
 
                                 <h3 class="pt-2 mb-3">a little bit about <?php echo $row['profile_name'];?></h3>
