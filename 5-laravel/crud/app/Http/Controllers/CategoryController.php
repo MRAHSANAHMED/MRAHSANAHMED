@@ -28,7 +28,34 @@ class CategoryController extends Controller
         return redirect()->route('home');
     }
 
+    public function delete($category_id)
+    {
+        $category = Category::find($category_id);
+        $category->delete();
+        return redirect()->back();
+    }
 
+    public function edit($category_id)
+    {
+        $category = Category::find($category_id);
+        return view('categories.edit', [
+            'category' => $category,
+        ]);
+    }
+
+    public function update(Request $request,$category_id)
+    {
+        $request->validate([
+            'cat_title' =>'required',
+        ]);
+
+           $category = Category::find($category_id);
+            $category->update([
+                'cat_title'=>$request->cat_title,
+
+            ]);
+            return redirect()->route('home');
+    }
 
 
 

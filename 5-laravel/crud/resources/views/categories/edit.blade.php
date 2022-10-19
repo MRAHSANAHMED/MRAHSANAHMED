@@ -18,14 +18,12 @@
 
     <div class="container">
         <h2 class="text-primary">Create Categories</h2>
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+    <div class="alert alert-danger">{{ $error }}</div>
+@endforeach
 
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">
-                    {{ $error }}
-                </div>
-            @endforeach
-        @endif
+@endif
 
 
         <form action="{{ route('category_update', ['category_id' => $category->cat_id]) }}" method="POST"

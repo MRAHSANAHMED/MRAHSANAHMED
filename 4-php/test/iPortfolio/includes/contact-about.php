@@ -21,7 +21,7 @@
                  <div class="contact-info contact-info-border-start d-flex flex-column">
                      <strong class="site-footer-title d-block mb-3">Services</strong>
                      <?php if($result->num_rows >0){
-    while($row=mysqli_fetch_assoc($result)){?>
+                        while($row=mysqli_fetch_assoc($result)){?>
                      <ul class="footer-menu">
                          <li class="footer-menu-item"><a href="#"
                                  class="footer-menu-link"><?php echo $row['service_title'];?></a></li>

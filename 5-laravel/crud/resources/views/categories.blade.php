@@ -34,8 +34,8 @@
                     <tr>
                             <td>{{ $singleCategories->cat_id }}</td>
                             <td>{{ $singleCategories->cat_title }}</td>
-                            <td><a class="btn btn-warning" href="">Edit</a></td>
-                            <td><a class="btn btn-danger" href="" onclick="return confirm('Are You Sure ?')">Delete</a></td>
+                            <td><a class="btn btn-warning" href="{{ route('category_edit',['category_id' => $singleCategories->cat_id]) }}">Edit</a></td>
+                            <td><a class="btn btn-danger" href="{{ route('category_delete',['category_id' => $singleCategories->cat_id]) }}" onclick="return confirm('Are You Sure {{  $singleCategories->cat_id }} ?')">Delete</a></td>
                         </tr>
                 @endforeach
 
