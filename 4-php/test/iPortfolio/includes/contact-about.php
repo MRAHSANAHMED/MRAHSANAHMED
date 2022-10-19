@@ -59,14 +59,14 @@
                      <?php if($result->num_rows >0){
     while($row=mysqli_fetch_assoc($result)){?>
                      <p class="mb-2">
-                         <?php echo ucwords($row['profile_name']);?> is a professional <?php echo $row['profile_category'];?> developer. Feel free to get in touch with me.
+                         <?php echo ucwords($_SESSION['profile_name']);?> is a professional <?php echo $_SESSION['profile_category'];?> developer. Feel free to get in touch with me.
                      </p>
 
                      <strong class="site-footer-title d-block mt-4 mb-3">Email</strong>
 
                      <p>
                          <a href="mailto:hello@josh.design">
-                         <?php echo $row['profile_email'];?>
+                         <?php echo $_SESSION['profile_email'];?>
                          </a>
                      </p>
 
@@ -74,7 +74,7 @@
 
                      <p class="mb-0">
                          <a href="tel: 120-240-9600">
-                         <?php echo $row['profile_contact'];?>
+                         <?php echo $_SESSION['profile_contact'];?>
                          </a>
                      </p>
 

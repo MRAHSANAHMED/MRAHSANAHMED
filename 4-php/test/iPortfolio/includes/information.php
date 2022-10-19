@@ -25,22 +25,22 @@
                                 <div class="profile-body">
                                     <p>
                                         <span class="profile-small-title">Name</span> 
-                                        <span><?php echo $row['profile_name']; ?></span>
+                                        <span><?php echo $_SESSION['profile_name']; ?></span>
                                     </p>
 
                                     <p>
                                         <span class="profile-small-title">Skills</span> 
-                                        <span><?php echo $row['skill_title'].' , '.$row['skill2_title']; ?></span>
+                                        <span><?php echo $_SESSION['skill_title'].' , '.$_SESSION['skill2_title']; ?></span>
                                     </p>
 
                                     <p>
                                         <span class="profile-small-title">Phone</span> 
-                                         <span><a href="tel: 305-240-9671"><?php echo $row['profile_contact'];?></a></span>
+                                         <span><a href="tel: 305-240-9671"><?php echo $_SESSION['profile_contact'];?></a></span>
                                     </p>
 
                                     <p>
                                         <span class="profile-small-title">Email</span> 
-                                        <span><a href="mailto:hello@josh.design"><?php echo $row['profile_email'];?></a></span>
+                                        <span><a href="mailto:hello@josh.design"><?php echo $_SESSION['profile_email'];?></a></span>
                                     </p>
                                 </div>
                             </div>

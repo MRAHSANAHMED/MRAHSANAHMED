@@ -1,4 +1,8 @@
-<?php include "includes/header.php"?>
+<?php include "includes/header.php";
+     
+?>
+<?php  //check($_SESSION);?>
+
 <?php include "includes/navigation.php"?>
 <?php include "includes/profile.php"?>
  <?php include "includes/information.php"?>   

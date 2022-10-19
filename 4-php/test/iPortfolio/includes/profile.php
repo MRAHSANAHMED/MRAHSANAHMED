@@ -4,31 +4,19 @@
             <section class="hero d-flex justify-content-center align-items-center" id="section_1">
                 <div class="container">
                     <div class="row">
-<?php 
 
- 
-                            // $service_id = ($_GET['service_id']);
-
-                            $profile_query="SELECT * FROM profiles left join skills on profiles.profile_skill = skills.skill_id left join skills2 on profiles.profile_skill2 = skills2.skill2_id limit 1";
-                            $result_profile_query=run_query($profile_query);
-                            
-                            if($result_profile_query->num_rows >0){
-                                while($row = mysqli_fetch_array($result_profile_query)){
-
-
-
-
-                     ?>
                         <div class="col-lg-7 col-12">
                             <div class="hero-text text-uppercase">
                                 <div class="hero-title-wrap d-flex align-items-center mb-4">
                               
-                                    <h1 class="hero-title mt-5 mb-0"><?php echo $row['profile_name']; ?></h1>
-                                </div>
+                                    <h1 class="hero-title mt-5 mb-0"><?php echo $_SESSION['profile_name']; ?></h1>
 
-                                <h2 class="mb-4"><?php echo $row['profile_category']; ?></h2>
+                                </div>
+                                
+
+                                <h2 class="mb-4"><?php echo $_SESSION['profile_category']; ?></h2>
                                 <p class="mb-4">
-                                    <a class="custom-btn btn custom-link" href="#section_2"><?php echo $row['skill_title'].' , '.$row['skill2_title']; ?></a></p>
+                                    <a class="custom-btn btn custom-link" href="#section_2"><?php echo $_SESSION['skill_title'].' , '.$_SESSION['skill2_title']; ?></a></p>
                             </div>
                         </div>
 
@@ -36,11 +24,11 @@
                             <!-- <div class="col-lg-5 col-12 position-relative">
                         </div> -->
                             <div class="">
-                                <?php if ($row['profile_image']): ?>
+                                <?php if ($_SESSION['profile_image']): ?>
 
-                                <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" width="300px"  class="hero-image img-fluid rounded" alt="<?php $row['profile_id'];?>" >
+                                <img src="/test/iPortfolio<?php echo $_SESSION['profile_image'];?>" width="300px"  class="hero-image img-fluid rounded" alt="<?php $_SESSION['profile_id'];?>" >
                              <?php else: ?>
-                                <h3><?php echo $row['profile_id'];?></h3>
+                                <h3><?php echo $_SESSION['profile_id'];?></h3>
                             <?php endif; ?>
                         </div>
 
@@ -54,28 +42,27 @@
                     <div class="row d-flex justify-content-around">
 
                         <div class="col-lg-6 col-12">
-                            <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" class="about-image img-fluid" width="300px" alt="<?php echo $row['profile_id'];?>">
+                            <img src="/test/iPortfolio<?php echo $_SESSION['profile_image'];?>" class="about-image img-fluid" width="300px" alt="<?php echo $_SESSION['profile_id'];?>">
                         </div>
 
                         <div class="col-lg-6 col-12 mt-5 mt-lg-0">
                             <div class="about-thumb">
 
                                 <div class="section-title-wrap d-flex justify-content-end align-items-center mb-4">
-                                    <h2 class="text-white me-4 mb-0 text-capitalize"><?php echo $row['profile_name'];?> Story</h2>
+                                    <h2 class="text-white me-4 mb-0 text-capitalize"><?php echo $_SESSION['profile_name'];?> Story</h2>
 
-                                    <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" class="avatar-image img-fluid" alt="">
+                                    <img src="/test/iPortfolio<?php echo $_SESSION['profile_image'];?>" class="avatar-image img-fluid" alt="">
                                 </div>
 
-                                <h3 class="pt-2 mb-3">a little bit about <?php echo $row['profile_name'];?></h3>
+                                <h3 class="pt-2 mb-3">a little bit about <?php echo $_SESSION['profile_name'];?></h3>
 
-                                <p><?php echo $row['profile_content'];?></p>
+                                <p><?php echo $_SESSION['profile_content'];?></p>
 
-                                <p>contact</a><br><?php echo $row['profile_email'];?><br><?php echo $row['profile_contact'];?></p>
+                                <p>contact</a><br><?php echo $_SESSION['profile_email'];?><br><?php echo $_SESSION['profile_contact'];?></p>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </section>
-            <?php }
-        } ?>
+ 
