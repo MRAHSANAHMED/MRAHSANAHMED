@@ -6,9 +6,8 @@ ob_start();
 include "includes/database/db.php";
 include "includes/helper-functions.php";
 
-include "includes/gaurd.php";
 
-    //start of checking if user is logged in code
+   
     
 ?>
 

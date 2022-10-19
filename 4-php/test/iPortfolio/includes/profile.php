@@ -1,4 +1,4 @@
-
+<?php //include "includes/gaurd.php"; ?>
   <main>
 
             <section class="hero d-flex justify-content-center align-items-center" id="section_1">

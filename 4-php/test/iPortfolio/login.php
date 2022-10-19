@@ -3,6 +3,9 @@
 
 <?php 
 
+
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$input_profile_name = $_POST['profile_name'];
 	$input_password = $_POST['password'];
@@ -23,9 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$db_profile_content = $row['profile_content'];
 	$db_profile_skill_title = $row['skill_title'];
 	$db_profile_skill2_title = $row['skill2_title'];
-
 	if (password_verify($input_password, $db_password)) {
-		//Login
 		$_SESSION['profile_id'] = $db_profile_id;
 		$_SESSION['profile_name'] = $db_profile_name;
 		$_SESSION['profile_email'] = $db_profile_email;
@@ -46,15 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  ?>
 <div class="d-flex col-12 justify-content-around">
     <div>
-        <h3>name= ahsan ahmed</h3>
+        <h4>name= ahsan ahmed</h4>
         <p>password= 123</p>
     </div>
     <div>
-        <h3>name= khizar</h3>
+        <h4>name= khizar</h4>
         <p>password= 123</p>
     </div>
     <div>
-        <h3>name= talha</h3>
+        <h4>name= talha</h4>
         <p>password= 123</p>
     </div>
 </div>
@@ -94,7 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <button type="submit"
                                             class="btn btn-lg btn-primary btn-block mt-5">Login</button>
                                     </div>
-
+    <?php $session_id = $_SESSION['profile_id'];
+if(isset($_session)){
+header('Location:index.php');
+}
+?>
                                 </form>
                             </div><!-- Body-->
                         </div>

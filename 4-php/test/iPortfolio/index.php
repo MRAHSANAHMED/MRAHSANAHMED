@@ -1,5 +1,6 @@
-<?php include "includes/header.php";
-     
+<?php
+    include "includes/header.php";
+     include "includes/gaurd.php";
 ?>
 <?php  //check($_SESSION);?>
 

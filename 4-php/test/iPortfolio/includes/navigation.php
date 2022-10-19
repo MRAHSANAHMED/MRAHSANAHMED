@@ -62,7 +62,7 @@
 
                         </a>
                         <div  class="form-group" method="POST">
-                      <a class="btn " style="color:red; font-size:14px;" type="submit" href="login.php" value="<?php session_destroy();?>">Logout</a>
+                      <a class="btn " style="color:red; font-size:14px;" type="submit" href="logout.php">Logout</a>
                     </div>
                     </div>
                     
