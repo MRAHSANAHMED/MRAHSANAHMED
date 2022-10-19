@@ -26,7 +26,7 @@
                             <div class="">
                                 <?php if ($_SESSION['profile_image']): ?>
 
-                                <img src="/test/iPortfolio<?php echo $_SESSION['profile_image'];?>" width="300px"  class="hero-image img-fluid rounded" alt="<?php $_SESSION['profile_id'];?>" >
+                                <img src="/test/iPortfolio<?php echo $_SESSION['profile_image'];?>" width="400px"  class="hero-image img-fluid rounded" alt="<?php $_SESSION['profile_id'];?>" >
                              <?php else: ?>
                                 <h3><?php echo $_SESSION['profile_id'];?></h3>
                             <?php endif; ?>

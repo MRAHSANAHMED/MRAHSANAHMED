@@ -2,6 +2,10 @@
 
 
 <?php 
+$session_id = @$_SESSION['profile_id'];
+if(isset($session_id)){
+header('Location:index.php');
+}
 
 
 
@@ -58,6 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h4>name= talha</h4>
         <p>password= 123</p>
     </div>
+    <div>
+        <h4>name= asim</h4>
+        <p>password= 123</p>
+    </div>
 </div>
 <div class="container">
     <div class="form-gap"></div>
@@ -95,11 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <button type="submit"
                                             class="btn btn-lg btn-primary btn-block mt-5">Login</button>
                                     </div>
-    <?php $session_id = $_SESSION['profile_id'];
-if(isset($_session)){
-header('Location:index.php');
-}
-?>
+
                                 </form>
                             </div><!-- Body-->
                         </div>

@@ -13,7 +13,7 @@
 
              <div class="clearfix"></div>
              <?php
-                            $profile_query = "SELECT * FROM (profiles,services,skills,skills2) limit 3";
+                            $profile_query = "SELECT * FROM services ";
                             
                             $result=run_query($profile_query); 
                             ?>

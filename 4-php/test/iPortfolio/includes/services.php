@@ -15,7 +15,7 @@
  
                             // $service_id = ($_GET['service_id']);
 
-                            $service_query="SELECT * FROM services left join skills on services.service_category_id = skills.skill_id left join skills2 on services.service2_category_id = skills2.skill2_id limit 2";
+                            $service_query="SELECT * FROM services left join skills on services.service_category_id = skills.skill_id left join skills2 on services.service2_category_id = skills2.skill2_id ";
                             $result_service_query=run_query($service_query);
                             
                             if($result_service_query->num_rows >0){
