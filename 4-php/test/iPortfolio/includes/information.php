@@ -50,18 +50,18 @@
                             <div class="about-thumb">
                                 <div class="row">
                                     <div class="col-lg-6 col-6 featured-border-bottom py-2">
-                                        <strong class="featured-numbers">20+</strong>
+                                        <strong class="featured-numbers"><?php echo $_SESSION['profile_id']?></strong>
 
-                                        <p class="featured-text">Years of Experiences</p>
+                                        <p class="featured-text">SEPCIAL ID</p>
                                     </div>
 
                                     <div class="col-lg-6 col-6 featured-border-start featured-border-bottom ps-5 py-2">
-                                        <strong class="featured-numbers">245</strong>
+                                        <strong class="featured-numbers"><?php echo $_SESSION['profile_content']?></strong>
 
-                                        <p class="featured-text">Happy Customers</p>
+                                        <p class="featured-text">EXPERTISE CATEGORY</p>
                                     </div>
 
-                                    <div class="col-lg-6 col-6 pt-4">
+                                    <!-- <div class="col-lg-6 col-6 pt-4">
                                         <strong class="featured-numbers">640</strong>
 
                                         <p class="featured-text">Project Finished</p>
@@ -71,7 +71,7 @@
                                         <strong class="featured-numbers">72+</strong>
 
                                         <p class="featured-text">Digital Awards</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

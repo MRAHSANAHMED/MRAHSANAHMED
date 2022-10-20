@@ -7,7 +7,7 @@
 <?php include "includes/navigation.php"?>
 <?php include "includes/profile.php"?>
  <?php include "includes/information.php"?>   
- <?php include "includes/pastwork.php"?>
+ <?php include "includes/other-profiles.php"?>
  <?php include "includes/services.php"?>
  <?php include "includes/projects.php"?>
  <?php include "includes/contact-about.php" ?>

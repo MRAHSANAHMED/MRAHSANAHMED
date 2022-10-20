@@ -66,27 +66,15 @@ https://templatemo.com/tm-578-first-portfolio
                 
 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                     <?php
-                            // $service_id = ($_GET['service_id']);
-
-                            $service_query="SELECT * FROM services limit 1";
-                            $result_service_query=run_query($service_query);
-                            
-                            if($result_service_query->num_rows >0){
-                                while($row = mysqli_fetch_array($result_service_query)){
-
-
-
-
-                     ?>
+                
                     <ul class="navbar-nav ms-lg-5">
                 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll text-primary" style="font-size:14px;"><?php echo $row['service_title'];?></a>
+                            <p class="nav-link click-scroll text-primary" style="font-size:14px;"><?php echo $_SESSION['profile_category'];?></p>
                         </li>
 
                     </ul>
-                    <?php }}?>
+                   
                   
                     <div class="d-lg-flex align-items-center d-none ms-auto">
                         <i class="navbar-icon bi-telephone-plus me-3"></i>
@@ -164,27 +152,32 @@ https://templatemo.com/tm-578-first-portfolio
 
                 <!-- Author -->
                 <h4 class="lead text-capitalize text-warning">
-                    CONTACT : <a href="#">
+                    CONTACT &nbsp;&nbsp;: <a href="#"> 
                         <?php echo $_SESSION['profile_contact']; ?>
                     </a>
                 </h4>
 
                 <h5 class="lead text-capitalize text-warning">
-                    category: <a href="#"><?php echo $_SESSION['profile_category']; ?></a>
+                    CATEGORY : <a href="#"><?php echo $_SESSION['profile_category']; ?></a>
                 </h5>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p class="lead text-capitalize text-warning"><span class="glyphicon glyphicon-time"></span> Posted on
+                <p class="lead text-capitalize text-warning"> Posted on :
                     <?php //echo convertPostDate($profile_row['profile_date']); ?></p>
+                    <hr>
+
+
+                    <h5 class="lead text-capitalize text-warning">SEPCIALTY :
+                    <a href="#"> <?php echo $_SESSION['profile_content']; ?></a></h5>
 
                 <hr>
 
 
                 <!-- Preview Image -->
                 <?php  if ($_SESSION['profile_image']): ?>
-                <img class="img-responsive text-capitalize w-50" src="/test/iPortfolio<?php echo  $_SESSION['profile_image']; ?>" alt="">
+                <img class="img-responsive text-capitalize w-75" src="/test/iPortfolio<?php echo $_SESSION['profile_image']; ?>" alt="">
                 <?php else: ?>
                 <!-- <h3>Image Not Found</h3> -->
                 <?php endif ?>
