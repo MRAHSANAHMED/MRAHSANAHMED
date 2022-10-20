@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  ?>
 <div class="d-flex col-12 justify-content-around">
     <div>
-        <h4>name= ahsan ahmed</h4>
+        <h4>name= ahsan</h4>
         <p>password= 123</p>
     </div>
     <div>

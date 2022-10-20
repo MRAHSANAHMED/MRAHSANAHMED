@@ -43,18 +43,7 @@
 
                     </ul>
                     <?php }}?>
-                    <?php
-                            // $service_id = ($_GET['service_id']);
-
-                            $profil_query="SELECT * FROM profiles limit 1";
-                            $result_profil_query=run_query($profil_query);
-                            
-                     
-
-                                    
-
-
-                     ?>
+                  
                     <div class="d-lg-flex align-items-center d-none ms-auto">
                         <i class="navbar-icon bi-telephone-plus me-3"></i>
                         <a class="custom-btn btn" href="#section_5">
@@ -62,6 +51,8 @@
 
                         </a>
                         <div  class="form-group" method="POST">
+                      <a class="btn " style="color:red; font-size:14px;" type="submit" href="admin/index.php">Admin</a>
+
                       <a class="btn " style="color:red; font-size:14px;" type="submit" href="logout.php">Logout</a>
                     </div>
                     </div>
