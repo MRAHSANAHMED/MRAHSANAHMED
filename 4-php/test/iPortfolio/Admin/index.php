@@ -114,7 +114,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6></h6>
+                      <h6><?php // echo get_table_count(''); ?></h6>
 
                     </div>
                   </div>

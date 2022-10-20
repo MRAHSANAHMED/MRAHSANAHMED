@@ -12,7 +12,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a href="index.php" class="navbar-brand mx-auto mx-lg-0"><?php echo ucwords($_SESSION['profile_name']);?></a>
+                <a href="includes/profile_status.php" class="navbar-brand mx-auto mx-lg-0"><?php echo ucwords($_SESSION['profile_name']);?></a>
 
                 
                 <div class="d-flex align-items-center d-lg-none">

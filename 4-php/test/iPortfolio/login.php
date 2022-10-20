@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$input_password = $_POST['password'];
 
     
-	$get_user_row = "Select * from profiles left join skills on profiles.profile_skill = skills.skill_id left join skills2 on profiles.profile_skill2 = skills2.skill2_id where profiles.profile_name = '$input_profile_name'";
+	$get_user_row = "Select * from (profiles,services) left join skills on profiles.profile_skill = skills.skill_id left join skills2 on profiles.profile_skill2 = skills2.skill2_id where profiles.profile_name = '$input_profile_name'";
 	$result = run_query($get_user_row);
 	$row = mysqli_fetch_array($result);
 	$db_password = $row['profile_password'];
