@@ -9,7 +9,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio/includes/database/db.php";
 
 include $_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio/includes/helper-functions.php";
 
-
+$session_id = @ $_SESSION['profile_id'];
+if(empty($session_id)){
+header('Location: ../login.php');
+}
 ?>
 
 
@@ -55,7 +58,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio/includes/helper-functions.
 </head>
 
 <body>
-  <header id="header" class="header fixed-top d-flex align-items-center mt-5">
+  <header id="header" class="header fixed-top d-flex align-items-center mt-3">
 
     <div class="d-flex align-items-center justify-content-between ">
       <a href="index.html" class="logo d-flex align-items-center">
@@ -103,7 +106,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio/includes/helper-functions.
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="../index.php">
                 <i class="bi bi-person"></i>
                 <span><?php echo ucfirst($_SESSION['profile_name']);?> Profile</span>
               </a>
@@ -113,7 +116,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio/includes/helper-functions.
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="../index.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -123,7 +126,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio/includes/helper-functions.
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+              <a class="dropdown-item d-flex align-items-center" href="../index.php">
                 <i class="bi bi-question-circle"></i>
                 <span>Need Help?</span>
               </a>
@@ -133,9 +136,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio/includes/helper-functions.
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="../logout.php">
                 <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
+                <span class="text-danger">logout</span>
               </a>
             </li>
 

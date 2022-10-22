@@ -3,7 +3,7 @@
 <?php include "helper-functions.php"; ?>
 
 <?php session_start();
-ob_start() ?>
+ob_start(); ?>
 
 <!doctype html>
 <html lang="en">
@@ -18,11 +18,11 @@ ob_start() ?>
     <title>First Portfolio Bootstrap 5 Theme</title>
 
     <!-- CSS FILES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https:fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https:fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https:fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -36,7 +36,7 @@ ob_start() ?>
 
 TemplateMo 578 First Portfolio
 
-https://templatemo.com/tm-578-first-portfolio
+https:templatemo.com/tm-578-first-portfolio
 
 -->
 </head>
@@ -96,46 +96,46 @@ https://templatemo.com/tm-578-first-portfolio
         </nav>
     <?php 
 
-// if ($_SERVER['REQUEST_METHOD'] == "POST") {
-//     $liked = $_POST['liked'];
-//     $unliked = $_POST['unliked'];
+ if ($_SERVER['REQUEST_METHOD'] == "POST") {
+     $liked = $_POST['liked'];
+     $unliked = $_POST['unliked'];
 
-//     $user_id = $_POST['user_id'];
-//     $profile_id = $_POST['profile_id'];
-    
-//     if (!empty($liked)) {
-//         if (!empty($user_id) && !empty($profile_id)) {
-//             $liked_query = "INSERT INTO profile_user (user_id,profile_id)";
-//             $liked_query .= " VALUES ('{$user_id}','{$profile_id}')";
-//             run_query($liked_query);
-//         }
-//     }
+    //  $customer_id = $_POST['customer_id'];
+    //  $profile_id = $_POST['profile_id'];
+    // check($profile_id);
+    //  if (!empty($liked)) {
+    //      if (!empty($customer_id) && !empty($profile_id)) {
+    //          $liked_query = "INSERT INTO profile_user (customer_id,profile_id)";
+    //          $liked_query .= " VALUES ('{$customer_id}','{$profile_id}')";
+    //          run_query($liked_query);
+    //      }
+    //  }
 
-//     if (!empty($unliked)) {
-//         if (!empty($user_id) && !empty($profile_id)) {
-//             $unliked_query = "DELETE from profile_user where profile_id = '{$profile_id}' and user_id = '{$user_id}'";
-//             run_query($unliked_query);
-//         }
-//     }
-// }
+//      if (!empty($unliked)) {
+//          if (!empty($customer_id) && !empty($profile_id)) {
+//              $unliked_query = "DELETE from profile_user where profile_id = '{$profile_id}' and customer_id = '{$customer_id}'";
+//              run_query($unliked_query);
+//          }
+//      }
+//  }
 
 
  ?>
 
     <?php 
 
-// dump_check($_GET);
 
 
-// if (!empty($_GET['profile_id'])) {
-//     $profile_id = $_GET['profile_id'];
-//     $profile_query = "select * from posts left join categories on posts.profile_category_id = categories.cat_id where posts.profile_id = '$profile_id'";
-//     $result = run_query($profile_query);
-//     $profile_row = mysqli_fetch_array($result);
+
+//  if (!empty($_GET['profile_id'])) {
+//      $profile_id = $_GET['profile_id'];
+//      $profile_query = "select * from posts left join categories on posts.profile_category_id = categories.cat_id where posts.profile_id = '$profile_id'";
+//      $result = run_query($profile_query);
+//      $profile_row = mysqli_fetch_array($result);
 
 
-    // dump_check($profile_row);
-//}
+    
+}
  ?>
     <!-- Page Content -->
     <div class="container mt-5 pt-5 ">
@@ -164,8 +164,8 @@ https://templatemo.com/tm-578-first-portfolio
                 <hr>
 
                 <!-- Date/Time -->
-                <p class="lead text-capitalize text-warning"> Posted on :
-                    <?php //echo convertPostDate($profile_row['profile_date']); ?></p>
+                <p class="lead text-capitalize text-warning"> CREATED ID ON :
+                    <?php //echo convertDate($profile_row['profile_date']); ?></p>
                     <hr>
 
 
@@ -183,125 +183,60 @@ https://templatemo.com/tm-578-first-portfolio
                 <?php endif ?>
 
                 <hr>
-
-                <!-- Post Content -->
-                <p>
-                    <?php //echo $profile_row['profile_content']; ?>
-                </p>
-
-                <hr>
-
-
-                <?php //if (isUserLikedThisPost()): ?>
-                <div class="row">
-                    <p class="pull-right">
-                        <a class="unlike" href="" data-user-id="<?php //echo $_SESSION['user_id']; ?>"
-                            data-post-id="<?php //echo $_GET['profile_id']; ?>"><span
-                                class="glyphicon glyphicon-thumbs-down" data-toggle="tooltip" data-placement="top"
-                                title="Want to like it?"></span>
-                            Unlike
-                        </a>
-                    </p>
-                </div>
-                <?php //else: ?>
-
-                <div class="row">
-                    <p class="pull-right">
-                        <a class="like" href="" data-user-id="<?php //echo $_SESSION['user_id']; ?>"
-                            data-post-id="<?php //echo $_GET['profile_id']; ?>">
-                            <span class="glyphicon glyphicon-thumbs-up" data-toggle="tooltip" data-placement="top"
-                                title="Want to like it?"></span>
-                            like
-                        </a>
-                    </p>
-                </div>
-                <?php //endif; ?>
+               
 
 
 
-                <!-- Blog Comments -->
-
-                <!-- Comments Form -->
-                <?php 
-
-                // if (isUserLoggedIn()):
+    
 
 
-                // if($_SERVER["REQUEST_METHOD"] == "POST"){
-                //     $user_id = $_SESSION['user_id'];
-                //     $current_profile_id = $profile_id;
-                //     $comment_content = $_POST['comment_content'];
-                //     $comment_status = "Pending";
-
-
-                //     $insert_comment_query = "INSERT into comments (user_id,profile_id,comment_status,comment_content,comment_date) VALUES ('$user_id','$current_profile_id','$comment_status','$comment_content',now())";
-
-                //     run_query($insert_comment_query);
-                //     redirect($_SERVER['PHP_SELF'] . '?profile_id=' . $profile_id);
-                // }
-
-
-                 ?>
+<hr>
 
 
 
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form role="form" action="<?php //echo $_SERVER['PHP_SELF']; ?>?profile_id=<?php //echo $profile_id; ?>"
-                        method="POST">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3" name="comment_content"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-                <?php //endif; ?>
+<?php 
+    // $get_comments = "select * from comments left join customer on comments.customer_id = customer.customer_id where comments.profile_id = '$_SESSION['profile_id'];' and comments.comment_status = 'approved'"; 
+    // $result = run_query($get_comments);
+ ?>
 
-                <hr>
+<?php //if ($result->num_rows > 0): ?>
+<?php // while($row = mysqli_fetch_assoc($result)){ 
+    // dump_check($row);
 
-                <!-- Posted Comments -->
+    // $customer_id = $row['customer_id'];
+    // $comment_date = $row['comment_date'];
+    // $comment_content = $row['comment_content'];
+    // $user_firstname = $row['user_firstname'];
+    // $user_lastname = $row['user_lastname'];
 
-                <!-- Comment -->
-
-                <?php 
-                //     $get_comments = "select * from comments left join users on comments.user_id = users.user_id where comments.post_id = '$post_id' and comments.comment_status = 'approved'"; 
-                //     $result = run_query($get_comments);
-                //  ?>
-
-                 <?php // if ($result->num_rows > 0): ?>
-                 <?php // while($row = mysqli_fetch_assoc($result)){ 
-                //     // dump_check($row);
-
-                //     $user_id = $row['user_id'];
-                //     $comment_date = $row['comment_date'];
-                //     $comment_content = $row['comment_content'];
-                //     $user_firstname = $row['user_firstname'];
-                //     $user_lastname = $row['user_lastname'];
-
-                    ?>
-
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading"><?php //echo $user_firstname. ' ' . $user_lastname; ?>
-                            <small><?php //echo $comment_date; ?></small>
-                        </h4>
-                        <?php //echo $comment_content; ?>
-                    </div>
-                </div>
-                <?php // } ?>
-                <?php //endif ?>
+    ?>  
+ 
+<div class="media">
+    <a class="pull-left" href="#">
+        <img class="media-object" src="" alt="">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading"><?php // echo $user_firstname. ' ' . $user_lastname; ?>
+            <small><?php //echo $comment_date; ?></small>
+        </h4>
+        <?php // echo $comment_content; ?>
+    </div>
+</div>
+<?php // } ?>
+<?php //endif ?>
 
 
-            </div>
-
-            <!-- Blog Sidebar Widgets Column -->
+</div>
 
 
-        </div>
-        <!-- /.row -->
+              
+
+                
+               
+
+
+
+        <!--include footer -->
         <footer class="site-footer">
             <div class="container">
                 <div class="row">
@@ -312,7 +247,7 @@ https://templatemo.com/tm-578-first-portfolio
                                 <span class="copyright-text">Copyright © 2022 <a href="#">First Portfolio</a> Company.
                                     All rights reserved.</span>
                                 Design:
-                                <a rel="sponsored" href="https://technottix.com" target="_blank">Ahsan A Sultan</a>
+                                <a rel="sponsored" href="https:technottix.com" target="_blank">Ahsan A Sultan</a>
                             </p>
                         </div>
                     </div>

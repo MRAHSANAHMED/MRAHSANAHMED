@@ -25,7 +25,7 @@
                      <?php
                             // $service_id = ($_GET['service_id']);
 
-                            $service_query="SELECT * FROM services limit 3";
+                            $service_query="SELECT * FROM services limit 4";
                             $result_service_query=run_query($service_query);
                             
                             if($result_service_query->num_rows >0){

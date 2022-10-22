@@ -100,7 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <tbody>
                             
                             <?php 
-                            $get_comments = "select * from comments left join profiles on comments.profile_id = profiles.profile_id left join services on comments.service_id = services.service_id"; 
+                            $get_comments = "select * from comments left join profiles on comments.profile_id = profiles.profile_id"; 
+                            // left join services on comments.service_id = services.service_id"; 
                             $result = run_query($get_comments);
                             if ($result->num_rows > 0):  
                                 while($row = mysqli_fetch_assoc($result)){ 
@@ -110,9 +111,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 $comment_content = $row['comment_content'];
                                 $profile_email = $row['profile_email'];
                                 $comment_status = $row['comment_status'];
-                                $service_id = $row['service_id'];
+                                // $service_id = $row['service_id'];
                                 $comment_date = $row['comment_date'];
-                                $service_title = $row['service_title'];
+                                // $service_title = $row['service_title'];
 
 
                                 $comment_status_color = '';
@@ -138,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <td><?php echo $comment_content; ?></td>
                         <td><?php echo $profile_email; ?></td>
                         <td style="color: <?php echo $comment_status_color; ?>"><?php echo $comment_status; ?></td>
-                        <td><a target="_blank" href="<?php echo BASE_URL . '/service.php?service_id=' . $service_id; ?>"><?php echo $service_title; ?></a></td>
+                        <!-- <td><a target="_blank" href="<?php //echo BASE_URL . '/service.php?service_id=' . $service_id; ?>"><?php // echo $service_title; ?></a></td> -->
                         <td><?php echo $comment_date; ?></td>
                         <td><a href="?status=approved&comment_id=<?php echo $comment_id; ?>" class="btn btn-primary">Approve</a></td>
                         <td><a href="?status=unapproved&comment_id=<?php echo $comment_id; ?>" class="btn btn-warning">Unapprove</a></td>

@@ -15,7 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$input_password = $_POST['password'];
 
     
-	$get_user_row = "Select * from (profiles,services) left join skills on profiles.profile_skill = skills.skill_id left join skills2 on profiles.profile_skill2 = skills2.skill2_id left join on profiles.profile_category = services.service_title where profiles.profile_name = '$input_profile_name'";
+	$get_user_row = "Select * from (profiles,services)
+                    left join skills on profiles.profile_skill = skills.skill_id
+                    left join skills2 on profiles.profile_skill2 = skills2.skill2_id 
+                    where profiles.profile_name = '$input_profile_name'";
 	$result = run_query($get_user_row);
 	$row = mysqli_fetch_array($result);
 	$db_password = $row['profile_password'];
@@ -39,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION['profile_image'] = $db_profile_image;
 		$_SESSION['profile_skill'] = $db_profile_skill;
 		$_SESSION['profile_skill2'] = $db_profile_skill2;
-		$_SESSION['service_title'] = $db_profile_category;
+		$_SESSION['profile_category'] = $db_profile_category;
 		$_SESSION['profile_content'] = $db_profile_content;
 		$_SESSION['skill_title'] = $db_profile_skill_title;
 		$_SESSION['skill2_title'] = $db_profile_skill2_title;

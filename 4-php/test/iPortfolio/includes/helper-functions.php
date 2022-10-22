@@ -61,19 +61,19 @@ function loggedOut(){
 }
 
 
-function convertprofileDate($date)
+function convertDate($date)
 {
     $strtime_converted = strtotime($date);
     return $date ? date('M d, Y',$strtime_converted) : '';
 }
 
 
-function UserLikeProfile()
+function isUserLike()
 {
-    $profile_id = $_GET['profile_id'];
-    $user_id = $_SESSION['user_id'];
+    $profile_id = $_SESSION['profile_id'];
+    // $customer_id = $_GET['customer_id'];
 
-    $check_query = "SELECT * from profile_user where profile_id = '$profile_id' and user_id = '$user_id'";
+    $check_query = "SELECT * from (profiles,customer) where profile_id = '$profile_id'";
 
     $result = run_query($check_query);
 

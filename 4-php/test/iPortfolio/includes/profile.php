@@ -56,7 +56,7 @@
 
                                 <h3 class="pt-2 mb-3">a little bit about <?php echo $_SESSION['profile_name'];?></h3>
 
-                                <p><?php echo $_SESSION['profile_content'];?></p>
+                                <p><?php echo $_SESSION['profile_content'];?><BR><?php echo $_SESSION['profile_category'];?></p>
 
                                 <p>contact</a><br><?php echo $_SESSION['profile_email'];?><br><?php echo $_SESSION['profile_contact'];?></p>
                             </div>

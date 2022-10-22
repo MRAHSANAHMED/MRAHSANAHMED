@@ -25,7 +25,7 @@ if(isset($_GET['delete']))
 
 
 <!-- Page Heading -->
-<div class="row d-flex justify-content-end">
+<div class="row d-flex justify-content-end mx-5">
    <div class="col-lg-9 col-md-9 col-sm-9">
       <h1 class="page-header mt-5 mr-5">
          profiles
@@ -42,8 +42,8 @@ if(isset($_GET['delete']))
                <th>E-mail</th>
                <th>Skills</th>
                <th>Expertise Content</th>
-               <th >Image</th>
-               <th >Edit</th>
+               <th>Image</th>
+               <th>Edit</th>
                <th>Delete</th>
             </tr>
          </thead>
@@ -77,7 +77,7 @@ if(isset($_GET['delete']))
                <td><?php echo $row['profile_category'];?></td>
                <td><?php echo $row['profile_contact'];?></td>
                <td><?php echo $row['profile_email'];?></td>
-               <td style="color:#dc6806;"><b><?php echo $row['skill_title'] ; ?> , <?php echo $row['skill2_title']; ?></b></td>
+               <td style="color:#dc6806;"><b><?php echo $row['skill_title'] ; ?>/<?php echo $row['skill2_title']; ?></b></td>
                <td class="text-uppercase"><?php echo $row['profile_content'];?></td>
 
                <td ><?php if (isset($row['profile_image'])):?>

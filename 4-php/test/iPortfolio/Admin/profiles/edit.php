@@ -7,24 +7,24 @@ if(isset($_GET['edit'])) {
 $old_profile_row = get_single_row('profiles','profiles.profile_id',$profile_id);
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-   $profile_name = $_POST['profile_name'];
-    $profile_password = $_POST['profile_password'];
-    $profile_category = $_POST['profile_category'];
-    $profile_contact = $_POST['profile_contact'];
-    $profile_email = $_POST['profile_email'];
-    $profile_skill = $_POST['profile_skill'];
-    $profile_skill2 = $_POST['profile_skill2'];
-    $profile_content = $_POST['profile_content'];
-    $profile_image = $_POST['profile_image'];
+   $profile_name = $_POST['profile_name'] ?? null;
+    $profile_password = $_POST['profile_password'] ?? null;
+    $profile_category = $_POST['profile_category']?? null;
+    $profile_contact = $_POST['profile_contact']?? null;
+    $profile_email = $_POST['profile_email']?? null;
+    $profile_skill = $_POST['profile_skill']?? null;
+    $profile_skill2 = $_POST['profile_skill2']?? null;
+    $profile_content = $_POST['profile_content']?? null;
+    $profile_image = $_POST['profile_image']?? null;
 
-    $profile_new_password = password_hash($profile_password, PASSWORD_BCRYPT, array('cost'=> 10));
+     $profile_new_password = password_hash($profile_password, PASSWORD_BCRYPT, array('cost' => 10));
 
-    $profile_image_correct = $old_profile_row['profile_image'];
+    $profile_image_correct = $old_profile_row['profile_image'] ?? null;
 
 
     if(!empty($_FILES['profile_image']['name'])) {
         if(isset($old_profile_row['profile_image']) && $_FILES['profile_image']){
-            unlink($_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio" . $old_profile_row['profile_image']);
+            unlink($_SERVER['DOCUMENT_ROOT'] . "/test/iportfolio/" . $old_profile_row['profile_image']);
         }
 
      //file uploading code start
@@ -35,13 +35,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         
     } 
     
-
+    // check($profile_image_correct);
 
     $profile_update_query = "UPDATE profiles SET ";
     $profile_update_query .= "profile_name = '$profile_name', ";
-    if(isset($profile_password)){
-         $profile_update_query .= "profile_password = '$profile_new_password', ";   
-   }
+        if(isset($profile_password)){
+             $profile_update_query .= "profile_password = '$profile_new_password', ";   
+       }
 
         $profile_update_query .= "profile_category = '$profile_category',";
         $profile_update_query .= "profile_contact = '$profile_contact',";
@@ -57,9 +57,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     
 
     $result = run_query($profile_update_query);
+    
     redirect($_SERVER['PHP_SELF']);
-dump_check($result);
-die();
+
 }
 
 ?>
@@ -90,10 +90,10 @@ die();
                             <input type="text" class="form-control" id="" placeholder="Profile Name" name="profile_name" value="<?php echo $old_profile_row['profile_name']; ?>">
                         </div>
 
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="">password</label>
-                            <input type="text" class="form-control" id="" placeholder="First Name" name="profile_password" value="<?php echo $old_profile_row['profile_password']; ?>">
-                        </div> -->
+                            <input type="text" class="form-control" id="" placeholder="First Name" name="profile_password" value="<?php //echo $old_profile_row['profile_password']; ?>">
+                        </div>
                          <div class="form-group">
                             <label for="">work style</label>
                             <select name="profile_category" id="input" class="form-control" >
