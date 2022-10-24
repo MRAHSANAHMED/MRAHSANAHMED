@@ -107,15 +107,25 @@
 
                 
 <div class="card-body">
-                  <h5 class="card-title">Customers <span>| comments</span></h5>
+                  <h5 class="card-title">Comments<span>| to Profiles</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?php // echo get_table_count(''); ?></h6>
-
+                    <?php 
+                        $comment_query = "SELECT count(comment_id) AS NumberOfComments from comments 
+                        left join profiles on comments.profile_id = profiles.profile_id 
+                        where profiles.profile_id = '".$_SESSION['profile_id']."'";
+                        $result = run_query($comment_query);
+                        $rows = mysqli_fetch_array($result);
+                      ?>
+                      <h6><span style="font-size:36px; color:#ff771d;">
+                      <?php echo $rows['NumberOfComments'] ;?> </span>
+                      COMMENT ON : <span style="font-size:36px; color:#ff771d;">
+                      <?php  echo ucwords($_SESSION['profile_name']) ;?> 
+                      </span>ID</h6>
                     </div>
                   </div>
 
@@ -136,25 +146,27 @@
 <script>
     // https://www.chartjs.org/docs/latest/getting-started/
     
-    const postCount = "<?php ?>";
-    const commentsCount = "<?php  ?>";
-    const usersCount = "<?php  ?>";
-    const categoriesCount = "<?php  ?>";
+    const servicesCount = "<?php echo get_table_count('services');?>";
+    const profilesCount = "<?php  echo get_table_count('profiles'); ?>";
+    const skillsCount = "<?php echo get_table_count('skills'); ?>";
+    const skills2Count = "<?php echo get_table_count('skills2'); ?>"; 
+    const categoriesCount = "<?php echo $rows['NumberOfComments'] ;?>";
 
     const config = {
         type: 'bar',
         data: {
             labels: [
-                'Posts',
-                'Comments',
-                'Users',
-                'Categories'
+                'SERVICES',
+                'PROFILES',
+                'Skills',
+                'Skills',
+                '<?php echo $rows['NumberOfComments'] ;?> COMMENTS ON ID : <?php  echo ucwords($_SESSION['profile_name']) ;?>'
             ],
             datasets: [{
               label: 'Data',
               backgroundColor: 'rgb(255, 99, 132)',
               borderColor: 'rgb(255, 99, 132)',
-              data: [postCount, commentsCount, usersCount, categoriesCount],
+              data: [servicesCount, profilesCount, skillsCount, skills2Count, categoriesCount],
             }]
         },
         options: {}

@@ -33,12 +33,12 @@
           <i class=" bi bi-tools"></i>
           <span>SKILLS 2</span>
         </a>
-      </li><li class="nav-item">
+      <!-- </li><li class="nav-item">
         <a class="nav-link collapsed" href="customer.php">
           <i class=" bi bi-tools"></i>
           <span>Customer</span>
         </a>
-      </li>
+      </li> -->
       
        <li class="nav-item">
         <a class="nav-link collapsed" href="comments.php">
