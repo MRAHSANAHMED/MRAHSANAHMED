@@ -31,7 +31,11 @@ ob_start(); ?>
     <link href="css/magnific-popup.css" rel="stylesheet">
 
     <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
-
+<style>
+   a:hover {
+  background-color: yellow;
+}
+</style>
     <!--
 
 TemplateMo 578 First Portfolio
@@ -164,9 +168,9 @@ https:templatemo.com/tm-578-first-portfolio
                 <hr>
 
                 <!-- Date/Time -->
-                <p class="lead text-capitalize text-warning"> CREATED ID ON :
+                <!-- <p class="lead text-capitalize text-warning"> CREATED ID ON :
                     <?php //echo convertDate($profile_row['profile_date']); ?></p>
-                    <hr>
+                    <hr> -->
 
 
                     <h5 class="lead text-capitalize text-warning">SEPCIALTY :
@@ -184,32 +188,60 @@ https:templatemo.com/tm-578-first-portfolio
 
                 <hr>
                
-
-
-
+                <div>
+                            <?php 
+                        $comment_query = "SELECT * FROM comments left join profiles on comments.profile_id = profiles.profile_id WHERE comment_status = 'approved' 
+                                             ORDER BY comments.comment_id DESC ;";
+                        $result = run_query($comment_query);
+                        if ($result->num_rows > 0){
+                            while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                        <div class="d-flex justify-content-between" >
+                                <div>
+                                    <h5 class="lead text-capitalize text-warning">
+                                    CUSTOMER NAME : <a href="#"><?php  echo $row['customer_name']; ?></a>
+                                    </h5>
+                                </div>
+                                <div>
+                                    <?php
+                                    // echo '<pre>';
+                                    // print_r($row['comment_rate']);
+                                    // die();
+                                    ?>
+                                    <h5 class="lead text-capitalize text-warning" >
+                                        RATING : <a href="#"><?php //echo $row['comment_rate']
+                                        if($row['comment_rate'] == 'LIKE'){ ?>
+                                            <div>
+                                                <span  style="font-size:40px;" class="glyphicon bi-hand-thumbs-up-fill"></span>
+                                                </div>
+                                        <?php } elseif($row['comment_rate'] == 'UNLIKE'){ ?>
+                                            <div>
+                                            <span  style="font-size:40px;" class="glyphicon bi-hand-thumbs-down-fill"></span>
+                                            </div>
+                                        <?php } elseif($row['comment_rate'] == 'AVERAGE'){ ?>
+                                            <div>
+                                            <span  style="font-size:40px;" class="glyphicon bi-emoji-neutral"></span>
+                                            </div>
+                                        <?php }else{ ?>
+                                            <div>
+                                            <span  style="font-size:40px;" class="glyphicon bi-emoji-dizzy-fill"></span>
+                                            </div>
+                                        <?php }                                     
+                                         ?></a>
+                                    </h5>
+                                </div>
+                        </div>
+                           <div>
+                                <h5 class="lead text-capitalize text-warning">
+                                    CUSTOMER COMMENT : <a href="#"><?php echo $row['comment_content']; ?></a>
+                                </h5>
+                           </div>
+                        <HR>
+                    
+                    <?php }}?>
+                </div>
     
-
-
-<hr>
-
-
-
-<?php 
-    // $get_comments = "select * from comments left join customer on comments.customer_id = customer.customer_id where comments.profile_id = '$_SESSION['profile_id'];' and comments.comment_status = 'approved'"; 
-    // $result = run_query($get_comments);
- ?>
-
-<?php //if ($result->num_rows > 0): ?>
-<?php // while($row = mysqli_fetch_assoc($result)){ 
-    // dump_check($row);
-
-    // $customer_id = $row['customer_id'];
-    // $comment_date = $row['comment_date'];
-    // $comment_content = $row['comment_content'];
-    // $user_firstname = $row['user_firstname'];
-    // $user_lastname = $row['user_lastname'];
-
-    ?>  
+ 
  
 <div class="media">
     <a class="pull-left" href="#">

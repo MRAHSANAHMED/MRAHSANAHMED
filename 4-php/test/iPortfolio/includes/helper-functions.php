@@ -67,28 +67,8 @@ function convertDate($date)
     return $date ? date('M d, Y',$strtime_converted) : '';
 }
 
-
-function isUserLike()
-{
-    $profile_id = $_SESSION['profile_id'];
-    // $customer_id = $_GET['customer_id'];
-
-    $check_query = "SELECT * from (profiles,customer) where profile_id = '$profile_id'";
-
-    $result = run_query($check_query);
-
-    return $result->num_rows > 0 ? true : false; 
-}
-
-
-
 class UserModule {
-    // public function getUserId(){
-    //     if (isset($_SESSION['user_id'])) {
-    //         return $_SESSION['user_id'];
-    //     }
-    //     return 0;
-    // }
+   
     public static function getUserId(){
         if (isset($_SESSION['user_id'])) {
             return $_SESSION['user_id'];

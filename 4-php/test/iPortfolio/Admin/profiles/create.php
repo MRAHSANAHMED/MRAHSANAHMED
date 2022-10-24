@@ -96,14 +96,14 @@ redirect('profiles.php');
 
                         <div class="form-group">
                             <label for="">work style</label>
-                            <select name="profile_category" id="input" class="form-control" >
-                                <option value="">work style</option>
-                                <option value="frontend">frontend</option>
-                                <option value="backend">backend</option>
-                                <option value="designer">designer</option>
-                                <option value="animator">animator</option>
-                                <option value="automation">automation</option>
-                  </select>
+                                <select name="profile_category" id="input" class="form-control" >
+                                    <option value="">work style</option>
+                                    <option value="frontend">frontend</option>
+                                    <option value="backend">backend</option>
+                                    <option value="designer">designer</option>
+                                    <option value="animator">animator</option>
+                                    <option value="automation">automation</option>
+                                </select>
                         </div>
 
                         <div class="form-group">

@@ -108,7 +108,7 @@ header('Location: ../login.php');
             <li>
               <a class="dropdown-item d-flex align-items-center" href="../index.php">
                 <i class="bi bi-person"></i>
-                <span><?php echo ucfirst($_SESSION['profile_name']);?> Profile</span>
+                <span> GO TO <?php echo ucfirst($_SESSION['profile_name']);?> Profile</span>
               </a>
             </li>
             <li>

@@ -88,9 +88,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 <th>Id</th>
                                 <th>Author</th>
                                 <th>Comment</th>
-                                <th>Email</th>
+                                <th>Profile-ID</th>
+                                <th>Profile-NAME</th>
                                 <th>Status</th>
-                                <th>In Response to</th>
+                                <th>Comment-Rate</th>
                                 <th>Date</th>
                                 <th>Approve</th>
                                 <th>Unapprove</th>
@@ -107,13 +108,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 while($row = mysqli_fetch_assoc($result)){ 
                                 // dump_check($row);
                                 $comment_id = $row['comment_id'];
-                                $fullname = $row['profile_firstname'] . ' '. $row['profile_lastname'];
+                                $customer_name = $row['customer_name'];
                                 $comment_content = $row['comment_content'];
-                                $profile_email = $row['profile_email'];
+                                $profile_id = $row['profile_id'];
+                                $profile_name = $row['profile_name'];
                                 $comment_status = $row['comment_status'];
-                                // $service_id = $row['service_id'];
-                                $comment_date = $row['comment_date'];
-                                // $service_title = $row['service_title'];
+                                $comment_rate = $row['comment_rate'];
+
+                                $comment_date = $row['created_at'];
 
 
                                 $comment_status_color = '';
@@ -135,12 +137,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <tr>
                         <td><input class="rowCheckbox" type="checkbox" name="checkBoxArray[]" value="<?php echo $comment_id; ?>"></td>
                         <td><?php echo $comment_id; ?></td>
-                        <td><?php echo $fullname; ?></td>
+                        <td><?php echo $customer_name; ?></td>
                         <td><?php echo $comment_content; ?></td>
-                        <td><?php echo $profile_email; ?></td>
+                        <td><?php echo $profile_id; ?></td>
+                        <td><?php echo $profile_name; ?></td>
                         <td style="color: <?php echo $comment_status_color; ?>"><?php echo $comment_status; ?></td>
                         <!-- <td><a target="_blank" href="<?php //echo BASE_URL . '/service.php?service_id=' . $service_id; ?>"><?php // echo $service_title; ?></a></td> -->
+                        <td><?php echo $comment_rate; ?></td>
                         <td><?php echo $comment_date; ?></td>
+
                         <td><a href="?status=approved&comment_id=<?php echo $comment_id; ?>" class="btn btn-primary">Approve</a></td>
                         <td><a href="?status=unapproved&comment_id=<?php echo $comment_id; ?>" class="btn btn-warning">Unapprove</a></td>
                         <td><a 
