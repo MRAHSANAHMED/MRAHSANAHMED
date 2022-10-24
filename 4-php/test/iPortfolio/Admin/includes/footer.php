@@ -19,7 +19,7 @@
 
   <!-- Vendor JS Files -->
   <script>
-        // A $( document ).ready() block.
+        
         $( document ).ready(function() {
             $("#selectAllBoxes").click(function(event){
                 if(this.checked){
@@ -33,6 +33,9 @@
                 }
             })
         });
+
+
+   
     </script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -67,12 +67,12 @@ function convertDate($date)
     return $date ? date('M d, Y',$strtime_converted) : '';
 }
 
-class UserModule {
+// class UserModule {
    
-    public static function getUserId(){
-        if (isset($_SESSION['user_id'])) {
-            return $_SESSION['user_id'];
-        }
-        return 0;
-    }
-}
+//     public static function getUserId(){
+//         if (isset($_SESSION['user_id'])) {
+//             return $_SESSION['user_id'];
+//         }
+//         return 0;
+//     }
+// }

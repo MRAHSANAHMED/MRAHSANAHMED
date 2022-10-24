@@ -204,12 +204,8 @@ https:templatemo.com/tm-578-first-portfolio
                                     </h5>
                                 </div>
                                 <div>
-                                    <?php
-                                    // echo '<pre>';
-                                    // print_r($row['comment_rate']);
-                                    // die();
-                                    ?>
-                                    <h5 class="lead text-capitalize text-warning" >
+                                    
+                                    <h5 class="lead text-capitalize text-warning" style="color:white!important;">
                                         RATING : <a href="#"><?php //echo $row['comment_rate']
                                         if($row['comment_rate'] == 'LIKE'){ ?>
                                             <div>
@@ -233,9 +229,12 @@ https:templatemo.com/tm-578-first-portfolio
                                 </div>
                         </div>
                            <div>
-                                <h5 class="lead text-capitalize text-warning">
+                           <h5 class="lead text-capitalize text-warning">
                                     CUSTOMER COMMENT : <a href="#"><?php echo $row['comment_content']; ?></a>
                                 </h5>
+                                <h6 class="lead text-capitalize text-warning">
+                                    ON DATE : <a href="#"><?php echo convertDate($row['created_at']); ?></a>
+                                </h6>
                            </div>
                         <HR>
                     
@@ -277,10 +276,10 @@ https:templatemo.com/tm-578-first-portfolio
                     <div class="col-lg-12 col-12">
                         <div class="copyright-text-wrap">
                             <p class="mb-0">
-                                <span class="copyright-text">Copyright © 2022 <a href="#">First Portfolio</a> Company.
+                                <span style="color:white!important;" class="copyright-text">Copyright © <?php date("Y")?> <a href="#">First Portfolio</a> Company.
                                     All rights reserved.</span>
                                 Design:
-                                <a rel="sponsored" href="https:technottix.com" target="_blank">Ahsan A Sultan</a>
+                                <a style="color:white!important;" rel="sponsored" href="https:technottix.com" target="_blank">Ahsan A Sultan</a>
                             </p>
                         </div>
                     </div>

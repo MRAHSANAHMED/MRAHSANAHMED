@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <tbody>
                             
                             <?php 
-                            $get_comments = "select * from comments left join profiles on comments.profile_id = profiles.profile_id"; 
+                            $get_comments = "select * from comments left join profiles on comments.profile_id = profiles.profile_id ORDER BY comments.comment_id DESC"; 
                             // left join services on comments.service_id = services.service_id"; 
                             $result = run_query($get_comments);
                             if ($result->num_rows > 0):  
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 $comment_status = $row['comment_status'];
                                 $comment_rate = $row['comment_rate'];
 
-                                $comment_date = $row['created_at'];
+                                $comment_date = convertDate($row['created_at']);;
 
 
                                 $comment_status_color = '';
@@ -135,14 +135,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                             ?>  
                     <tr>
-                        <td><input class="rowCheckbox" type="checkbox" name="checkBoxArray[]" value="<?php echo $comment_id; ?>"></td>
+                        <td><input class="rowCheckbox" id="allboxes" type="checkbox" name="checkBoxArray[]" value="<?php echo $comment_id; ?>"></td>
                         <td><?php echo $comment_id; ?></td>
                         <td><?php echo $customer_name; ?></td>
                         <td><?php echo $comment_content; ?></td>
                         <td><?php echo $profile_id; ?></td>
                         <td><?php echo $profile_name; ?></td>
                         <td style="color: <?php echo $comment_status_color; ?>"><?php echo $comment_status; ?></td>
-                        <!-- <td><a target="_blank" href="<?php //echo BASE_URL . '/service.php?service_id=' . $service_id; ?>"><?php // echo $service_title; ?></a></td> -->
                         <td><?php echo $comment_rate; ?></td>
                         <td><?php echo $comment_date; ?></td>
 
