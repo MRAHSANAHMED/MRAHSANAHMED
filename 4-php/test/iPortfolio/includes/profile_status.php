@@ -190,8 +190,9 @@ https:templatemo.com/tm-578-first-portfolio
                
                 <div>
                             <?php 
-                        $comment_query = "SELECT * FROM comments left join profiles on comments.profile_id = profiles.profile_id WHERE comment_status = 'approved' 
-                                             ORDER BY comments.comment_id DESC ;";
+                        $comment_query = "SELECT * FROM comments left join profiles on comments.profile_id = profiles.profile_id 
+                                            WHERE comment_status = 'approved' and profiles.profile_id = '".$_SESSION['profile_id']."'
+                                             ORDER BY comments.comment_id DESC limit 3;";
                         $result = run_query($comment_query);
                         if ($result->num_rows > 0){
                             while($row = mysqli_fetch_assoc($result)){
