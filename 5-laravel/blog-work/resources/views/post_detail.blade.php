@@ -13,30 +13,32 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1></h1>
+                <h1>{{ $post->post_title }}</h1>
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#"></a>
+                    by <a href="#">{{ $post->post_author }}</a>
                 </p>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->post_date }}</p>
 
                 <hr>
 
                 <!-- Preview Image -->
-
-                    <img class="img-responsive" src="" alt="">
+                @if ($post->post_image)
+                    <img class="img-responsive" src="{{ $post->post_image }}" alt="">
                     <hr>
+                @endif
+
 
 
 
                 <!-- Post Content -->
                 <p class="lead">
-
+                    {{ $post->post_content }}
                 </p>
 
                 <hr>

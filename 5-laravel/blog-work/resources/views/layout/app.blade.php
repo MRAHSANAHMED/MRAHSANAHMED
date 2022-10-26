@@ -45,14 +45,17 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-
-                            <li>
-                                <a
-                                    href=""></a>
+                    {{-- @if (count($categories) > 0 )
+                    @foreach ($categories as $key => $singleCategory)
+                        <li>
+                                <a href="{{ route('category_detail',['category_id' => $singleCategory->cat_id]) }}">{{ $singleCategory->cat_title }}</a>
                             </li>
+                            @endforeach
+                    @endif --}}
 
 
-                    <li><a href="">Register</a></li>
+
+                    <li><a href="{{ route('register') }}">Register</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -68,7 +71,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Blogs </p>
+                <p>Copyright &copy; Blogs {{ date('Y') }}</p>
             </div>
             <!-- /.col-lg-12 -->
         </div>
