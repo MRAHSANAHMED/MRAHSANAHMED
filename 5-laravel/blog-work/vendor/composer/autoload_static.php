@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite3e40163e91caf36a01be22c48f5388c
+class ComposerStaticInitacce1714753d1f3833057732c4409a25
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -340,8 +340,8 @@ class ComposerStaticInite3e40163e91caf36a01be22c48f5388c
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -2190,6 +2190,7 @@ class ComposerStaticInite3e40163e91caf36a01be22c48f5388c
         'Illuminate\\Http\\File' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/File.php',
         'Illuminate\\Http\\FileHelpers' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/FileHelpers.php',
         'Illuminate\\Http\\JsonResponse' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/JsonResponse.php',
+        'Illuminate\\Http\\Middleware\\AddLinkHeadersForPreloadedAssets' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Middleware/AddLinkHeadersForPreloadedAssets.php',
         'Illuminate\\Http\\Middleware\\CheckResponseForModifications' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Middleware/CheckResponseForModifications.php',
         'Illuminate\\Http\\Middleware\\FrameGuard' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Middleware/FrameGuard.php',
         'Illuminate\\Http\\Middleware\\HandleCors' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php',
@@ -5655,10 +5656,10 @@ class ComposerStaticInite3e40163e91caf36a01be22c48f5388c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite3e40163e91caf36a01be22c48f5388c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite3e40163e91caf36a01be22c48f5388c::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite3e40163e91caf36a01be22c48f5388c::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite3e40163e91caf36a01be22c48f5388c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitacce1714753d1f3833057732c4409a25::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitacce1714753d1f3833057732c4409a25::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitacce1714753d1f3833057732c4409a25::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitacce1714753d1f3833057732c4409a25::$classMap;
 
         }, null, ClassLoader::class);
     }
