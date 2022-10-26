@@ -23,14 +23,14 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="list-unstyled">
-                    {{-- @if (count($categories) > 0)
+                    @if (count($categories) > 0)
                     @foreach ($categories as $key => $singleCategory)
                         <li>
                             <a
                                 href="{{ route('category_detail', ['category_id' => $singleCategory->cat_id]) }}">{{ $singleCategory->cat_title }}</a>
                         </li>
                     @endforeach
-                @endif --}}
+                @endif
 
                 </ul>
             </div>

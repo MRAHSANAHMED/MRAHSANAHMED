@@ -45,13 +45,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    {{-- @if (count($categories) > 0 )
+                    @if (count($categories) > 0 )
                     @foreach ($categories as $key => $singleCategory)
                         <li>
                                 <a href="{{ route('category_detail',['category_id' => $singleCategory->cat_id]) }}">{{ $singleCategory->cat_title }}</a>
                             </li>
                             @endforeach
-                    @endif --}}
+                    @endif
 
 
 

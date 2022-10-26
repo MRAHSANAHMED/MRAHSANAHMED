@@ -8,8 +8,8 @@
             <div class="col-md-8">
 
                 <div class="col-md-8 ">
-                    <form action="" method="POST" role="form" enctype="multipart/form-data">
-
+                    <form action="{{ route('register_user') }}" method="POST" role="form" enctype="multipart/form-data">
+                        @csrf
                         <legend>User Registration</legend>
 
                         <div class="form-group">
