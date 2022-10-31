@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -45,16 +47,51 @@ class HomeController extends Controller
 
     public function register_user(Request $request)
     {
+        $request->validate([
+            'username' =>'required',
+            'user_password' =>'required',
+            'user_firstname' => 'required',
+            'user_lastname' => 'required',
+            'email' => 'required',
+        ]);
+        dd($request);
         $user = User::create([
             'username' =>$request->username,
-            // 'user_password' => Hash::make($request->password),
+            'user_password' => Hash::make($request->password),
             'user_firstname' =>$request->user_firstname,
             'user_lastname' =>$request->user_lastname,
-            'user_email' =>$request->email,
+            'email' =>$request->email,
             'user_image' => null,
-            'user_role' =>"Admin"
+            'user_role' =>"Admin",
         ]);
-        return redirect()->back();
+        // dd($user);
+        return redirect()->back()->with('success','User is Registered Successfully');
     }
+    public function login()
+    {
+        return view('login');
+    }
+    public function login_post(Request $request)
+        {
+            $request->validate([
+                'email' => 'email',
+                'password' => 'required',
+            ]);
+
+            try{
+                $credentials = $request->only('email', 'password');
+                if(Auth::attempt($credentials)) {
+                    dd('you are logged in');
+
+                }else{
+                    return redirect()->to('/login')->with('error','User email or password is wrong.');
+                }
+            }catch (\Throwable $th){
+            return redirect()->to ('login')->with('error','something went wrong');
+
+            }
+        }
+
+
 
 }
