@@ -2,7 +2,7 @@
                 <div class="container">
                     <div class="row align-items-center">
 
-                        <div class="col-lg-12 col-12">
+                        <div class="col-lg-12 col-12 ">
                             <h3 class="text-center mb-5">profiles suggestions</h3>
                         </div>
 <?php 
@@ -13,10 +13,12 @@ if($result->num_rows>0){
 
 
 ?>
-                        <div class="col-lg-2 col-4 ms-auto clients-item-height">
-                        <H5 class="text-capitalize text-warning"><?php echo $row['profile_name']?></H5>
-
-                            <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" width="80%" class=" img-fluid" alt="">
+                        <div class="col-lg-4  clients-item-height">
+                            <H5 class="text-capitalize text-warning"><?php echo $row['profile_name']?></H5>
+                             <div class="col-lg-4 d-flex justify-content-between ">
+                                <img src="/test/iPortfolio<?php echo $row['profile_image'];?>" width="120px" class=" img-fluid" alt="<?php echo $row['profile_id'];?>">
+                            </div>
+                            
 
                         </div>
 <?php }}?>

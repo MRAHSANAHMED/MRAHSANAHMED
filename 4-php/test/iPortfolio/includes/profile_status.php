@@ -60,9 +60,10 @@ https:templatemo.com/tm-578-first-portfolio
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <h2  class="navbar-brand mx-auto mx-lg-0 text-primary"><?php echo ucwords($_SESSION['profile_name']);?></h2>
+                <!-- <h2  class="navbar-brand mx-auto mx-lg-0 text-primary"><?php echo ucwords($_SESSION['profile_name']);?></h2> -->
 
-                
+                <a class="btn bg-primary-light" style="color:red; font-size:18px; font-weight: bold;" type="submit" href="../index.php">BACK</a>
+
                 <div class="d-flex align-items-center d-lg-none">
                     <a class="custom-btn btn" href="#section_5">
                     </a>

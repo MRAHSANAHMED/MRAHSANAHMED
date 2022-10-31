@@ -22,7 +22,7 @@ function check($var){
 	echo "<pre>";
     print_r($var);
     echo "</pre>";
-    die();
+    // die();
 }
 
 function get_single_row($table_name='profiles',$column_name='profiles.profile_id',$column_value=null){

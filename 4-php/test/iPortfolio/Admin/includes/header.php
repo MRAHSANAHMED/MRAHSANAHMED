@@ -52,6 +52,9 @@ header('Location: ../login.php');
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+
+   <!-- Including jQuery is required. -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.3.1
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -61,6 +64,7 @@ header('Location: ../login.php');
 </head>
 
 <body>
+
   <header id="header" class="header fixed-top d-flex align-items-center mt-3">
 
     <div class="d-flex align-items-center justify-content-between ">
@@ -70,14 +74,15 @@ header('Location: ../login.php');
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
-
+ 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <form class="search-form d-flex align-items-center" method="GET" action="search.php">
+        <input type="text" name="search" id="search" placeholder="Search" title="Enter search keyword">
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
 
+    
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -86,6 +91,7 @@ header('Location: ../login.php');
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
           </a>
+          
         </li><!-- End Search Icon-->
 
  

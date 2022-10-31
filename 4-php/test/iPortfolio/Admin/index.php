@@ -136,11 +136,11 @@
             
             </div> 
 
-                <div>
-                  <canvas id="myChart"></canvas>
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                  <canvas id="myChart" ></canvas>
                 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js" ></script>
 
 
 <script>
@@ -153,19 +153,19 @@
     const categoriesCount = "<?php echo $rows['NumberOfComments'] ;?>";
 
     const config = {
-        type: 'bar',
+        type: 'radar',
         data: {
             labels: [
                 'SERVICES',
                 'PROFILES',
                 'Skills',
-                'Skills',
+                'Skills2',
                 '<?php echo $rows['NumberOfComments'] ;?> COMMENTS ON ID : <?php  echo ucwords($_SESSION['profile_name']) ;?>'
             ],
             datasets: [{
               label: 'Data',
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgb(255, 119, 29)',
+              borderColor: 'rgb(29, 9, 156)',
               data: [servicesCount, profilesCount, skillsCount, skills2Count, categoriesCount],
             }]
         },
