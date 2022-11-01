@@ -92,7 +92,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                         <div class="form-group">
                             <label for="">password</label>
-                            <input type="text" class="form-control" id="" placeholder="First Name" name="profile_password" value="<?php //echo $old_profile_row['profile_password']; ?>">
+                            <input type="text" class="form-control" id="" placeholder="First Name" name="profile_password" value="<?php echo $old_profile_row['profile_password']; ?>">
                         </div>
                          <div class="form-group">
                             <label for="">work style</label>
@@ -130,9 +130,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                    <?php if ($result->num_rows > 0): ?>
                                      <?php while($row = mysqli_fetch_assoc($result)){ ?>
                                             <option value="<?php echo $row['skill_id']; ?>" 
-
-                                                <?php echo $row['skill_id'] ? 'selected' : ''; ?> >
-                                                <?php echo $row['skill_title']; ?>        
+                                                <?php echo $row['skill_id'] ? 'selected' : ''; ?> > <?php echo $row['skill_title']; ?>        
                                             </option>
                                      <?php } ?>
                                  <?php endif ?>

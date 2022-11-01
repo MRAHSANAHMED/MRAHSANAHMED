@@ -63,7 +63,7 @@ if(isset($_GET['delete']))
                                                    skills2.skill2_title
                                  FROM ((profiles
                                  LEFT JOIN skills ON profiles.profile_skill = skills.skill_id)
-                                 LEFT JOIN skills2 ON profiles.profile_skill2 = skills2.skill2_id) where profiles.profile_id = '".$_SESSION['profile_id']."' order by profiles.profile_id DESC";
+                                 LEFT JOIN skills2 ON profiles.profile_skill2 = skills2.skill2_id)";
 
             // $profile_get_query = "SELECT * FROM profiles left join skills on profiles.profile_skill = skills.skill_id";
                $result = run_query($profile_get_query);
