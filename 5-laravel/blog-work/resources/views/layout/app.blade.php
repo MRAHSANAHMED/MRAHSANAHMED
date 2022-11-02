@@ -17,8 +17,11 @@
     <!-- Custom CSS -->
     <link href="{{ asset('theme/frontend/css/blog-home.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- WARNING: Respond.js does not work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -55,7 +58,15 @@
 
 
 
+
+                    @if (Auth::check())
+                    <li><a href="{{ route('admin_index') }}">Admin</a></li>
+                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                    @else
                     <li><a href="{{ route('register') }}">Register</a></li>
+
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -68,7 +79,7 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer>
+    <footer style="text-align:center;">
         <div class="row">
             <div class="col-lg-12">
                 <p>Copyright &copy; Blogs {{ date('Y') }}</p>
@@ -82,7 +93,20 @@
 
     <!-- jQuery -->
     <script src="{{ asset('theme/frontend/js/jquery.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        @if ($errors->any())
+            @foreach($errors->all() as $error)
+            toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+        @if (session('error'))
+            toaster.error("{{ session('error') }}")
+        @endif
 
+    </script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('theme/frontend/js/bootstrap.min.js') }}"></script>
 

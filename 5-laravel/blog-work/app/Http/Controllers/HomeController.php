@@ -38,7 +38,7 @@ class HomeController extends Controller
     {
         $custom_search_value ="%$request->custom_search_value%";
         $posts= Post::with('category')->where('post_title', 'LIKE', $custom_search_value)->get();
-        return view('serach', compact('posts'));
+        return view('search', compact('posts'));
     }
     public function register()
         {
@@ -49,15 +49,15 @@ class HomeController extends Controller
     {
         $request->validate([
             'username' =>'required',
-            'user_password' =>'required',
+            'password' =>'required',
             'user_firstname' => 'required',
             'user_lastname' => 'required',
             'email' => 'required',
         ]);
-        dd($request);
+        // dd($request);
         $user = User::create([
             'username' =>$request->username,
-            'user_password' => Hash::make($request->password),
+            'password' => Hash::make($request->password),
             'user_firstname' =>$request->user_firstname,
             'user_lastname' =>$request->user_lastname,
             'email' =>$request->email,
@@ -81,7 +81,8 @@ class HomeController extends Controller
             try{
                 $credentials = $request->only('email', 'password');
                 if(Auth::attempt($credentials)) {
-                    dd('you are logged in');
+                    // dd('you are logged in');
+                    return redirect()->route('admin_index')->with('success','User is Logged in Successfully');
 
                 }else{
                     return redirect()->to('/login')->with('error','User email or password is wrong.');
@@ -91,7 +92,11 @@ class HomeController extends Controller
 
             }
         }
-
+         public function logout()
+         {
+            Auth::logout();
+            return redirect()->back()->with('success','Logged out successfully!');
+         }
 
 
 }
