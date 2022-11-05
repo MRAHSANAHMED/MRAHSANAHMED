@@ -16,12 +16,13 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     {{-- CATEGORY CREATE  --}}
-                    <form action="" method="POST" role="form">
+                    <form action="{{ route('category_store') }}" method="POST" role="form">
+                        @csrf
                         <h3>Insert Category</h3>
                         <div class="form-group">
                             <label for="">Name</label>
                             <input type="text" class="form-control" id="" placeholder="Category Name"
-                                name="category_name">
+                                name="cat_title">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

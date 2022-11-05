@@ -25,6 +25,7 @@ Route::get('/admin',[AdminController::class, 'index'])->name('admin_index');
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin',[AdminController::class, 'index'])->name('admin_index');
     Route::get('/admin/categories',[CategoryController::class, 'index'])->name('category_index');
+    Route::post('/admin/categories/store',[CategoryController::class, 'store'])->name('category_store');
 
 });
 
