@@ -47,7 +47,15 @@
                                         <td>{{ $singleCategory->cat_id }}</td>
                                         <td>{{ $singleCategory->cat_title }}</td>
                                         <td><a class="btn btn-primary">Edit</a></td>
-                                        <td><a class="btn btn-danger">Delete</a></td>
+
+                                        <td>
+                                            <form action="{{ route('category_delete',['category_id' => $singleCategory->cat_id]) }}"
+                                                method="POST" role="form">
+                                                @csrf
+                                                @method('DELETE')
+                                            <button class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @else
