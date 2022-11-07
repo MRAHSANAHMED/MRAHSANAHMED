@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 //Frontend Routes
@@ -23,12 +24,18 @@ Route::get('/logout',[HomeController::class, 'logout'])->name("logout");
 Route::get('/admin',[AdminController::class, 'index'])->name('admin_index');
 
 Route::group(['middilware'=>['auth'], 'prefix' =>'admin'], function() {
+
+    // admin dashboard
     Route::get('/',[AdminController::class, 'index'])->name('admin_index');
-    Route::get('/categories',[CategoryController::class, 'index'])->name('category_index');
-    Route::post('/categories/store',[CategoryController::class, 'store'])->name('category_store');
-    Route::delete('/categories/delete/{category_id}',[CategoryController::class, 'category_delete'])->name('category_delete');
-    Route::get('/category/edit/{category_id}',[CategoryController::class , 'category_edit'])->name('category_edit');
+
+    //admin categories
+    Route::get('categories',[CategoryController::class, 'index'])->name('category_index');
+    Route::post('categories/store',[CategoryController::class, 'store'])->name('category_store');
+    Route::delete('categories/delete/{category_id}',[CategoryController::class, 'category_delete'])->name('category_delete');
+    Route::get('category/edit/{category_id}',[CategoryController::class , 'category_edit'])->name('category_edit');
     Route::put('category/update/{category_id}',[CategoryController::class, 'category_update'])->name('category_update');
+// admin posts
+    Route::get('posts',[PostController::class, 'index'])->name('post_index');
 });
 
 

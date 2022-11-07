@@ -11,10 +11,16 @@ class Post extends Model
     use HasFactory;
     protected $table = 'posts';
     protected $primaryKey = 'post_id';
+    protected $guarded = [''];
+    public $timestamps = false;
 
     public function category()
     {
         return $this->belongsTo(Category::class,'post_category_id', 'cat_id');
+    }
+    public function getPostImageAttribute($value)
+    {
+        return asset($value);
     }
 
 }

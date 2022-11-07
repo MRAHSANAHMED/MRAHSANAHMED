@@ -65,7 +65,7 @@
                         <a href="{{ route('category_index') }}"><i class="fa fa-fw fa-cubes"></i> Categories</a>
                     </li>
                     <li>
-                        <a href="{{ route('category_index') }}"><i class="fa fa-fw fa-cubes"></i> Posts</a>
+                        <a href="{{ route('post_index') }}"><i class="fa fa-fw fa-cubes"></i> Posts</a>
                     </li>
 
                 </ul>
