@@ -40,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Blog Admin Panel</a>
+                <a class="navbar-brand" href="{{ route('home') }}">Blog Admin Panel</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -63,6 +63,9 @@
                     </li>
                     <li>
                         <a href="{{ route('category_index') }}"><i class="fa fa-fw fa-cubes"></i> Categories</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('category_index') }}"><i class="fa fa-fw fa-cubes"></i> Posts</a>
                     </li>
 
                 </ul>

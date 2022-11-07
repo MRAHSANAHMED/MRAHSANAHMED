@@ -15,8 +15,22 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    {{-- CATEGORY CREATE  --}}
-                    <form action="{{ route('category_store') }}" method="POST" role="form">
+                    @if ($category_edit)
+                    {{-- CATEGORY EDIT --}}
+                    <form action="{{ route('category_update' ,['category_id' => $category_edit->cat_id]) }}" method="POST" role="form">
+                        @csrf
+                        @method('PUT')
+                        <h3>Edit Category</h3>
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" id="" placeholder="Category Name"
+                                name="cat_title" value="{{ $category_edit->cat_title }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    @else
+                    {{-- Create Category --}}
+                            <form action="{{ route('category_store') }}" method="POST" role="form">
                         @csrf
                         <h3>Insert Category</h3>
                         <div class="form-group">
@@ -26,6 +40,9 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    @endif
+                    {{-- CATEGORY CREATE  --}}
+
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <table class="table table-hover">
@@ -46,7 +63,7 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $singleCategory->cat_id }}</td>
                                         <td>{{ $singleCategory->cat_title }}</td>
-                                        <td><a class="btn btn-primary">Edit</a></td>
+                                        <td><a class="btn btn-primary" href="{{ route('category_edit',['category_id'=> $singleCategory->cat_id]) }}">Edit</a></td>
 
                                         <td>
                                             <form action="{{ route('category_delete',['category_id' => $singleCategory->cat_id]) }}"

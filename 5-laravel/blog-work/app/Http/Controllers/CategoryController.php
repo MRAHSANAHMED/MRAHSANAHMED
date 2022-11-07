@@ -10,7 +10,8 @@ class CategoryController extends Controller
    public function index(Request $request)
    {
     $categories = Category::get();
-    return view('admin.categories', compact('categories'));
+    $category_edit = null;
+    return view('admin.categories', compact('categories','category_edit'));
    }
 
 
@@ -32,6 +33,23 @@ class CategoryController extends Controller
     $category->delete();
     return redirect()->route('category_index')->with('error',"deleted");
    }
+   public function category_edit(Request $request, $category_id)
+    {
+        $category_edit = Category::findOrFail($category_id);
 
+        return view('admin.categories', compact('category_edit'));
+    }
+   public function category_update(Request $request,$category_id)
+   {
+    $request->validate([
+        'cat_title'=> 'required',
+    ]);
+    $category= Category::findOrFail($category_id);
+    $category->update([
+        'cat_title' =>$request->cat_title,
+    ]);
+    return redirect()->route('category_index')->with('success',"updated");
+
+   }
 
 }
