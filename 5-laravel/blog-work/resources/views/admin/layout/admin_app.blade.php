@@ -20,6 +20,10 @@
     <!-- Custom Fonts -->
     <link href="{{ asset('theme/backend/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   //  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
    // <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
@@ -83,6 +87,27 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('theme/backend/js/bootstrap.min.js') }}"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error("{{ $error }}")
+                @endforeach
+            @endif
+
+            @if (session('success'))
+                toastr.success("{{ session('success') }}")
+            @endif
+
+            @if (session('error'))
+                toastr.error("{{ session('error') }}")
+            @endif
+        </script>
+
 
 </body>
 

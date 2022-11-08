@@ -36,6 +36,9 @@ Route::group(['middilware'=>['auth'], 'prefix' =>'admin'], function() {
     Route::put('category/update/{category_id}',[CategoryController::class, 'category_update'])->name('category_update');
 // admin posts
     Route::get('posts',[PostController::class, 'index'])->name('post_index');
+    Route::delete('posts/delete/{post_id}',[PostController::class, 'delete'])->name('post_delete');
+    Route::get('posts/create',[PostController::class, 'create'])->name('post_create');
+    Route::post('posts/store',[PostController::class, 'store'])->name('post_store');
 });
 
 
