@@ -56,9 +56,52 @@ class PostController extends Controller
         'post_image' =>$imageName,
     ]);
     return redirect()->route('post_index')->with('success','post created');
+
   }
 
+  public function post_edit(Request $request, $post_id)
+    {
+        $post = Post::find($post_id);
+        return view('admin.posts.edit', compact('post'));
+    }
 
+    public function post_update(Request $request, $post_id)
+    {
+        $request->validate([
+            'post_title' => 'required',
+            'post_category_id' => 'required',
+            'post_author' => 'required',
+            'post_date' => 'required',
+            'post_status' => 'required',
+            'post_content' => 'required',
+        ]);
+
+        $post = Post::find($post_id);
+
+        $imageUrl = $post->post_image;
+
+        if ($request->post_image) {
+            if ($post->post_image) {
+                unlink($post->post_image);
+            }
+            $imageUrl = 'post_images/' . time() . '.' . $request->post_image->extension();
+            $request->post_image->move(public_path('post_images'), $imageUrl);
+        }
+
+        $post->update([
+            'post_title' => $request->post_title,
+            'post_category_id' => $request->post_category_id,
+            'slug' => Str::slug($request->post_title),
+            'post_author' => $request->post_author,
+            'post_date' => $request->post_date,
+            'post_status' => $request->post_status,
+            'post_tags' => $request->post_tags,
+            'post_content' => $request->post_content,
+            'post_image' => $imageUrl,
+        ]);
+
+        return redirect()->route('post_index')->with('success', 'Post Updated Successfully!');
+    }
 
 
 

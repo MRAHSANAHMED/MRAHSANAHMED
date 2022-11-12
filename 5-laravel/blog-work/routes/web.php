@@ -39,6 +39,9 @@ Route::group(['middilware'=>['auth'], 'prefix' =>'admin'], function() {
     Route::delete('posts/delete/{post_id}',[PostController::class, 'delete'])->name('post_delete');
     Route::get('posts/create',[PostController::class, 'create'])->name('post_create');
     Route::post('posts/store',[PostController::class, 'store'])->name('post_store');
+    Route::get('/posts/edit/{post_id}', [PostController::class, 'post_edit'])->name('post_edit');
+
+    Route::put('posts/update/{post_id}',[PostController::class, 'post_update'])->name('post_update');
 });
 
 

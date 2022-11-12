@@ -37,6 +37,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $singlePost->post_id }}</td>
                                     <td>{{ $singlePost->post_title }}</td>
+                                    <td>{{ $singlePost->category ? $singlePost->category->cat_title : null }}</td>
                                     <td>{{ $singlePost->post_author }}</td>
                                     <td>{{ $singlePost->post_date }}</td>
                                     <td>@if ($singlePost->post_image)
@@ -49,7 +50,7 @@
                                     <td>{{ $singlePost->post_status }}</td>
 
                                     <td>
-                                        <button class="btn btn-primary">Edit</button>
+                                        <a class="btn btn-primary"  href="{{ route('post_edit',['post_id' => $singlePost->post_id ]) }}">Edit</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('post_delete',['post_id'=>$singlePost->post_id]) }}"
