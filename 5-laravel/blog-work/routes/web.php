@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //Frontend Routes
@@ -29,19 +31,44 @@ Route::group(['middilware'=>['auth'], 'prefix' =>'admin'], function() {
     Route::get('/',[AdminController::class, 'index'])->name('admin_index');
 
     //admin categories
-    Route::get('categories',[CategoryController::class, 'index'])->name('category_index');
-    Route::post('categories/store',[CategoryController::class, 'store'])->name('category_store');
-    Route::delete('categories/delete/{category_id}',[CategoryController::class, 'category_delete'])->name('category_delete');
-    Route::get('category/edit/{category_id}',[CategoryController::class , 'category_edit'])->name('category_edit');
-    Route::put('category/update/{category_id}',[CategoryController::class, 'category_update'])->name('category_update');
+    Route::group(['prefix' =>'categories'], function() {
+    Route::get('/',[CategoryController::class, 'index'])->name('category_index');
+    Route::post('/store',[CategoryController::class, 'store'])->name('category_store');
+    Route::delete('/delete/{category_id}',[CategoryController::class, 'category_delete'])->name('category_delete');
+    Route::get('/edit/{category_id}',[CategoryController::class , 'category_edit'])->name('category_edit');
+    Route::put('/update/{category_id}',[CategoryController::class, 'category_update'])->name('category_update');
+    });
 // admin posts
-    Route::get('posts',[PostController::class, 'index'])->name('post_index');
-    Route::delete('posts/delete/{post_id}',[PostController::class, 'delete'])->name('post_delete');
-    Route::get('posts/create',[PostController::class, 'create'])->name('post_create');
-    Route::post('posts/store',[PostController::class, 'store'])->name('post_store');
-    Route::get('/posts/edit/{post_id}', [PostController::class, 'post_edit'])->name('post_edit');
-
-    Route::put('posts/update/{post_id}',[PostController::class, 'post_update'])->name('post_update');
+Route::group(['prefix' =>'posts'], function() {
+    Route::get('/',[PostController::class, 'index'])->name('post_index');
+    Route::delete('/delete/{post_id}',[PostController::class, 'delete'])->name('post_delete');
+    Route::get('/create',[PostController::class, 'create'])->name('post_create');
+    Route::post('/store',[PostController::class, 'store'])->name('post_store');
+    Route::get('/edit/{post_id}', [PostController::class, 'post_edit'])->name('post_edit');
+    Route::put('/update/{post_id}',[PostController::class, 'post_update'])->name('post_update');
 });
+
+// users
+Route::group(['prefix' =>'users'], function() {
+
+    Route::get('/',[UserController::class, 'index'])->name('user_index');
+    Route::delete('/delete/{user_id}',[UserController::class, 'delete'])->name('user_delete');
+    Route::get('/create',[UserController::class, 'user_create'])->name('user_create');
+    Route::post('/store',[UserController::class, 'user_store'])->name('user_store');
+    Route::get('/edit/{user_id}', [UserController::class, 'edit'])->name('user_edit');
+    Route::put('/update/{user_id}',[UserController::class, 'update'])->name('user_update');
+});
+// admin comments route
+Route::group(['prefix' =>'comments'], function() {
+
+ Route::get('/',[CommentController::class, 'index'])->name('comment_index');
+
+});
+
+
+
+
+// closing middileware
+}); 
 
 

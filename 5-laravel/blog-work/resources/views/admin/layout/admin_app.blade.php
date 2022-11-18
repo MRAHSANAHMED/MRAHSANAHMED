@@ -66,10 +66,16 @@
                         <a href="{{ route('admin_index') }}"><i class="fa fa-fw fa-database"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{ route('category_index') }}"><i class="fa fa-fw fa-cubes"></i> Categories</a>
+                        <a href="{{ route('category_index') }}"><i class="fa fa-fw fa-list-ol"></i> Categories</a>
                     </li>
                     <li>
-                        <a href="{{ route('post_index') }}"><i class="fa fa-fw fa-cubes"></i> Posts</a>
+                        <a href="{{ route('post_index') }}"><i class="fa fa-fw fa-th"></i> Posts</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user_index') }}"><i class="fa fa-fw fa-users"></i> Users</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('comment_index') }}"><i class="fa fa-fw fas fa-comments"></i> Comments</a>
                     </li>
 
                 </ul>

@@ -42,7 +42,7 @@
                                     <td>{{ $singlePost->post_date }}</td>
                                     <td>@if ($singlePost->post_image)
 
-                                            <img src="{{ $singlePost->post_image }}" width="100PX" />
+                                            <img src="{{ asset($singlePost->post_image) }}" width="100PX" />
                                         @else
                                             <h5>No Image Found!</h5>
                                         @endif

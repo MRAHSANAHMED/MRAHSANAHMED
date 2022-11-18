@@ -25,7 +25,8 @@
                                 <option value="">Select Category</option>
                                 @if (count($categories) > 0)
                                 @foreach ($categories as $key =>$singleCategories )
-                                <option value="{{ $singleCategories->cat_id }}">{{ $singleCategories->cat_title }}
+                                <option value="{{ $singleCategories->cat_id }}" @if($post->post_category_id == $singleCategories->cat_id) selected @endif>
+                                    {{ $singleCategories->cat_title }}
                                 </option>
                                 @endforeach
 
@@ -72,15 +73,15 @@
                             <label>Post Status</label>
                             <select name="post_status" id="" class="form-control">
                                 <option value="">Post Status</option>
-                                <option value="publish" @if($post->post == 'publish') selected @endif>Publish</option>
-                                <option value="draft" @if($post->post == 'draft') selected @endif>Draft</option>
+                                <option value="publish" @if($post->post_status == 'publish') selected @endif>Publish</option>
+                                <option value="draft" @if($post->post_status == 'draft') selected @endif>Draft</option>
                             </select>
                         </div>
 
 
                         <div class="form-group">
                             <label for="">Post Content</label>
-                            <textarea name="post_content" id="" cols="30" rows="0" class="form-control">value="{{ $post->post_content }}"</textarea>
+                            <textarea name="post_content" id="" cols="30" rows="0" class="form-control">{{ $post->post_content }}</textarea>
                         </div>
 
 

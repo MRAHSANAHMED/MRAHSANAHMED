@@ -42,7 +42,8 @@ class PostController extends Controller
 
     $imageName = null;
     if ($request->post_image){
-        $imageName = 'post_imageS/' . time() . '.' . $request->post_image->extension();
+        $imageName = 'post_images/' . time() . '.' . $request->post_image->extension();
+        dd($imageName);
         $request->post_image->move(public_path('post_images'),$imageName);
     }
     Post::create([
