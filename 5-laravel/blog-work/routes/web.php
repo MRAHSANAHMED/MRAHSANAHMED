@@ -62,6 +62,11 @@ Route::group(['prefix' =>'users'], function() {
 Route::group(['prefix' =>'comments'], function() {
 
  Route::get('/',[CommentController::class, 'index'])->name('comment_index');
+ Route::post('/approve/{comment_id}',[CommentController::class, 'comment_approve'])->name('comment_approve');
+ Route::post('/unapprove/{comment_id}',[CommentController::class, 'comment_unapprove'])->name('comment_unapprove');
+ Route::delete('/delete/{comment_id}',[CommentController::class, 'comment_delete'])->name('comment_delete');
+ 
+//  Route::post('/store/post/{comment_post_id}',[CommentController::class 'comment_store'])->name('comment_store');
 
 });
 

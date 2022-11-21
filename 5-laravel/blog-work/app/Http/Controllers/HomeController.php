@@ -21,7 +21,7 @@ class HomeController extends Controller
         // dd($post_id);
 
         $post = Post::with('category')->find($post_id);
-        return view('post_detail',['posts'=> $post,]);
+        return view('post_detail',['post'=> $post,]);
 
     }
     public function category_detail($category_id)

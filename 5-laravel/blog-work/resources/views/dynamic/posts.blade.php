@@ -7,7 +7,7 @@
         <a href="{{ route('post_detail', ['post_id' => $singlePost->post_id] ) }}">{{ $singlePost->post_title }}</a>
     </h2>
     <p class="lead">
-        {{-- category: <a href="index.php">{{ $singlePost->category->cat_title }}</a> --}}
+        category: <a href="index.php">{{ $singlePost->category ? $singlePost->category->cat_title : null }}</a>
     </p>
 
     <p class="lead">

@@ -36,9 +36,26 @@
                                 <td>{{ $singleComment->post ? $singleComment->post->post_title : null }}</td>
                                 <td>{{ $singleComment->comment_status }}</td>
                                 <td>{{ $singleComment->comment_date }}</td>
-                                <td><button class="btn btn-primary">Approve</button></td>
-                                <td><button class="btn btn-warning">Un Approve</button></td>
-                                <td><button class="btn btn-danger">Delete</button></td>
+                                <td>
+                                    <form method="POST" action="{{ route('comment_approve',['comment_id'=>$singleComment->comment_id]) }}">
+                                        @csrf
+                                        <button class="btn btn-primary">Approve</button>
+                                    </form>
+                                    
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{ route('comment_unapprove',['comment_id'=>$singleComment->comment_id]) }}">
+                                        @csrf
+                                        <button class="btn btn-warning">Un Approve</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{ route('comment_delete',['comment_id'=>$singleComment->comment_id]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                    <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
