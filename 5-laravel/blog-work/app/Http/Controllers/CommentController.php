@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use DateTime;
 
 use App\Models\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -11,6 +13,8 @@ class CommentController extends Controller
     {
         $comments = Comments::with('user','post')->get();
         // dd($comments->toArray());
+        
+
         return view('admin.comments.index' , compact('comments'));
 
     }
@@ -42,6 +46,24 @@ class CommentController extends Controller
         $comment->delete();
         return redirect()->route('comment_index')->with('success','Comment id delete Successfully!');
     }
+
+        public function comment_store(Request $request,$post_id)
+        {
+            $data = $request->validate([
+                'comment_content' => 'required'
+            ]);
+            // dd($data);
+            $user_id = Auth::id();
+            // dd($user_id);
+            Comments::create([
+                'user_id' => $user_id,
+                'post_id' => $post_id,
+                'comment_content' => $request->comment_content,
+                'comment_status' => 'unapproved',
+                
+             ]);
+             return redirect()->back()->with('success','comment added');
+        }
 
 
 

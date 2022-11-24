@@ -23,7 +23,7 @@
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->post_date }}</p>
+                <p><span class="glyphicon glyphicon-tasks"></span> Posted on {{ $post->post_date }}</p>
 
                 <hr>
 
@@ -45,35 +45,89 @@
 
                 <!-- Blog Comments -->
 
+
+                @if (Auth::user()->isUserLikeThisPost($post->post_id))
+                <div class="row append-like-btn">
+                    <p class="pull-right">
+                        
+                        <a
+                        class="like"
+                        href="{{ route('post_unlike', ['post_id' => $post->post_id]) }}">
+                        <span class="glyphicon glyphicon-thumbs-down"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        >
+                        </span>
+                            UnLike
+                        </a>
+                    </p>
+                </div>
+                @else
+                <div class="row append-like-btn">
+                    <p class="pull-right">
+                        
+
+                        <a
+                        class="like"
+                        href="{{ route('post_like', ['post_id' => $post->post_id]) }}">
+
+                        <span class="glyphicon glyphicon-thumbs-up"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="I liked this before"
+                        >
+                        </span>
+                            Like
+                        </a>
+                    </p>
+                </div>
+
+                @endif
+                   
+                  
+               
+
+               
+
                 <!-- Comments Form -->
+                @if (Auth::check())
+
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <form role="form" method="POST" action="{{ route('comment_store',['comment_post_id' => $post->post_id ]) }}">
+                        @csrf
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" name="comment_content"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
                 <hr>
-
+                @endif
                 <!-- Posted Comments -->
 
                 <!-- Comment -->
+                @if (count($post->comments) > 0)
+                    
+                @foreach ($post->comments as $singleComment)
+                @if ($singleComment->comment_content)
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object" src="" alt="">
+                        <img class="media-object" src="https://place-hold.it/64x64/109/fff" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
+                        <h4 class="media-heading">{{ $singleComment->user->username }}
+                            <small>{{ $singleComment->comment_date }}</small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                        vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        {{ $singleComment->comment_content }}
                     </div>
                 </div>
+                @endif
+                    
+                @endforeach
+                @endif
+               
 
 
             </div>

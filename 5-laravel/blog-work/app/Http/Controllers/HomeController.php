@@ -98,5 +98,22 @@ class HomeController extends Controller
             return redirect()->back()->with('success','Logged out successfully!');
          }
 
+         public function post_like(Request $request,$post_id)
+    {
+        $post = Post::find($post_id);
+        $user_id = auth()->id();
+        $post->users()->attach($user_id);
+
+        return back()->with('success',"you liked this post $post->post_title");
+    }
+    public function post_unlike(Request $request,$post_id)
+    {
+        $post = Post::find($post_id);
+        $user_id = auth()->id();
+        $post->users()->detach($user_id);
+
+        return back()->with('success',"you unliked this post $post->post_title");
+    }
+
 
 }

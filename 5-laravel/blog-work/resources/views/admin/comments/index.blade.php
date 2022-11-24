@@ -21,8 +21,10 @@
                                 <th>No</th>
                                 <th>User</th>
                                 <th>Post</th>
+                                <th>Content</th>
                                 <th>Status</th>
-                                <th>Created At</th>
+                                <th>Created date</th>
+                                <th>Updated date</th>
                                 <th>Approve</th>
                                 <th>Un Approve</th>
                                 <th>Delete</th>
@@ -33,27 +35,29 @@
                             <tr>
                                 <td>{{ $singleComment->comment_id }}</td>
                                 <td>{{ $singleComment->user ? $singleComment->user->user_firstname : null }}</td>
-                                <td>{{ $singleComment->post ? $singleComment->post->post_title : null }}</td>
-                                <td>{{ $singleComment->comment_status }}</td>
-                                <td>{{ $singleComment->comment_date }}</td>
+                                <td><a href="{{ $singleComment->post ? route('post_detail',['post_id'=> $singleComment->post->post_id]) : "#" }}" target="_blank"> {{ $singleComment->post ? $singleComment->post->post_title : null }} </a></td>
+                                <td>{{ $singleComment->comment_content }}</td>
+                                <td><span style="font-weight:700;color: {{ $singleComment->comment_status == 'approved' ? 'green' : 'red' }}">{{ ucfirst($singleComment->comment_status) }}</span></td>
+                                <td>{{ date('d-m-Y', strtotime( $singleComment->created_at)) }}</td>
+                                
+                                <td>{{ date('d-m-Y', strtotime( $singleComment->updated_at)) }}</td>
                                 <td>
-                                    <form method="POST" action="{{ route('comment_approve',['comment_id'=>$singleComment->comment_id]) }}">
+                                    <form method="POST" action="{{ route('comment_approve',['comment_id' => $singleComment->comment_id]) }}">
                                         @csrf
-                                        <button class="btn btn-primary">Approve</button>
-                                    </form>
-                                    
-                                </td>
-                                <td>
-                                    <form method="POST" action="{{ route('comment_unapprove',['comment_id'=>$singleComment->comment_id]) }}">
-                                        @csrf
-                                        <button class="btn btn-warning">Un Approve</button>
+                                        <button type="submit" class="btn btn-primary">Approve</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form method="POST" action="{{ route('comment_delete',['comment_id'=>$singleComment->comment_id]) }}">
+                                    <form method="POST" action="{{ route('comment_unapprove',['comment_id' => $singleComment->comment_id]) }}">
                                         @csrf
-                                        @method('DELETE')
-                                    <button class="btn btn-danger">Delete</button>
+                                    <button class="btn btn-warning" type="submit">Un Approve</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" action="{{ route('comment_delete',['comment_id' => $singleComment->comment_id ]) }}">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
                             </tr>
