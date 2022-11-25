@@ -404,7 +404,7 @@
                                                     class="img-circle"> <span
                                                     class="profile-status busy pull-right"></span> </div>
                                             <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you
+                                                <h5>Sonu Nigam</h5> <span class="mail-desc">Ive sung a song! See you
                                                     at</span> <span class="time">9:10 AM</span>
                                             </div>
                                         </a>
@@ -444,7 +444,7 @@
                                                     class="img-circle"> <span
                                                     class="profile-status busy pull-right"></span> </div>
                                             <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you
+                                                <h5>Sonu Nigam</h5> <span class="mail-desc">Ive sung a song! See you
                                                     at</span> <span class="time">9:10 AM</span>
                                             </div>
                                         </a>

@@ -23,7 +23,7 @@ File: scss
  *	14. Component
  */
 @import url({{ asset('asset/asset-admin/icons/font-awesome/css/font-awesome.min.css') }});
-@import url(/asset/asset-admin/icons/themify-icons/themify-icons.css);
+@import url({{ asset('asset/asset-admin/icons/themify-icons/themify-icons.css') }});
 @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700");
 .skin-default-dark {
   /*Theme Colors*/ }
