@@ -14,16 +14,16 @@
     <title>Elegant Admin Lite Template by WrapPixel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/elegant-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="asset/asset-admin/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../asset/asset-admin/images/favicon.png">
     <!-- This page CSS -->
     <!-- chartist CSS -->
-    <link href="asset/asset-admin/node_modules/morrisjs/morris.css" rel="stylesheet">
+    <link href="../asset/asset-admin/node_modules/morrisjs/morris.css" rel="stylesheet">
     <!--c3 plugins CSS -->
-    <link href="asset/asset-admin/node_modules/c3-master/c3.min.css" rel="stylesheet">
+    <link href="../asset/asset-admin/node_modules/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="asset/asset-admin/css/style.css" rel="stylesheet">
+    <link href="../asset/asset-admin/dist/css/style.css" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
-    <link href="asset/asset-admin/css/pages/dashboard1.css" rel="stylesheet">
+    <link href="../asset/asset-admin/dist/css/pages/dashboard1.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -32,13 +32,10 @@
 <![endif]-->
 </head>
 
-<body class="skin-default-dark fixed-layout">
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
 
 
-@yield('content')
+@yield('center-content')
+
 
 
 <footer class="footer">
@@ -54,30 +51,30 @@
 <!-- ============================================================== -->
 <!-- All Jquery -->
 <!-- ============================================================== -->
-<script src="asset/asset-admin/node_modules/jquery/jquery-3.2.1.min.js"></script>
+<script src="../asset/asset-admin/node_modules/jquery/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap popper Core JavaScript -->
-<script src="asset/asset-admin/node_modules/popper/popper.min.js"></script>
-<script src="asset/asset-admin/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../asset/asset-admin/node_modules/popper/popper.min.js"></script>
+<script src="../asset/asset-admin/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- slimscrollbar scrollbar JavaScript -->
-<script src="asset/asset-admin/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="../asset/asset-admin/dist/js/perfect-scrollbar.jquery.min.js"></script>
 <!--Wave Effects -->
-<script src="asset/asset-admin/js/waves.js"></script>
+<script src="../asset/asset-admin/dist/js/waves.js"></script>
 <!--Menu sidebar -->
-<script src="asset/asset-admin/js/sidebarmenu.js"></script>
+<script src="../asset/asset-admin/dist/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="asset/asset-admin/js/custom.min.js"></script>
+<script src="../asset/asset-admin/dist/js/custom.min.js"></script>
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->
 <!--morris JavaScript -->
-<script src="asset/asset-admin/node_modules/raphael/raphael-min.js"></script>
-<script src="asset/asset-admin/node_modules/morrisjs/morris.min.js"></script>
-<script src="asset/asset-admin/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
+<script src="../asset/asset-admin/node_modules/raphael/raphael-min.js"></script>
+<script src="../asset/asset-admin/node_modules/morrisjs/morris.min.js"></script>
+<script src="../asset/asset-admin/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
 <!--c3 JavaScript -->
-<script src="asset/asset-admin/node_modules/d3/d3.min.js"></script>
-<script src="asset/asset-admin/node_modules/c3-master/c3.min.js"></script>
+<script src="../asset/asset-admin/node_modules/d3/d3.min.js"></script>
+<script src="../asset/asset-admin/node_modules/c3-master/c3.min.js"></script>
 <!-- Chart JS -->
-<script src="asset/asset-admin/js/dashboard1.js"></script>
+<script src="../asset/asset-admin/dist/js/dashboard1.js"></script>
 </body>
 
 </html>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\profiles;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $profile = profiles::get();
+        $profile = Profile::get();
         return view('welcome',['profiles' => $profile,]);
     }
 
