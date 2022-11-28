@@ -64,11 +64,56 @@ class ProfileController extends Controller
         return redirect()->route('profile_index');
 
     }
-//     public function update()
-//     {
-//         $profile = Profile::orderBy('id','desc')->get();
-//         return view('admin.includes.profile.index', compact('profile'));
-//     }
+    public function edit(Request $request,$id)
+    {
+        $profile = Profile::find($id);
+        return view('admin.includes.profile.edit', compact('profile'));
+    }
+     public function update(Request $request,$id)
+    {
+        // dd($request->all());
+
+        $request->validate([
+    'name' => 'required',
+    'contact' => 'required',
+    'email' => 'required|email',
+    'skill' => 'required',
+    'skill2' => 'required',
+    'role' => 'required',
+    'content' => 'required',
+        ]);
+
+        $profile = Profile::find($id);
+
+        $imageName= $profile->image;
+            if ($request->image){
+                if($profile->image){
+
+                unlink($profile->image);
+            }
+            $imageName= 'profile-images/' . time() . '.' . $request->image->extension();
+            $request->image->move(public_path('profile-images'),$imageName);
+        }
+        $newpassword = $profile->password;
+        if($request->password){
+            $newpassword = Hash::make($request->password);
+        
+        }
+        $profile->update([
+            'name' => $request->name,
+            'password' => $newpassword,
+            'contact' => $request->contact,
+            'email' => $request->email,
+            'image' => $imageName,
+            'skill' => $request->skill,
+            'skill2' => $request->skill2,
+            'role' => $request->role,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('profile_index');
+
+    }
 
 
 

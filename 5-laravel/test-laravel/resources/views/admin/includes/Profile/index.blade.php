@@ -74,8 +74,8 @@
                                                         
                                                     @endif
                                                 </td>
-                                                <td><button class="label label-warning" style="border:transparent;"
-                                                        type="submit" herf="">Edit</button></td>
+                                                <td><a class="label label-warning" style="border:transparent;"
+                                                         href="{{ route('profile_edit', ['id' => $singleProfile->id]) }}">Edit</a></td>
 
 
                                                 <form method="Post"

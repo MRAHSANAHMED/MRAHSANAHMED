@@ -39,6 +39,8 @@ Route::group(['prefix' =>'admin'], function() {
         Route::delete('/delete/{id}',[ProfileController::class,'delete'])->name('profile_delete');
         Route::get('/create',[ProfileController::class, 'create'])->name('profile_create');
         Route::post('/store',[ProfileController::class, 'store'])->name('profile_store');
+        Route::get('/edit/{id}',[ProfileController::class,'edit'])->name('profile_edit');
+        Route::put('/update/{id}',[ProfileController::class,'update'])->name('profile_update');
 
 //profile prefix
 });

@@ -18,7 +18,7 @@
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item active">Profile</li>
                     </ol>
-                    <button type="button" class="btn btn-success d-none d-lg-block m-l-15">BACK</button>
+                    <a href="{{ route('profile_index') }}" class="btn btn-success d-none d-lg-block m-l-15">BACK</a>
                 </div>
             </div>
         </div>
@@ -55,38 +55,37 @@
                     </div>  --}}
             <!-- Column -->
             <!-- Column -->
-            <div class="col-lg-10 col-xlg-11 col-md-11">
-                <div class="card">
+            <div class="col-lg-12 col-md-12  ">
+                <div class="card ">
                     <!-- Tab panes -->  
-                    <div
-                        class="card-body d-flex justify-content-around">
+                    <div class="card-body d-flex justify-content-around">
 
-                    <form class="form-horizontal form-material" method="POST" action="{{ route('profile_store') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal form-material " method="POST" action="{{ route('profile_store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="col-lg-12 col-md-12">Full Name</label>
-                            <div class="col-md-12">
+                            <label class=" col-lg-8">Full Name</label>
+                            <div class="col-lg-8">
                                 <input type="text" placeholder="PROFILE NAME" class="form-control form-control-line"
                                     name="name">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-12">Password</label>
-                            <div class="col-md-12">
+                            <label class="col-lg-8">Password</label>
+                            <div class="col-lg-8">
                                 <input type="password" class="form-control" name="password" placeholder="password">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12">Contact No</label>
-                            <div class="col-md-12">
+                            <label class="col-lg-8">Contact No</label>
+                            <div class="col-lg-8">
                                 <input type="text" placeholder="CONTACT NUMBER" class="form-control form-control-line"
                                     name="contact">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="example-email" class="col-md-12">Email</label>
-                            <div class="col-md-12">
+                            <label for="example-email" class="col-lg-8">Email</label>
+                            <div class="col-lg-8">
                                 <input type="email" placeholder="EMAIL" class="form-control form-control-line"
                                     name="email" id="example-email">
                             </div>
@@ -100,6 +99,7 @@
                             <label class="col-sm-12">Select Country</label>
                             <div class="col-sm-12">
                                 <select class="form-control form-control-line" name="skill">
+                                    <option value="">Select Skill</option>
                                     @if (count($skills) > 0)
                                         @foreach ($skills as $key => $singleSkills)
                                             <option value="{{ $singleSkills->id }}">{{ $singleSkills->title }}</option>
@@ -113,6 +113,7 @@
                             <label class="col-sm-12">Select Country</label>
                             <div class="col-sm-12">
                                 <select class="form-control form-control-line" name="skill2">
+                                    <option value="">Select Skill</option>
                                     @if (count($skills2) > 0)
                                         @foreach ($skills2 as $key => $singleSkills2)
                                             <option value="{{ $singleSkills2->id }}">{{ $singleSkills2->title }}</option>
@@ -132,8 +133,8 @@
                         </div>
                     
                         <div class="form-group">
-                            <label class="col-md-12">Message</label>
-                            <div class="col-md-12">
+                            <label class="col-lg-8">Message</label>
+                            <div class="col-lg-8">
                                 <textarea rows="5" class="form-control form-control-line" name="content"></textarea>
                             </div>
                         </div>
