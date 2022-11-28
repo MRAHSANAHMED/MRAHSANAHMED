@@ -24,5 +24,52 @@ Route ::get('/',[HomeController::class, 'index'])->name('welcome');
 
 
 //ADmin side
-Route::get('/admin',[AdminController::class, 'index'])->name('admin_index');
-Route::get('/admin/profiles',[ProfileController::class, 'index'])->name('profiles');
+
+Route::group(['prefix' =>'admin'], function() {
+
+    Route::get('/',[AdminController::class, 'index'])->name('admin_index');
+
+
+
+
+
+    Route::group(['prefix' =>'Profile'], function() {
+
+        Route::get('/',[ProfileController::class, 'index'])->name('profile_index');
+        Route::delete('/delete/{id}',[ProfileController::class,'delete'])->name('profile_delete');
+        
+
+//profile prefix
+});
+
+
+
+
+
+//     Route::group(['prefix' =>'Services'], function() {
+
+//         Route::get('/',[ProfileController::class, 'index'])->name('profiles');
+
+// //profile prefix
+// });
+
+
+
+
+
+//   Route::group(['prefix' =>'profile'], function() {
+
+//     Route::get('/',[ProfileController::class, 'index'])->name('profiles');
+
+// //profile prefix
+// });
+
+
+
+
+
+
+
+
+//admin side perfix
+});
