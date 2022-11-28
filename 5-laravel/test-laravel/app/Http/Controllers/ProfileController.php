@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\Skill;
+use App\Models\Skill2;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -24,15 +27,43 @@ class ProfileController extends Controller
    
     public function create(Request $request)
     {
-        $profile = Profile::get();
-        return view('admin.profile.create',compact('skill','skill2'));
+        $skills = Skill::get();
+        $skills2 = Skill2::get();
+        return view('admin.includes.profile.create',compact('skills','skills2'));
 
     }
-     // public function store()
-    // {
-    //     $profile = Profile::orderBy('id','desc');
-    //     return view('admin.includes.profile.index', compact('profile'));
-    // }
+     public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'contact' => 'required',
+            'email' => 'required|email',
+            'image' => 'required',
+            'skill' => 'required',
+            'skill2' => 'required',
+            'role' => 'required',
+            'content' => 'required',
+        ]);
+        $imageName= Null;
+        if($request->image){
+            $imageName= 'profile-images/' . time() . '.' . $request->image->extension();
+            $request->image->move(public_path('profile-images'),$imageName);
+        }
+        Profile::create([
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+            'contact' => $request->contact,
+            'email' => $request->email,
+            'image' => $imageName,
+            'skill' => $request->skill,
+            'skill2' => $request->skill2,
+            'role' => $request->role,
+            'content' => $request->content,
+        ]);
+        return redirect()->route('profile_index');
+
+    }
 //     public function update()
 //     {
 //         $profile = Profile::orderBy('id','desc')->get();

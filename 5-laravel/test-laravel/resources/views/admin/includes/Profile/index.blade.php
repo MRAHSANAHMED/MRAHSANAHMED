@@ -16,7 +16,7 @@
                         <li class="breadcrumb-item"><a href="{{ route('admin_index') }}">Home</a></li>
                         <li class="breadcrumb-item active">PROFILES</li>
                     </ol>
-                    <a type="button" class="btn btn-success d-none d-lg-block m-l-15" href=""> Make Profile</a>
+                    <a type="button" class="btn btn-success d-none d-lg-block m-l-15" href="{{ route('profile_create') }}"> Make Profile</a>
                 </div>
             </div>
         </div>
