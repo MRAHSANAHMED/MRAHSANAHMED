@@ -13,7 +13,7 @@ class Skill2 extends Model
 
 
     protected $table = 'skills2';
-    protected $gaurded =[''];
+    protected $guarded =[''];
 
 
     public function profile()

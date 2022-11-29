@@ -10,7 +10,7 @@ class Skill extends Model
     use HasFactory;
 
     protected $table = 'skills';
-    protected $gaurded =[''];
+    protected $guarded =[''];
 
 
     public function profile()

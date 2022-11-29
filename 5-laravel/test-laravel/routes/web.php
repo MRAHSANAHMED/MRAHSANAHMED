@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\Skill2Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,13 +49,35 @@ Route::group(['prefix' =>'admin'], function() {
 
 
 
+    Route::group(['prefix' =>'firstskill'], function() {
+
+        Route::get('/',[SkillController::class, 'index'])->name('skill_index');
+        Route::post('/store',[SkillController::class, 'store'])->name('skill_store');
+        Route::delete('/delete/{id}',[SkillController::class, 'delete'])->name('skill_delete');
+        Route::get('/edit/{id}',[SkillController::class, 'skill_edit'])->name('skill_edit');
+        Route::put('/update/{id}',[SkillController::class, 'skill_update'])->name('skill_update');
+
+
+});
+
+Route::group(['prefix' =>'secondskill'], function() {
+
+    Route::get('/',[Skill2Controller::class, 'index'])->name('skill2_index');
+    Route::post('/store',[Skill2Controller::class, 'store'])->name('skill2_store');
+    Route::delete('/delete/{id}',[Skill2Controller::class, 'delete'])->name('skill2_delete');
+    Route::get('/edit/{id}',[Skill2Controller::class, 'skill2_edit'])->name('skill2_edit');
+    Route::put('/update/{id}',[Skill2Controller::class, 'skill2_update'])->name('skill2_update');
+
+
+});
+
 
 
 //     Route::group(['prefix' =>'Services'], function() {
 
 //         Route::get('/',[ProfileController::class, 'index'])->name('profiles');
 
-// //profile prefix
+// 
 // });
 
 

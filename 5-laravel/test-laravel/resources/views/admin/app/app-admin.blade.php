@@ -136,11 +136,11 @@
                                     class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
                         <li> <a class="waves-effect waves-dark" href="{{ route('profile_index') }}" aria-expanded="false"><i
                                     class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a></li>
-                        {{--  <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i
-                                    class="fa fa-table"></i><span class="hide-menu"></span>Tables</a></li>
-                        <li> <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false"><i
-                                    class="fa fa-smile-o"></i><span class="hide-menu"></span>Icon</a></li>
-                        <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i
+                        <li> <a class="waves-effect waves-dark" href="{{ route('skill_index') }}" aria-expanded="false"><i
+                                    class="fa fa-table"></i><span class="hide-menu"></span>First Skill</a></li>
+                       <li> <a class="waves-effect waves-dark" href="{{ route('skill2_index') }}" aria-expanded="false"><i
+                                    class="fa fa-smile-o"></i><span class="hide-menu"></span>Second Skill</a></li>
+                        {{-- <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i
                                     class="fa fa-globe"></i><span class="hide-menu"></span>Map</a></li>
                         <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i
                                     class="fa fa-bookmark-o"></i><span class="hide-menu"></span>Blank</a></li>
