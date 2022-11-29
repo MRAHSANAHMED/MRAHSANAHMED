@@ -133,13 +133,13 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li> <a class="waves-effect waves-dark" href="{{ route('admin_index') }}" aria-expanded="false"><i
-                                    class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
+                                    class="fa fa-tv"></i><span class="hide-menu">Dashboard</span></a></li>
                         <li> <a class="waves-effect waves-dark" href="{{ route('profile_index') }}" aria-expanded="false"><i
-                                    class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a></li>
+                                    class="fa fa-users"></i><span class="hide-menu">Profile</span></a></li>
                         <li> <a class="waves-effect waves-dark" href="{{ route('skill_index') }}" aria-expanded="false"><i
-                                    class="fa fa-table"></i><span class="hide-menu"></span>First Skill</a></li>
+                                    class="fa fa-sort-amount-asc"></i><span class="hide-menu"></span>First Skill</a></li>
                        <li> <a class="waves-effect waves-dark" href="{{ route('skill2_index') }}" aria-expanded="false"><i
-                                    class="fa fa-smile-o"></i><span class="hide-menu"></span>Second Skill</a></li>
+                                    class="fa fa-sort-amount-asc"></i><span class="hide-menu"></span>Second Skill</a></li>
                         {{-- <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i
                                     class="fa fa-globe"></i><span class="hide-menu"></span>Map</a></li>
                         <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i

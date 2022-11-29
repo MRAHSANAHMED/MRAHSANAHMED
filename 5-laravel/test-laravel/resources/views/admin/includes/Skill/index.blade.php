@@ -32,7 +32,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Skill Table</h4>
+                    <h4 class="card-title">First Skill Table</h4>
                     {{--  <h6 class="card-subtitle">Add class <code>.table</code></h6>  --}}
                     {{--  @dd($firstSkill)  --}}
                     <div class="table-responsive">
@@ -51,10 +51,10 @@
                                     @foreach ($firstSkill as $key =>$singleFirstSkill)
                                     <tr>
 
-                                        <td>{{ $key + 1}}</td>
+                                        <td style="font-size:20px;">{{ $key + 1}}</td>
                                         <td>{{ $singleFirstSkill->title }}</td>
                                         <td>@if($singleFirstSkill->image)
-                                            <img src="{{ asset($singleFirstSkill->image) }}" width="100px" alt="{{$singleFirstSkill->id }}"/>
+                                            <img src="{{ asset($singleFirstSkill->image) }}" width="80px" alt="{{$singleFirstSkill->id }}"/>
                                             {{--  @else
                                             <h4> no image</h4>  --}}
                                             @endif
