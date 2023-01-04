@@ -1,0 +1,131 @@
+first you need to install the node js
+
+https://nodejs.org/en/download/
+https://git-scm.com/downloads
+
+
+https://reactjs.org/docs/create-a-new-react-app.html
+
+
+npx create-react-app 3-first-react-app
+
+
+https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=MYewdgzgLgBApgGzgWzmWBeGAeAFgRgD4AJRBEGAdRACcEATbAegMICgZOu3RJZEUaKACYYWPPhjAEAQwgQAcjNQYARLjgz6ASzABzALTg4qmNvpqIcXvRk0AnqpJkK1OoxZEOXTmyZMrGxg7PQBXVHQzCBgoCiskYFgoDXgkCKSKGQAHLLR6GJSBdKA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.19.3&externalPlugins=&assumptions=%7B%7D
+
+//it is a compiler of modern javascript
+
+
+//like you will write this code
+
+
+function Hello() {
+        return <h1 class="han-bhai" id="working">Hello World!</h1>;
+      }
+
+
+//it will convert in to this code
+
+function Hello() {
+  return /*#__PURE__*/React.createElement("h1", {
+    class: "han-bhai",
+    id: "working"
+  }, "Hello World!");
+}
+
+
+//then go to the project directory
+
+then run this command npm run start
+
+
+
+React Files
+Get familiar with the files in your React project.
+
+package.json - The main file that defines the dependencies/packages and other settings for your project.
+node_modules - Source code for depencies. Do not touch.
+public - The directory where your static files are stored.
+src/index.js - Main entrypoint to bootstrap the app.
+src/App.js - The root component of the app.
+src/App.spec.js - Unit tests for the app.
+src/*.css - Styles for the app.
+
+
+https://webpack.js.org/
+
+webpack bundle your css and js files in one file
+
+
+JSX stands for javascript xml
+
+function Hello() {
+  return <h1 class="han-bhai" id="working">Hello World!</h1>;
+  //it is jsx
+}
+
+
+//it will convert in to this code
+
+function Hello() {
+  return /*#__PURE__*/React.createElement("h1", {
+    class: "han-bhai",
+    id: "working"
+  }, "Hello World!");
+}
+
+
+
+npm run start
+
+
+
+----------------------//EXTRA THING START
+
+npm install create-react-app -g
+//it will install the globally react in your computer
+//version 1.0
+
+create-react-app my-app
+
+npm uninstall create-react-app -g
+npm install create-react-app -g
+
+
+
+//it will install globally create-react-app updated version after 
+//installing the create-react-app it will delete it automatically
+
+----------------------//EXTRA THING END
+
+
+
+
+
+//Component Re Render Halat
+
+State (variables) Change
+Props (attributes) Change 
+Parent Component Re Render Ho
+
+//what is re render ?
+it will refresh the component
+
+
+
+function useState(initialValue) {
+
+
+  //logic
+
+  return [initialValue,setValue];
+}
+
+
+
+Passing Arguments
+const shoot = (a) => {
+    alert(a);
+  }
+
+//you need to call arrow function then you can pass the argument
+<button onClick={() => shoot("Goal!")}>Take the shot!</button>
