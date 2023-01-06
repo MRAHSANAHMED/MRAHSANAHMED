@@ -7,6 +7,9 @@ function Home() {
   const [author,setAuthor] = useState('');
   const [isbn,setIsbn] = useState('');
   const [books, setBooks] = useState([]);
+  const [isEdit, setIsEdit] = useState(null);
+
+  
 
 
   const titleInput = (event) => {
@@ -28,9 +31,40 @@ function Home() {
       alert("must fill");
       return;
     }
-    createRecord();
+    if(isEdit === null){
+
+      createRecord();
+    
+    }else{
+      updateRecord();
+    }
   };
 
+  const createRecord = () => {
+    const bookObject = { title, author, isbn };
+    setBooks([...books, bookObject]);
+
+    setTitle("");
+    setAuthor("");
+    setIsbn("");
+
+    
+  };
+  const updateRecord = () => {
+    const currentIndex = isEdit;
+    const tempBooks = [...books];
+    tempBooks[currentIndex].title = title;
+    tempBooks[currentIndex].author = author;
+    tempBooks[currentIndex].isbn = isbn;
+
+    setBooks(tempBooks);
+
+    setIsEdit(null);
+
+    setTitle("");
+    setAuthor("");
+    setIsbn("");
+  };
   const deleteBook = (event, index) =>{
     event.preventDefault();
     if (window.confirm("Sure")){
@@ -39,23 +73,20 @@ function Home() {
       setBooks(tempBooks);
     }
   };
+  const editBook = (event, index) => {
+    event.preventDefault();
+
+    const tempBook = [...books];
+    const currentBook = tempBook[index];
+
+    setTitle(currentBook.title);
+    setAuthor(currentBook.author);
+    setIsbn(currentBook.isbn);
+
+    setIsEdit(index);
+  };
+
   
-
-  const createRecord = () => {
-    const bookObject = {title, author , isbn};
-    setBooks([...books, bookObject]);
-
-    setTitle("");
-    setAuthor("");
-    setIsbn("");
-  }
-  const editRecord = () =>{
-    const currentIndex = isEdit;
-    const tempBooks = [...books];
-    tempBooks[currentIndex].title = title;
-    tempBooks[currentIndex].author = author;
-    tempBooks[currentIndex].isbn = isbn;
-  }
   return (
     <div className="container">
       <h1>Add Book</h1>
@@ -66,6 +97,7 @@ function Home() {
             type="text"
             id="title"
             className="u-full-width"
+            value={title}
             onChange= {titleInput}
             
           />
@@ -77,6 +109,7 @@ function Home() {
             type="text"
             id="author"
             className="u-full-width"
+            value={author}
             onChange={authorInput}
             
           />
@@ -89,7 +122,7 @@ function Home() {
             id="isbn"
             className="u-full-width"
             onChange={isbnInput}
-            
+            value={isbn}
           />
         </div>
         {/* <div>{isbn}</div> */}
@@ -101,8 +134,9 @@ function Home() {
       </form>
       <DisplayBooks 
             books = {books} 
-            deleteBook = {deleteBook} 
-            editBook ={editBook} />
+            deleteBook = {deleteBook}
+            editBook = {editBook} 
+            />
     </div>
   );
 }
