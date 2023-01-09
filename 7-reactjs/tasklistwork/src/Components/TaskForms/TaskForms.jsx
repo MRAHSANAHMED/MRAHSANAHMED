@@ -4,7 +4,7 @@ import TaskList from '../TaskList/TaskList';
 
 function TaskForm() {
   const [taskField, setTaskField] = useState();
-
+  const [task,setTask] =useState([]);
 
   const taskFieldHandler =(event) =>{
     event.preventDefault();
@@ -13,17 +13,22 @@ function TaskForm() {
 
   const formSubmitHandler =(event)=>{
     event.preventDefault();
-    if(!taskField){
-      Swal.fire({
-        icon:"error",
-        title:"TAKE TASK",
-      });
-      return;
-    }
+    // if(!taskField){
+    //   Swal.fire({
+    //     icon:"error",
+    //     title:"TAKE TASK",
+    //   });
+    //   return;
+    // }
     addnewTask();
 
     setTaskField("");
-  }
+  };
+  const addnewTask = () => {
+    // console.log("add task is working");
+    setTask([...task, taskField]);
+  };
+  
   return (
     <div className="container">
       <div className="row">
@@ -55,7 +60,7 @@ function TaskForm() {
             </div>
             {/* TASK LIST */}
             <TaskList
-              
+              task ={task}
             />
           </div>
         </div>

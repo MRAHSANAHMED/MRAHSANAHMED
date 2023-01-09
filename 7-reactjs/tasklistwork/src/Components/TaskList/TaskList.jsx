@@ -1,7 +1,7 @@
 import React from "react";
 
 function TaskList(props) {
-  const {} = props;
+  const { task } = props;
   return (
     <div className="card-action">
       <h5 id="task-title">Tasks</h5>
@@ -10,20 +10,27 @@ function TaskList(props) {
         <label>Filter Task</label>
       </div>
       <ul className="collection">
-        <li className="collection-item" style={{display:"flex"}}>
-          name
-          
-            <div style={{marginLeft:"auto"}}>
-            <button>
-              <span className="material-icons">edit</span>
-            </button>
+        {task.length > 0 ? (
+          task.map((singleTask, index) => {
+            return (
+              <li className="collection-item" key={index} style={{ display: "flex" }}>
+                {singleTask}
 
-            <button>
-            <span class="material-icons">delete</span>
-            </button>
-            </div>
-          
-        </li>
+                <div style={{ marginLeft: "auto" }}>
+                  <button>
+                    <span className="material-icons">edit</span>
+                  </button>
+
+                  <button>
+                    <span class="material-icons">delete</span>
+                  </button>
+                </div>
+              </li>
+            );
+          })
+        ) : (
+          <p className="collection-item">no task</p>
+        )}
       </ul>
       <a href="/" className="clear-tasks btn black">
         Clear Task
