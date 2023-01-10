@@ -1,7 +1,7 @@
 import React from "react";
 
 function TaskList(props) {
-  const { task } = props;
+  const { task, editTaskHandler ,deleteTaskHandler } = props;
   return (
     <div className="card-action">
       <h5 id="task-title">Tasks</h5>
@@ -13,17 +13,17 @@ function TaskList(props) {
         {task.length > 0 ? (
           task.map((singleTask, index) => {
             return (
-              <li className="collection-item" key={index} style={{ display: "flex" }}>
+              <li key={index} className="collection-item" style={{ display: "flex" }}>
                 {singleTask}
 
                 <div style={{ marginLeft: "auto" }}>
-                  <button>
-                    <span className="material-icons">edit</span>
-                  </button>
+                  <a href="/" onClick={(event)=>editTaskHandler(event,index)}>
+                    <span className="material-icons" >edit</span>
+                  </a>
 
-                  <button>
+                  <a href="/" onClick={(event)=>deleteTaskHandler(event,index)}>
                     <span class="material-icons">delete</span>
-                  </button>
+                  </a>
                 </div>
               </li>
             );
