@@ -6,6 +6,7 @@ function TaskForm() {
   const [taskField, setTaskField] = useState();
   const [task, setTask] = useState([]);
   const [taskEdit, setTaskEdit] = useState(null);
+  // const [filterInput, setFilterInput] = useState();
 
   const taskFieldHandler = (event) => {
     event.preventDefault();
@@ -83,6 +84,24 @@ function TaskForm() {
       }
     });
   };
+
+  const clearTaskHandler=(event)=>{
+    event.preventDefault();
+    setTask([]);
+    Swal.fire("ALL TASK ARE DELETED","","success");
+  };
+  const [filterInput, setFilterInput] = useState();
+
+  const filterInputHandler = (event) => {
+    event.preventDefault();
+    setFilterInput(event.target.value);
+  };
+  const filterInputValue = filterInput ? filterInput.toLowerCase() : "";
+
+  const filteredTask = task.filter((singleTask) =>
+    singleTask.toLowerCase().includes(filterInputValue)
+  );
+
   return (
     <div className="container">
       <div className="row">
@@ -116,6 +135,9 @@ function TaskForm() {
             task={task} 
             editTaskHandler={editTaskHandler} 
             deleteTaskHandler={deleteTaskHandler}
+            clearTaskHandler={clearTaskHandler}
+            filterInputHandler={filterInputHandler}
+            filteredTask={filteredTask}
             />
           </div>
         </div>
