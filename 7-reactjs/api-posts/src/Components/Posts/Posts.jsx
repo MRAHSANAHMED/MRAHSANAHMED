@@ -1,13 +1,14 @@
 import React from "react";
 
 function Posts(props) {
-  const { posts = [],deletePostHandler } = props;
+  const { posts = [], deletePostHandler, updatePostHandler } = props;
   return (
     <table className="table table-hover">
       <thead>
         <tr>
           <th>Post Id</th>
           <th>Title</th>
+          <th>Body</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -19,8 +20,14 @@ function Posts(props) {
               <tr>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
+                <td>{post.body}</td>
                 <td>
-                  <button className="btn btn-primary">Edit</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={(event) => updatePostHandler(event, post.id)}
+                  >
+                    Edit
+                  </button>
                 </td>
                 <td>
                   <button
