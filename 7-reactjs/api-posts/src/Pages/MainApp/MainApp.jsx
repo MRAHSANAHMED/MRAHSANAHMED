@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Swal from "sweetalert2";
 import Posts from "../../Components/Posts/Posts";
 import CreatePost from "../../Components/CreatePost/CreatePost";
@@ -15,7 +15,7 @@ function MainApp() {
     getPosts();
   }, []);
 
-  const getPosts = async () => {
+  const getPosts = useCallback(async () => {
     setLoader(true);
     await fetch(`${baseUrl}/posts`)
       .then((response) => response.json())
@@ -23,7 +23,7 @@ function MainApp() {
       .catch((err) => console.error(err));
 
     setLoader(false);
-  };
+  },[posts,loading]);
 
   const confirmationModal = async () => {
     const response = await Swal.fire({
@@ -59,7 +59,7 @@ function MainApp() {
     }
   };
 
-  const updatePostHandler = async (event, postId) => {
+  const updatePostHandler = useCallback(async (event, postId) => {
     event.preventDefault();
     setLoader(true);
     await fetch(`${baseUrl}/posts/${postId}`)
@@ -70,7 +70,8 @@ function MainApp() {
         let $ = window.$;
         $("#updatePost").modal("show");
       });
-  };
+      setLoader(false);
+  },[loader, editPostData]);
   return (
     <div className="container main-app">
       {loader && <Spinner />}

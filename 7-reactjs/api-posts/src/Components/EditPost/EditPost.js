@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { baseUrl } from '../../constant';
 import Spinner from '../Spinner/Spinner'
@@ -126,4 +126,4 @@ function EditPost({getPosts,editPostData}) {
   )
 }
 
-export default EditPost
+export default memo(EditPost);

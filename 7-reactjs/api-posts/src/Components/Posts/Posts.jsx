@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 function Posts(props) {
   const { posts = [], deletePostHandler, updatePostHandler } = props;
@@ -45,4 +45,4 @@ function Posts(props) {
   );
 }
 
-export default Posts;
+export default memo(Posts);

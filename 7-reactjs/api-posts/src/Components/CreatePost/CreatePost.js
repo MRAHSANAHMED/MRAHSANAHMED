@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import Swal from "sweetalert2";
 import { baseUrl } from "../../constant";
 import Spinner from "../Spinner/Spinner";
@@ -116,4 +116,4 @@ function CreatePost({getPosts}) {
   );
 }
 
-export default CreatePost;
+export default memo(CreatePost);
