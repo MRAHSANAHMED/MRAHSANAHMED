@@ -2,9 +2,8 @@ import { create } from "apisauce";
 
 const apiSauceInstance = create({
   baseURL: process.env.REACT_APP_API_URL,
-  // baseUrl: "https://blog-api-testing.squadcodersdev.com/api",
 });
-// console.log(apiSauceInstance, "baseUrl");
+
 const get = (url, queryParams, config) => {
   const response = apiSauceInstance.get(url, queryParams, config);
   return response;

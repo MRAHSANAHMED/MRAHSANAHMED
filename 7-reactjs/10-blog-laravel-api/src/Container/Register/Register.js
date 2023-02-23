@@ -11,7 +11,6 @@ const Register = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = async (values) => {
-    console.log("values", values);
     const formData = new FormData();
     formData.append("username", values.username);
     formData.append("user_firstname", values.firstName);
@@ -89,7 +88,7 @@ const Register = () => {
           <Input placeholder="Email" />
         </Form.Item>
 
-        <Form.Item name="upload">
+        <Form.Item>
           <CustomUpload customRequestCallback={customRequestCallback} />
         </Form.Item>
 
