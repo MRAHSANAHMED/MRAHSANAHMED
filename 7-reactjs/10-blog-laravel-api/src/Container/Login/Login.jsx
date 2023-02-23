@@ -1,6 +1,7 @@
 import { Button, Form, Input, message, Typography } from "antd";
 import { useState } from "react";
 import { UserService } from "../../services/users.services";
+import { APP_TOKEN_NAME } from "../../utilities/util.constant";
 import "./Login.css";
 
 // const onFinish = async (values) => {
@@ -34,9 +35,10 @@ const Login = () => {
       const {
         results: { token },
       } = loginData;
-      localStorage.setItem("TOKEN", token);
+      localStorage.setItem(APP_TOKEN_NAME, token);
       messageApi.success("WELCOME ,YOU ARE LOGGED IN!");
     }
+    setLoading(false);
   };
 
   return (
