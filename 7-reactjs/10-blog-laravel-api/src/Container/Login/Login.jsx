@@ -1,7 +1,11 @@
 import { Button, Form, Input, message, Typography } from "antd";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { UserService } from "../../services/users.services";
-import { APP_TOKEN_NAME } from "../../utilities/util.constant";
+import {
+  APP_TOKEN_NAME,
+  unAuthenticatedRoutes,
+} from "../../utilities/util.constant";
 import "./Login.css";
 
 // const onFinish = async (values) => {
@@ -86,7 +90,9 @@ const Login = () => {
           <Button type="primary" htmlType="submit" loading={loading}>
             Submit
           </Button>
-          <a href="/">Sign up</a>
+          <Link to={unAuthenticatedRoutes.REGISTER} className="sign-up-btn">
+            Sign Up
+          </Link>
         </Form.Item>
       </Form>
     </div>

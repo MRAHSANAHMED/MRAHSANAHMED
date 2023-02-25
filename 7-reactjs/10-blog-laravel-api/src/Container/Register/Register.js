@@ -1,6 +1,8 @@
 import { Button, Form, Input, message, Typography } from "antd";
 import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import CustomUpload from "../../Components/CustomUpload/CustomUpload";
+import { unAuthenticatedRoutes } from "../../utilities/util.constant";
 import { UserService } from "../../services/users.services";
 import "./Register.css";
 
@@ -23,6 +25,7 @@ const Register = () => {
     setLoading(true);
     const { ok, data: registerData } = await UserService.register(formData);
     if (ok) {
+      <Navigate to={`/`} />;
       console.log(registerData, "registerData");
       messageApi.success("user is regsitered successfully!");
     }
@@ -108,6 +111,9 @@ const Register = () => {
           <Button type="primary" htmlType="submit" loading={loading}>
             Register
           </Button>
+          <Link to={unAuthenticatedRoutes.LOGIN} className="login-btn">
+            Login
+          </Link>
         </Form.Item>
       </Form>
     </div>
