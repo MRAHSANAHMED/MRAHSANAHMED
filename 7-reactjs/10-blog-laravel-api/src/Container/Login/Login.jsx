@@ -41,6 +41,7 @@ const Login = () => {
       } = loginData;
       localStorage.setItem(APP_TOKEN_NAME, token);
       messageApi.success("WELCOME ,YOU ARE LOGGED IN!");
+      window.location.reload();
     }
     setLoading(false);
   };

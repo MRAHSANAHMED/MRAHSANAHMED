@@ -4,3 +4,5 @@ export const unAuthenticatedRoutes = {
   LOGIN: "/",
   REGISTER: "/register",
 };
+
+export const FooterText = "AHSAN copyright 2023";
