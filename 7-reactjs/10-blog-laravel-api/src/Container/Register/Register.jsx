@@ -5,13 +5,23 @@ import CustomUpload from "../../Components/CustomUpload/CustomUpload";
 import { unAuthenticatedRoutes } from "../../utilities/util.constant";
 import { UserService } from "../../services/users.services";
 import "./Register.css";
+import { useMutation } from "react-query";
 
 const { Title } = Typography;
 const Register = () => {
-  const [loading, setLoading] = useState(false);
+  const registerPromise = async (formData) => {
+    return await UserService.register(formData);
+  };
+  const { mutateAsync: mutateRegister, isLoading: loading } = useMutation(
+    registerPromise,
+    {
+      onSuccess: () => {
+        messageApi.success("YOU ARE SUCCESSFULLY REGISTERED!");
+      },
+    }
+  );
   const [file, setFile] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
-
   const onFinish = async (values) => {
     const formData = new FormData();
     formData.append("username", values.username);
@@ -20,20 +30,13 @@ const Register = () => {
     formData.append("email", values.email);
     formData.append("password", values.password);
     formData.append("c_password", values.password);
-    formData.append("user_image", file); //file will be in binary format
-
-    setLoading(true);
-    const { ok, data: registerData } = await UserService.register(formData);
-    if (ok) {
-      <Navigate to={`/`} />;
-      console.log(registerData, "registerData");
-      messageApi.success("user is regsitered successfully!");
+    if (file) {
+      formData.append("user_image", file);
     }
-    setLoading(false);
+    await mutateRegister(formData);
   };
-  // console.log(values, "values");
+
   const customRequestCallback = (file) => {
-    console.log("file", file);
     setFile(file);
   };
 

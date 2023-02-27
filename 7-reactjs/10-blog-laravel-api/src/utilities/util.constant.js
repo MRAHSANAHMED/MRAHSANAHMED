@@ -4,5 +4,9 @@ export const unAuthenticatedRoutes = {
   LOGIN: "/",
   REGISTER: "/register",
 };
+export const authenticatedRoutes = {
+  DASHBOARD: "/",
+  CATEGORIES: "/categories",
+};
 
 export const FooterText = "AHSAN copyright 2023";

@@ -10,7 +10,9 @@ import {
 import {
   APP_TOKEN_NAME,
   unAuthenticatedRoutes,
+  authenticatedRoutes,
 } from "../../utilities/util.constant";
+
 const logoutClickHandler = (event) => {
   event.preventDefault();
   localStorage.removeItem(APP_TOKEN_NAME);
@@ -19,7 +21,12 @@ const logoutClickHandler = (event) => {
 export const sidebarItems = [
   {
     icon: <PieChartOutlined />,
-    label: <Link>Categories</Link>,
+    label: <Link to={authenticatedRoutes.DASHBOARD}>Dashboard</Link>,
+    key: "dashboard",
+  },
+  {
+    icon: <PieChartOutlined />,
+    label: <Link to={authenticatedRoutes.CATEGORIES}>Categories</Link>,
     key: "categories",
   },
   {
