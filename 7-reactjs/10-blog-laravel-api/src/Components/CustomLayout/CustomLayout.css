@@ -4,6 +4,9 @@
 
 }
 
+.height {
+    min-height: 82vh !important;
+}
 
 .custom-layout-container .custom-main-content {
     margin: 0 16px;

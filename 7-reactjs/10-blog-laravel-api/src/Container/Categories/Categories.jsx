@@ -1,86 +1,86 @@
 import React from "react";
-import { Button, Col, Row, Space, Table, Tag } from "antd";
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"],
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sydney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
-  },
-];
+import "./Categories.css";
+import { Button, Col, message, Row, Space, Table } from "antd";
+import { CategoriesService } from "../../services/categories.service.js";
+import { useMutation, useQuery } from "react-query";
+import { globalReactQueryOptions } from "../../utilities/util.constant";
 
 function Categories() {
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const reactQueryName = "categories";
+  const reactQueryApiCallPromise = CategoriesService.getCategories;
+  const {
+    isLoading: categoryLoading,
+    data: categoryData,
+    refetch: categoryRefech,
+  } = useQuery(reactQueryName, reactQueryApiCallPromise, {
+    ...globalReactQueryOptions,
+    staleTime: 0,
+  });
+  const {
+    mustateAsync: categoryDeleteRequest,
+    isLoading: deleteCategoryLoader,
+  } = useMutation(CategoriesService.deleteCategory);
+  const categoryDeleteHandler = async (categoryId) => {
+    if (categoryId) {
+      await categoryDeleteRequest(categoryId, {
+        onSuccess: () => {
+          categoryRefech();
+          messageApi.success("CATEGORY DELETED SuCCESSFULLY");
+        },
+      });
+    }
+  };
+  const columns = [
+    {
+      title: "Category Id",
+      key: "id",
+      render: (record) => {
+        return record.cat_id;
+      },
+    },
+    {
+      title: "Title",
+      key: "title",
+      render: (record) => record.cat_title,
+    },
+
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => {
+        console.log(record, "record");
+        return (
+          <Space size="middle">
+            <Button type="primary">Edit </Button>
+            <Button
+              type="danger"
+              onClick={() => categoryDeleteHandler(record.id)}
+            >
+              Delete
+            </Button>
+          </Space>
+        );
+      },
+    },
+  ];
+
   return (
     <Row>
+      {contextHolder}
       <Col span={24}>
-        <Button>ADD CATEGORIES</Button>
-        <br />
-        <Col span={24}>
-          <Table columns={columns} dataSource={data} />
-        </Col>
+        <Button type="primary" className="create-btn">
+          ADD CATEGORIES
+        </Button>
+      </Col>
+
+      <Col span={24}>
+        <Table
+          columns={columns}
+          dataSource={categoryData?.data?.results}
+          loading={categoryLoading || deleteCategoryLoader}
+        />
       </Col>
     </Row>
   );

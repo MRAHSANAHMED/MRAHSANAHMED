@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Divider, Layout, Menu, Typography } from "antd";
 import { sidebarItems } from "./SideBarConstant";
 import { Outlet } from "react-router-dom";
-
+import "./CustomLayout.css";
 const { Header, Content, Footer, Sider } = Layout;
 const { Title } = Typography;
 
@@ -30,7 +30,7 @@ const CustomLayout = () => {
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" />
-        <Content className="custom-main-content">
+        <Content className="custom-main-content height">
           {/* <Breadcrumb className="custom-bread-crumb-container">
           <Breadcrumb.Item>User</Breadcrumb.Item>
           <Breadcrumb.Item>Bill</Breadcrumb.Item>

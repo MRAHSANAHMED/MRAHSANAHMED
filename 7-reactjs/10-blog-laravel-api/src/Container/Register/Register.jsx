@@ -1,6 +1,6 @@
 import { Button, Form, Input, message, Typography } from "antd";
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CustomUpload from "../../Components/CustomUpload/CustomUpload";
 import { unAuthenticatedRoutes } from "../../utilities/util.constant";
 import { UserService } from "../../services/users.services";

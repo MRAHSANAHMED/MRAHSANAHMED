@@ -10,3 +10,7 @@ export const authenticatedRoutes = {
 };
 
 export const FooterText = "AHSAN copyright 2023";
+
+export const globalReactQueryOptions = {
+  refetchOnMount: "always",
+};

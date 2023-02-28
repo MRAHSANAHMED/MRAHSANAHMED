@@ -9,6 +9,12 @@ const isUserIsLogin = () => {
   return true;
 };
 
+const getUserToken = () => {
+  const token = localStorage.getItem(APP_TOKEN_NAME);
+  return token;
+};
+
 export const AuthService = {
   isUserIsLogin,
+  getUserToken,
 };

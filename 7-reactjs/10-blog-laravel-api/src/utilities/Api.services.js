@@ -1,4 +1,5 @@
 import { create } from "apisauce";
+import { AuthService } from "../services/Auth.service";
 
 const apiSauceInstance = create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -14,12 +15,12 @@ const post = (url, data, config) => {
   return response;
 };
 
-const put = (url, queryParams, config) => {
-  const response = apiSauceInstance.put(url, queryParams, config);
+const put = (url, data, config) => {
+  const response = apiSauceInstance.put(url, data, config);
   return response;
 };
-const patch = (url, queryParams, config) => {
-  const response = apiSauceInstance.patch(url, queryParams, config);
+const patch = (url, data, config) => {
+  const response = apiSauceInstance.patch(url, data, config);
   return response;
 };
 
@@ -27,6 +28,12 @@ const deleteRequest = (url, queryParams, config) => {
   const response = apiSauceInstance.delete(url, queryParams, config);
   return response;
 };
+
+apiSauceInstance.addRequestTransform((request) => {
+  if (AuthService.isUserIsLogin()) {
+    request.headers["Authorization"] = `Bearer ${AuthService.getUserToken()}`;
+  }
+});
 
 export const ApiServices = {
   get,
