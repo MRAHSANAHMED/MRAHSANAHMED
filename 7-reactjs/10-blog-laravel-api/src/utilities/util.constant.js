@@ -7,6 +7,7 @@ export const unAuthenticatedRoutes = {
 export const authenticatedRoutes = {
   DASHBOARD: "/",
   CATEGORIES: "/categories",
+  ADD_CATEGORY: "/category/add",
 };
 
 export const FooterText = "AHSAN copyright 2023";

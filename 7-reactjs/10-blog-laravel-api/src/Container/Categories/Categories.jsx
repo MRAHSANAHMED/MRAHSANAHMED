@@ -1,11 +1,18 @@
 import React from "react";
-import "./Categories.css";
-import { Button, Col, message, Row, Space, Table } from "antd";
-import { CategoriesService } from "../../services/categories.service.js";
 import { useMutation, useQuery } from "react-query";
-import { globalReactQueryOptions } from "../../utilities/util.constant";
+import { useNavigate } from "react-router-dom";
+import { Button, Col, message, Modal, Row, Space, Table } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { CategoriesService } from "../../services/categories.service.js";
+import {
+  authenticatedRoutes,
+  globalReactQueryOptions,
+} from "../../utilities/util.constant";
+import "./Categories.css";
 
 function Categories() {
+  const { confirm } = Modal;
+  const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
 
   const reactQueryName = "categories";
@@ -19,15 +26,25 @@ function Categories() {
     staleTime: 0,
   });
   const {
-    mustateAsync: categoryDeleteRequest,
+    mutateAsync: categoryDeleteRequest,
     isLoading: deleteCategoryLoader,
   } = useMutation(CategoriesService.deleteCategory);
+
   const categoryDeleteHandler = async (categoryId) => {
     if (categoryId) {
-      await categoryDeleteRequest(categoryId, {
-        onSuccess: () => {
-          categoryRefech();
-          messageApi.success("CATEGORY DELETED SuCCESSFULLY");
+      confirm({
+        title: "Do you want to delete this category?",
+        icon: <ExclamationCircleOutlined />,
+        onOk() {
+          categoryDeleteRequest(categoryId, {
+            onSuccess: () => {
+              categoryRefech();
+              messageApi.success("category deleted successfully !");
+            },
+          });
+        },
+        onCancel() {
+          console.log("Cancel");
         },
       });
     }
@@ -50,13 +67,13 @@ function Categories() {
       title: "Action",
       key: "action",
       render: (_, record) => {
-        console.log(record, "record");
+        // console.log(record, "record");
         return (
           <Space size="middle">
             <Button type="primary">Edit </Button>
             <Button
-              type="danger"
-              onClick={() => categoryDeleteHandler(record.id)}
+              type="primary"
+              onClick={() => categoryDeleteHandler(record.cat_id)}
             >
               Delete
             </Button>
@@ -70,7 +87,13 @@ function Categories() {
     <Row>
       {contextHolder}
       <Col span={24}>
-        <Button type="primary" className="create-btn">
+        <Button
+          type="primary"
+          className="create-btn"
+          onClick={() => {
+            navigate(authenticatedRoutes.ADD_CATEGORY);
+          }}
+        >
           ADD CATEGORIES
         </Button>
       </Col>
