@@ -1,14 +1,15 @@
 import React from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { Button, Col, message, Modal, Row, Space, Table } from "antd";
+import { Button, message, Modal, Space } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { CategoriesService } from "../../services/categories.service.js";
+import { CategoryService } from "../../services/categories.service.js";
 import {
   authenticatedRoutes,
   globalReactQueryOptions,
 } from "../../utilities/util.constant";
 import "./Categories.css";
+import GridViewTable from "../../Components/GridViewTable/GridViewTable.jsx";
 
 function Categories() {
   const { confirm } = Modal;
@@ -16,7 +17,7 @@ function Categories() {
   const [messageApi, contextHolder] = message.useMessage();
 
   const reactQueryName = "categories";
-  const reactQueryApiCallPromise = CategoriesService.getCategories;
+  const reactQueryApiCallPromise = CategoryService.getCategories;
   const {
     isLoading: categoryLoading,
     data: categoryData,
@@ -28,7 +29,7 @@ function Categories() {
   const {
     mutateAsync: categoryDeleteRequest,
     isLoading: deleteCategoryLoader,
-  } = useMutation(CategoriesService.deleteCategory);
+  } = useMutation(CategoryService.deleteCategory);
 
   const categoryDeleteHandler = async (categoryId) => {
     if (categoryId) {
@@ -44,7 +45,7 @@ function Categories() {
           });
         },
         onCancel() {
-          console.log("Cancel");
+          // console.log("Cancel");
         },
       });
     }
@@ -70,7 +71,19 @@ function Categories() {
         // console.log(record, "record");
         return (
           <Space size="middle">
-            <Button type="primary">Edit </Button>
+            <Button
+              type="primary"
+              onClick={() => {
+                const editCategoryUrl =
+                  authenticatedRoutes.EDIT_CATEGORY.replace(
+                    ":id",
+                    record.cat_id
+                  );
+                navigate(editCategoryUrl);
+              }}
+            >
+              Edit{" "}
+            </Button>
             <Button
               type="primary"
               onClick={() => categoryDeleteHandler(record.cat_id)}
@@ -84,28 +97,19 @@ function Categories() {
   ];
 
   return (
-    <Row>
+    <>
       {contextHolder}
-      <Col span={24}>
-        <Button
-          type="primary"
-          className="create-btn"
-          onClick={() => {
-            navigate(authenticatedRoutes.ADD_CATEGORY);
-          }}
-        >
-          ADD CATEGORIES
-        </Button>
-      </Col>
-
-      <Col span={24}>
-        <Table
-          columns={columns}
-          dataSource={categoryData?.data?.results}
-          loading={categoryLoading || deleteCategoryLoader}
-        />
-      </Col>
-    </Row>
+      <GridViewTable
+        columns={columns}
+        dataSource={categoryData?.data?.results}
+        loading={categoryLoading || deleteCategoryLoader}
+        isAddButtonEnable
+        addBtnTitle="Add Category"
+        addBtnClick={() => {
+          navigate(authenticatedRoutes.ADD_CATEGORY);
+        }}
+      />
+    </>
   );
 }
 
