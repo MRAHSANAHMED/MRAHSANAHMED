@@ -109,7 +109,7 @@ function Posts() {
             type="primary"
             ghost
             onClick={() => {
-              navigate(authenticatedRoutes.Edit_POST.replace(":id", record.id));
+              navigate(authenticatedRoutes.EDIT_POST.replace(":id", record.id));
             }}
           >
             Edit
