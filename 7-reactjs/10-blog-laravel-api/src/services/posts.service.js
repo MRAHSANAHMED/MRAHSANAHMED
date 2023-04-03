@@ -1,38 +1,35 @@
 import { ApiServices } from "../utilities/Api.services";
 
-const postsServiceUrl = {
+const postServiceUrl = {
   get: "/posts",
 };
 
 const getPosts = () => {
-  const response = ApiServices.get(postsServiceUrl.get);
+  const response = ApiServices.get(postServiceUrl.get);
   return response;
 };
 
 const addPost = (payload) => {
-  const response = ApiServices.post(postsServiceUrl.get, payload);
+  const response = ApiServices.post(postServiceUrl.get, payload);
   return response;
 };
-const deletePosts = (postsId) => {
-  const response = ApiServices.delete(`${postsServiceUrl.get}/${postsId}`);
-  return response;
-};
-
-const getPostsById = (postsId) => {
-  const response = ApiServices.get(`${postsServiceUrl.get}/${postsId}`);
+const deletePosts = (postId) => {
+  const response = ApiServices.delete(`${postServiceUrl.get}/${postId}`);
   return response;
 };
 
-const updatePostsById = (postsId, payload) => {
-  const response = ApiServices.put(
-    `${postsServiceUrl.get}/${postsId}`,
-    payload
-  );
+const getPostsById = (postId) => {
+  const response = ApiServices.get(`${postServiceUrl.get}/${postId}`);
+  return response;
+};
+
+const updatePostsById = (postId, payload) => {
+  const response = ApiServices.put(`${postServiceUrl.get}/${postId}`, payload);
   return response;
 };
 
 const deletePostById = (postId) => {
-  const response = ApiServices.delete(`${postsServiceUrl.get}/${postId}`);
+  const response = ApiServices.delete(`${postServiceUrl.get}/${postId}`);
   return response;
 };
 export const PostService = {

@@ -7,6 +7,7 @@ import Dashboard from "../Container/Dashboard/Dashboard";
 import Posts from "../Container/Posts/Posts";
 import { authenticatedRoutes } from "../utilities/util.constant";
 import PostAddEdit from "../../src/Container/Posts/PostAddEdit/PostAddEdit";
+import User from "../Container/User/User";
 
 function AuthenticatedRoute() {
   return (
@@ -25,6 +26,8 @@ function AuthenticatedRoute() {
         <Route path={authenticatedRoutes.POSTS} element={<Posts />} />
         <Route path={authenticatedRoutes.ADD_POST} element={<PostAddEdit />} />
         <Route path={authenticatedRoutes.EDIT_POST} element={<PostAddEdit />} />
+
+        <Route path={authenticatedRoutes.USERS} element={<User />} />
       </Route>
     </Routes>
   );

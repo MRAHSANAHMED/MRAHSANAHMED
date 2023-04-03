@@ -12,6 +12,9 @@ export const authenticatedRoutes = {
   POSTS: "/posts",
   ADD_POST: "/post/add",
   EDIT_POST: "/posts/edit/:id",
+  USERS: "/users",
+  ADD_USERS: "/users/add",
+  USERS: "/users/edit/:id",
 };
 
 export const FooterText = "AHSAN copyright 2023";
