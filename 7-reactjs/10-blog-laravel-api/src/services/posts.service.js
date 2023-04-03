@@ -9,7 +9,7 @@ const getPosts = () => {
   return response;
 };
 
-const addPosts = (payload) => {
+const addPost = (payload) => {
   const response = ApiServices.post(postsServiceUrl.get, payload);
   return response;
 };
@@ -38,7 +38,7 @@ const deletePostById = (postId) => {
 export const PostService = {
   getPosts,
   deletePosts,
-  addPosts,
+  addPost,
   getPostsById,
   updatePostsById,
   deletePostById,

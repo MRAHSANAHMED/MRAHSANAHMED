@@ -64,7 +64,7 @@ function PostAddEdit() {
   );
 
   const { mutateAsync: addPostRequest, isLoading: addPostLoader } = useMutation(
-    PostService.addPosts
+    PostService.addPost
   );
   const { mutateAsync: updatePostRequest, isLoading: updatePostLoading } =
     useMutation((payload) => PostService.updatePostsById(postId, payload));

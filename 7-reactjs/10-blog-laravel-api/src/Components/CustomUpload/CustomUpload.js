@@ -7,7 +7,7 @@ function CustomUpload(props) {
   const { Dragger } = Upload;
 
   const customRequest = async (info) => {
-    customRequestCallback(info.file);
+    customRequestCallback(info);
     const basesixtyFourFile = await toBase64(info.file);
     setFileName({
       name: info?.file?.name,
