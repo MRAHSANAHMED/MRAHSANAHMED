@@ -5,9 +5,10 @@ import Categories from "../Container/Categories/Categories";
 import CategoryAddEdit from "../Container/Categories/CategoryAddEdit/CategoryAddEdit";
 import Dashboard from "../Container/Dashboard/Dashboard";
 import Posts from "../Container/Posts/Posts";
+import Users from "../Container/User/User";
 import { authenticatedRoutes } from "../utilities/util.constant";
 import PostAddEdit from "../../src/Container/Posts/PostAddEdit/PostAddEdit";
-import User from "../Container/User/User";
+import UserAddEdit from "../Container/User/UserAddEdit/UserAddEdit";
 
 function AuthenticatedRoute() {
   return (
@@ -27,7 +28,12 @@ function AuthenticatedRoute() {
         <Route path={authenticatedRoutes.ADD_POST} element={<PostAddEdit />} />
         <Route path={authenticatedRoutes.EDIT_POST} element={<PostAddEdit />} />
 
-        <Route path={authenticatedRoutes.USERS} element={<User />} />
+        <Route path={authenticatedRoutes.USERS} element={<Users />} />
+        <Route path={authenticatedRoutes.ADD_USERS} element={<UserAddEdit />} />
+        <Route
+          path={authenticatedRoutes.EDIT_USERS}
+          element={<UserAddEdit />}
+        />
       </Route>
     </Routes>
   );

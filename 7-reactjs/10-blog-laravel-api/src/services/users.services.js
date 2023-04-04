@@ -18,9 +18,14 @@ const getUsers = () => {
   const response = ApiServices.get(userServiceUrl.users);
   return response;
 };
+const deleteUserById = (userId) => {
+  const response = ApiServices.delete(`${userServiceUrl.users}/${userId}`);
+  return response;
+};
 
 export const UserService = {
   login,
   register,
   getUsers,
+  deleteUserById,
 };

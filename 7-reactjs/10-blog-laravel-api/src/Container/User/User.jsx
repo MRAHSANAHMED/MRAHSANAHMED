@@ -1,6 +1,7 @@
-import { Button } from "antd";
+import { Button, message, Modal } from "antd";
 import React from "react";
-import { useQuery } from "react-query";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import GridViewTable from "../../Components/GridViewTable/GridViewTable";
 import { UserService } from "../../services/users.services";
@@ -10,11 +11,20 @@ import {
 } from "../../utilities/util.constant";
 import { UtilService } from "../../utilities/util.service";
 
-function User() {
+function Users() {
   const navigate = useNavigate();
-  const { data: userData } = useQuery("users", UserService.getUsers, {
+  const { confirm } = Modal;
+  const [messageApi, contextHolder] = message.useMessage();
+  const {
+    data: userData,
+    isLoading: userListingLoader,
+    refetch: refetchUsers,
+  } = useQuery("users", UserService.getUsers, {
     ...globalReactQueryOptions,
   });
+  // const {mutateAsync:deleteUserByIdRequest} = useMutation((userId) => UserService.deleteUserById(userId))
+  const { mutateAsync: deleteUserByIdRequest, isLoading: deleteUserLoader } =
+    useMutation(UserService.deleteUserById);
 
   const columns = [
     {
@@ -25,11 +35,11 @@ function User() {
       //     return record.user_id;
       // }
     },
-    {
-      title: "User Name",
-      key: "username",
-      dataIndex: "name",
-    },
+    // {
+    //   title: "User Name",
+    //   key: "username",
+    //   dataIndex: "name",
+    // },
     {
       title: "First Name",
       key: "user_firstname",
@@ -57,7 +67,6 @@ function User() {
         if (!record.user_image) {
           return <p>No Image Found!</p>;
         }
-
         return (
           <img src={record?.user_image} alt={record.username} width="100" />
         );
@@ -70,7 +79,6 @@ function User() {
         return UtilService.convertDateToOurFormat(record.created_at);
       },
     },
-
     {
       title: "Updated At",
       key: "updated_at",
@@ -78,7 +86,6 @@ function User() {
         return UtilService.convertDateToOurFormat(record.updated_at);
       },
     },
-
     {
       title: "Edit",
       key: "edit",
@@ -88,7 +95,7 @@ function User() {
             type="primary"
             ghost
             onClick={() => {
-              // navigate(authenticatedRoutes.EDIT_USER.replace(":id", record.id));
+              // navigate(authenticatedRoutes.EDIT_USER.replace(":id", record.user_id));
             }}
           >
             Edit
@@ -104,7 +111,7 @@ function User() {
           <Button
             type="primary"
             danger
-            //   onClick={() => deleteHandler(record?.id)}
+            onClick={() => deleteHandler(record?.user_id)}
           >
             Delete
           </Button>
@@ -112,17 +119,40 @@ function User() {
       },
     },
   ];
+
+  const deleteHandler = async (userId) => {
+    confirm({
+      title: "Do you want to delete this user?",
+      icon: <ExclamationCircleOutlined />,
+      onOk() {
+        deleteUserByIdRequest(userId, {
+          onSuccess: () => {
+            messageApi.success("user is deleted successfully!");
+            refetchUsers();
+          },
+        });
+      },
+      onCancel() {
+        // console.log("Cancel");
+      },
+    });
+  };
+
   return (
-    <GridViewTable
-      columns={columns}
-      dataSource={userData?.data?.results}
-      isAddButtonEnable
-      addBtnTitle="Add User"
-      addBtnClick={() => {
-        navigate(authenticatedRoutes.ADD_USER);
-      }}
-    />
+    <>
+      {contextHolder}
+      <GridViewTable
+        loading={userListingLoader || deleteUserLoader}
+        columns={columns}
+        dataSource={userData?.data?.results}
+        isAddButtonEnable
+        addBtnTitle="Add User"
+        addBtnClick={() => {
+          navigate(authenticatedRoutes.ADD_USERS);
+        }}
+      />
+    </>
   );
 }
 
-export default User;
+export default Users;

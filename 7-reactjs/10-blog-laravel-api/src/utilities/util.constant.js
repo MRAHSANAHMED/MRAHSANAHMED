@@ -14,7 +14,7 @@ export const authenticatedRoutes = {
   EDIT_POST: "/posts/edit/:id",
   USERS: "/users",
   ADD_USERS: "/users/add",
-  USERS: "/users/edit/:id",
+  EDIT_USERS: "/users/edit/:id",
 };
 
 export const FooterText = "AHSAN copyright 2023";

@@ -9,6 +9,7 @@ import { useMutation } from "react-query";
 
 const { Title } = Typography;
 const Register = () => {
+  const [form] = Form.useForm();
   const registerPromise = async (formData) => {
     return await UserService.register(formData);
   };
@@ -36,8 +37,8 @@ const Register = () => {
     await mutateRegister(formData);
   };
 
-  const customRequestCallback = (file) => {
-    setFile(file);
+  const customRequestCallback = (info) => {
+    setFile(info.file);
   };
 
   return (
@@ -46,7 +47,7 @@ const Register = () => {
       <Title level={2} className="custom-heading-login">
         Register
       </Title>
-      <Form name="basic" onFinish={onFinish} autoComplete="off">
+      <Form name="basic" onFinish={onFinish} autoComplete="off" form={form}>
         <Form.Item
           name="username"
           rules={[
