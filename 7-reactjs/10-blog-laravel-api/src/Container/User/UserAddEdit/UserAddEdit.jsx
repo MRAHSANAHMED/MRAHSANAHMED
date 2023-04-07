@@ -1,25 +1,52 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Form, Input, message, Select, Typography } from "antd";
 
-import { useState } from "react";
-import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useMutation, useQuery } from "react-query";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserService } from "../../../services/users.services";
-import { authenticatedRoutes } from "../../../utilities/util.constant";
+import {
+  authenticatedRoutes,
+  globalReactQueryOptions,
+} from "../../../utilities/util.constant";
 import CustomUpload from "../../../Components/CustomUpload/CustomUpload";
 
 const UserAddEdit = () => {
   const navigate = useNavigate();
+  const { id: userId } = useParams();
   const [form] = Form.useForm();
   const { Title } = Typography;
   const { mutateAsync: mutateAddUser, isLoading: loading } = useMutation(
-    UserService.register,
+    UserService.register
+  );
+
+  const {
+    mutateAsync: mutateUpdateUserByIdRequest,
+    isLoading: updateByUserIdLoader,
+  } = useMutation((payload) => UserService.updateUserById(userId, payload));
+
+  const { data: getUserByIdData, isLoading: getUserByIdLoader } = useQuery(
+    ["users", userId],
+    () => UserService.getUserById(userId),
     {
-      onSuccess: () => {
-        messageApi.success("user is regsitered successfully!");
-      },
+      ...globalReactQueryOptions,
+      enabled: Boolean(userId),
     }
   );
 
+  const singleUser = getUserByIdData?.data?.results;
+
+  useEffect(() => {
+    if (getUserByIdData?.data?.results) {
+      form.setFieldsValue({
+        username: singleUser.username,
+        firstName: singleUser.user_firstname,
+        lastName: singleUser.user_lastname,
+        email: singleUser.email,
+        user_role: singleUser.user_role,
+      });
+    }
+  }, [getUserByIdData]);
   const [file, setFile] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -37,13 +64,23 @@ const UserAddEdit = () => {
       formData.append("user_image", file); //file will be in binary format
     }
 
-    await mutateAddUser(formData, {
-      onSuccess: () => {
-        messageApi.success("user is created successfully");
-        form.resetFields();
-        navigate(authenticatedRoutes.USERS);
-      },
-    });
+    if (userId) {
+      await mutateUpdateUserByIdRequest(formData, {
+        onSuccess: () => {
+          messageApi.success("user is Update Successfully");
+          form.resetFields();
+          navigate(authenticatedRoutes.USERS);
+        },
+      });
+    } else {
+      await mutateAddUser(formData, {
+        onSuccess: () => {
+          messageApi.success("user is created successfully");
+          form.resetFields();
+          navigate(authenticatedRoutes.USERS);
+        },
+      });
+    }
   };
 
   const customRequestCallback = (info) => {
@@ -54,7 +91,7 @@ const UserAddEdit = () => {
     <div>
       {contextHolder}
       <Title level={2} className="custom-heading-login">
-        Add User
+        {userId ? "Update" : "Add"} User
       </Title>
       <Form name="basic" onFinish={onFinish} autoComplete="off" form={form}>
         <Form.Item
@@ -121,6 +158,14 @@ const UserAddEdit = () => {
 
         <Form.Item>
           <CustomUpload customRequestCallback={customRequestCallback} />
+          {singleUser?.user_image && (
+            <img
+              src={singleUser?.user_image}
+              alt={singleUser?.username}
+              width={200}
+              style={{ marginTop: 20 }}
+            />
+          )}
         </Form.Item>
 
         <Form.Item
@@ -136,8 +181,12 @@ const UserAddEdit = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" loading={loading}>
-            Add User
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={loading || getUserByIdLoader || updateByUserIdLoader}
+          >
+            {userId ? "Update" : "Add"} User
           </Button>
         </Form.Item>
       </Form>

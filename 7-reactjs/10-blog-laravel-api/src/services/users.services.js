@@ -22,10 +22,23 @@ const deleteUserById = (userId) => {
   const response = ApiServices.delete(`${userServiceUrl.users}/${userId}`);
   return response;
 };
+const getUserById = (userId) => {
+  const response = ApiServices.get(`${userServiceUrl.users}/${userId}`);
+  return response;
+};
+const updateUserById = (userId, payload) => {
+  const response = ApiServices.put(
+    `${userServiceUrl.users}/${userId}`,
+    payload
+  );
+  return response;
+};
 
 export const UserService = {
   login,
   register,
   getUsers,
   deleteUserById,
+  getUserById,
+  updateUserById,
 };

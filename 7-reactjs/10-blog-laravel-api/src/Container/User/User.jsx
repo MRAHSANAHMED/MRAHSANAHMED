@@ -95,7 +95,9 @@ function Users() {
             type="primary"
             ghost
             onClick={() => {
-              // navigate(authenticatedRoutes.EDIT_USER.replace(":id", record.user_id));
+              navigate(
+                authenticatedRoutes.EDIT_USERS.replace(":id", record.user_id)
+              );
             }}
           >
             Edit
