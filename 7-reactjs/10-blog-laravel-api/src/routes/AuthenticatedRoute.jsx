@@ -9,6 +9,7 @@ import Users from "../Container/User/User";
 import { authenticatedRoutes } from "../utilities/util.constant";
 import PostAddEdit from "../../src/Container/Posts/PostAddEdit/PostAddEdit";
 import UserAddEdit from "../Container/User/UserAddEdit/UserAddEdit";
+import Comments from "../Container/Comments/Comments";
 
 function AuthenticatedRoute() {
   return (
@@ -34,6 +35,7 @@ function AuthenticatedRoute() {
           path={authenticatedRoutes.EDIT_USERS}
           element={<UserAddEdit />}
         />
+        <Route path={authenticatedRoutes.COMMENTS} element={<Comments />} />
       </Route>
     </Routes>
   );

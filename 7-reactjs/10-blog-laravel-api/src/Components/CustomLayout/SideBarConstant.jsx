@@ -41,7 +41,7 @@ export const sidebarItems = [
   },
   {
     icon: <FileOutlined />,
-    label: <Link>Comments</Link>,
+    label: <Link to={authenticatedRoutes.COMMENTS}>Comments</Link>,
     key: "comments",
   },
   {

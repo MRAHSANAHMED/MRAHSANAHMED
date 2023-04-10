@@ -37,7 +37,7 @@ const UserAddEdit = () => {
   const singleUser = getUserByIdData?.data?.results;
 
   useEffect(() => {
-    if (getUserByIdData?.data?.results) {
+    if (singleUser) {
       form.setFieldsValue({
         username: singleUser.username,
         firstName: singleUser.user_firstname,
@@ -186,7 +186,7 @@ const UserAddEdit = () => {
             htmlType="submit"
             loading={loading || getUserByIdLoader || updateByUserIdLoader}
           >
-            {userId ? "Update" : "Add"} User
+            {userId ? "Update" : "Create"} User
           </Button>
         </Form.Item>
       </Form>

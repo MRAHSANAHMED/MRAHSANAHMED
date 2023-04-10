@@ -1,0 +1,17 @@
+.unapproved-btn {
+    background-color: coral;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+}
+
+.approved-btn {
+    background-color: greenyellow;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+}
+
+.default-btn {
+    background-color: darkslategray;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+}
