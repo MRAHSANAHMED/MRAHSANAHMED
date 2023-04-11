@@ -4,10 +4,18 @@
     border-radius: 6px;
 }
 
+.unapproved-btn:hover {
+    cursor: pointer;
+}
+
 .approved-btn {
     background-color: greenyellow;
     padding: 0.4rem 1rem;
     border-radius: 6px;
+}
+
+.approved-btn:hover {
+    cursor: pointer;
 }
 
 .default-btn {

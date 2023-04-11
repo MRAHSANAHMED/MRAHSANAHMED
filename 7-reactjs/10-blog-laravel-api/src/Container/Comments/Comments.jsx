@@ -12,8 +12,6 @@ import {
 import { UtilService } from "../../utilities/util.service";
 import "./Comments.css";
 
-const { confirm } = Modal;
-
 function Comments() {
   const {
     data: commentsData,
@@ -29,6 +27,16 @@ function Comments() {
     mutateAsync: deleteCommentByIdRequest,
     isLoading: deleteCommentLoading,
   } = useMutation(CommentService.deleteCommentById);
+
+  const {
+    mutateAsync: approveCommentRequest,
+    isLoading: approveCommentLoader,
+  } = useMutation(CommentService.commentApprove);
+
+  const {
+    mutateAsync: unApproveCommentRequest,
+    isLoading: unApproveCommentLoader,
+  } = useMutation(CommentService.commentUnApprove);
 
   const columns = [
     {
@@ -75,12 +83,22 @@ function Comments() {
         switch (record.comment_status) {
           case "unapproved":
             commentStatusField = (
-              <span className="unapproved-btn">{record.comment_status}</span>
+              <span
+                className="unapproved-btn"
+                onClick={() => approveBtnHandler(record?.comment_id)}
+              >
+                {record.comment_status}
+              </span>
             );
             break;
           case "approved":
             commentStatusField = (
-              <span className="approved-btn">{record.comment_status}</span>
+              <span
+                className="approved-btn"
+                onClick={() => unApproveBtnHandler(record?.comment_id)}
+              >
+                {record.comment_status}
+              </span>
             );
             break;
           default:
@@ -132,8 +150,24 @@ function Comments() {
     },
   ];
 
+  const approveBtnHandler = (commentId) => {
+    approveCommentRequest(commentId, {
+      onSuccess: () => {
+        messageApi.success("approved");
+        refetchComments();
+      },
+    });
+  };
+  const unApproveBtnHandler = (commentId) => {
+    approveCommentRequest(commentId, {
+      onSuccess: () => {
+        messageApi.success("approved");
+        refetchComments();
+      },
+    });
+  };
   const deleteHandler = (commentId) => {
-    confirm({
+    Modal.confirm({
       title: "Do you want to delete this comment?",
       icon: <ExclamationCircleOutlined />,
       onOk() {
@@ -150,7 +184,12 @@ function Comments() {
     <>
       {contextHolder}
       <GridViewTable
-        loading={commentsLoader || deleteCommentLoading}
+        loading={
+          commentsLoader ||
+          deleteCommentLoading ||
+          approveCommentLoader ||
+          unApproveCommentLoader
+        }
         columns={columns}
         dataSource={commentsData?.data?.results}
       />
