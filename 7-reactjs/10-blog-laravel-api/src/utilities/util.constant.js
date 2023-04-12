@@ -1,7 +1,8 @@
 export const APP_TOKEN_NAME = "TOKEN";
 
 export const unAuthenticatedRoutes = {
-  LOGIN: "/",
+  HOME: "/",
+  LOGIN: "/login",
   REGISTER: "/register",
 };
 export const authenticatedRoutes = {
