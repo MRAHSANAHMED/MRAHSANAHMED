@@ -1,54 +1,42 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-function FrontendSidebar() {
+function FrontendSidebar(props) {
+  const { categoriesData = [] } = props;
+
+  const tempCategoryData = [...categoriesData];
+
+  //it will remove from 10 to array length
+  tempCategoryData.splice(10, tempCategoryData.length);
+
   return (
-    <div class="col-md-4">
-      <div class="well">
+    <div className="col-md-4">
+      <div className="well">
         <h4>Blog Search</h4>
-        <div class="input-group">
-          <input type="text" class="form-control" />
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
+        <div className="input-group">
+          <input type="text" className="form-control" />
+          <span className="input-group-btn">
+            <button className="btn btn-default" type="button">
+              <span className="glyphicon glyphicon-search"></span>
             </button>
           </span>
         </div>
       </div>
-
-      <div class="well">
+      <div className="well">
         <h4>Blog Categories</h4>
-        <div class="row">
-          <div class="col-lg-6">
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">Category Name</a>
-              </li>
-              <li>
-                <a href="#">Category Name</a>
-              </li>
-              <li>
-                <a href="#">Category Name</a>
-              </li>
-              <li>
-                <a href="#">Category Name</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-lg-6">
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">Category Name</a>
-              </li>
-              <li>
-                <a href="#">Category Name</a>
-              </li>
-              <li>
-                <a href="#">Category Name</a>
-              </li>
-              <li>
-                <a href="#">Category Name</a>
-              </li>
+        <div className="row">
+          <div className="col-lg-12">
+            <ul className="list-unstyled">
+              {tempCategoryData.map((singleCategory, index) => {
+                return (
+                  <li>
+                    <a href="#">
+                      {" "}
+                      {index + 1} : {singleCategory?.cat_title}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -56,5 +44,4 @@ function FrontendSidebar() {
     </div>
   );
 }
-
 export default FrontendSidebar;

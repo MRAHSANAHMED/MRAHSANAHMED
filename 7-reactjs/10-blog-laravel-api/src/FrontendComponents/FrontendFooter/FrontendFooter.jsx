@@ -3,9 +3,9 @@ import React from "react";
 function FrontendFooter() {
   return (
     <footer>
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright &copy; Your Website 2014</p>
+      <div className="row">
+        <div className="col-lg-12">
+          <p>Copyright &copy; Blog Website {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>

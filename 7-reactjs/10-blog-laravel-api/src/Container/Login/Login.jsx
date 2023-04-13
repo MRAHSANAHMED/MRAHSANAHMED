@@ -21,7 +21,7 @@ const Login = () => {
           results: { token },
         } = data;
         localStorage.setItem(APP_TOKEN_NAME, token);
-        messageApi.onSuccess("HI, YOU ARE LOGGED IN!");
+        messageApi.success("HI, YOU ARE LOGGED IN!");
         window.location.reload();
       },
     }

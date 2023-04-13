@@ -1,39 +1,48 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Link } from "react-router-dom";
 import { unAuthenticatedRoutes } from "../../utilities/util.constant";
 
-function FrontendHeader() {
+function FrontendHeader(props) {
+  const { categoriesData } = props;
+  const tempCategoryData = [...categoriesData];
+
+  //it will remove from 10 to array length
+  tempCategoryData.splice(5, tempCategoryData.length);
   return (
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
+    <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div className="container">
+        <div className="navbar-header">
           <button
             type="button"
-            class="navbar-toggle"
+            className="navbar-toggle"
             data-toggle="collapse"
             data-target="#bs-example-navbar-collapse-1"
           >
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span className="sr-only">Toggle navigation</span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
           </button>
-          <Link class="navbar-brand" to={unAuthenticatedRoutes.HOME}>
+          <Link className="navbar-brand" to={unAuthenticatedRoutes.HOME}>
             Home
           </Link>
         </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Services</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
+        <div
+          className="collapse navbar-collapse"
+          id="bs-example-navbar-collapse-1"
+        >
+          <ul className="nav navbar-nav">
+            {tempCategoryData.map((singleCategory) => {
+              return (
+                <li>
+                  <Link to={singleCategory.cat_id}>
+                    {singleCategory.cat_title}
+                  </Link>
+                </li>
+              );
+            })}
             <li>
               <Link to={unAuthenticatedRoutes.LOGIN}>Login</Link>
             </li>
