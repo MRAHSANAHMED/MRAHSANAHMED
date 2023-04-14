@@ -2,21 +2,24 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useMemo } from "react";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CustomLoader from "../../Container/CustomLoader/CustomLoader";
 import FrontendLayout from "../../FrontendComponents/FrontendLayout/FrontendLayout";
 import { PostService } from "../../services/posts.service";
-import { globalReactQueryOptions } from "../../utilities/util.constant";
+import {
+  globalReactQueryOptions,
+  unAuthenticatedRoutes,
+} from "../../utilities/util.constant";
 import { UtilService } from "../../utilities/util.service";
 
 function PostDetail() {
   const { post_id } = useParams();
-
   const { data: postByIdDataTemp, isLoading: postByIdLoader } = useQuery(
     ["posts", post_id],
     () => PostService.getPostById(post_id),
     {
       ...globalReactQueryOptions,
+      enabled: Boolean(post_id),
     }
   );
 
@@ -24,7 +27,6 @@ function PostDetail() {
     () => postByIdDataTemp?.data?.results,
     [postByIdDataTemp?.data?.results]
   );
-
   if (postByIdLoader) {
     return <CustomLoader />;
   }
@@ -33,9 +35,25 @@ function PostDetail() {
       <>
         <h1>{postByIdData?.post_title}</h1>
 
-        <p class="lead">
-          by <a href="#">{postByIdData?.post_author}</a>
-        </p>
+        {postByIdData?.post_author && (
+          <p class="lead">
+            by <a href="#">{postByIdData?.post_author}</a>
+          </p>
+        )}
+
+        {postByIdData?.category?.cat_title && (
+          <p class="lead">
+            category:{" "}
+            <Link
+              to={unAuthenticatedRoutes.CATEGORY_DETAIL.replace(
+                ":cat_id",
+                postByIdData?.category?.cat_id
+              )}
+            >
+              {postByIdData?.category?.cat_title}
+            </Link>
+          </p>
+        )}
 
         <hr />
 
@@ -43,9 +61,7 @@ function PostDetail() {
           <span class="glyphicon glyphicon-time"></span> Posted on &nbsp;
           {UtilService.convertDateToOurFormat(postByIdData?.post_date)}
         </p>
-
         <hr />
-
         {postByIdData?.image ? (
           <img class="img-responsive" src={postByIdData?.image} alt="" />
         ) : (
@@ -55,13 +71,9 @@ function PostDetail() {
             alt=""
           />
         )}
-
         <hr />
-
         <p class="lead">{postByIdData?.post_content}</p>
-
         <hr />
-
         <div class="well">
           <h4>Leave a Comment:</h4>
           <form role="form">
@@ -73,9 +85,7 @@ function PostDetail() {
             </button>
           </form>
         </div>
-
         <hr />
-
         <div class="media">
           <a class="pull-left" href="#">
             <img class="media-object" src="http://placehold.it/64x64" alt="" />
@@ -91,7 +101,6 @@ function PostDetail() {
             nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
           </div>
         </div>
-
         <div class="media">
           <a class="pull-left" href="#">
             <img class="media-object" src="http://placehold.it/64x64" alt="" />
@@ -131,5 +140,4 @@ function PostDetail() {
     </FrontendLayout>
   );
 }
-
 export default PostDetail;

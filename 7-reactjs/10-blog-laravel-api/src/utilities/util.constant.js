@@ -4,6 +4,7 @@ export const unAuthenticatedRoutes = {
   LOGIN: "/login",
   REGISTER: "/register",
   POST_DETAIL: "/post/:post_id",
+  CATEGORY_DETAIL: "/category/:cat_id",
 };
 
 export const authenticatedRoutes = {
